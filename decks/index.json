@@ -2,12 +2,89 @@
   "version": 1,
   "subjects": [
     {
+      "name": "Biology",
+      "slug": "biology",
+      "deckCount": 4
+    },
+    {
       "name": "Chemistry",
       "slug": "chemistry",
       "deckCount": 2
     }
   ],
   "decks": [
+    {
+      "id": "biology/healthy-lifestyle-1-nutrients-and-food-tests",
+      "path": "biology/healthy-lifestyle-1-nutrients-and-food-tests.json",
+      "title": "Healthy Lifestyle 1: Nutrients and Food Tests",
+      "subject": "Biology",
+      "subjectSlug": "biology",
+      "description": "The seven parts of a balanced diet, what each one does, and how to test foods for starch, lipids, sugar and protein.",
+      "author": "L.M.",
+      "tags": [
+        "food-tests",
+        "healthy-lifestyle",
+        "nutrients",
+        "year-8"
+      ],
+      "cardCount": 37,
+      "questionCount": 16
+    },
+    {
+      "id": "biology/healthy-lifestyle-2-unhealthy-diet",
+      "path": "biology/healthy-lifestyle-2-unhealthy-diet.json",
+      "title": "Healthy Lifestyle 2: Unhealthy Diet and Energy",
+      "subject": "Biology",
+      "subjectSlug": "biology",
+      "description": "Energy in food, joules and kilojoules, being underweight or overweight, vitamin deficiencies and reading food labels.",
+      "author": "L.M.",
+      "tags": [
+        "energy",
+        "healthy-lifestyle",
+        "unhealthy-diet",
+        "year-8"
+      ],
+      "cardCount": 28,
+      "questionCount": 14
+    },
+    {
+      "id": "biology/healthy-lifestyle-3-digestion",
+      "path": "biology/healthy-lifestyle-3-digestion.json",
+      "title": "Healthy Lifestyle 3: Digestion, Enzymes and Bacteria",
+      "subject": "Biology",
+      "subjectSlug": "biology",
+      "description": "Parts of the digestive system and what they do, villi, enzymes (carbohydrase, protease, lipase), bile and gut bacteria.",
+      "author": "L.M.",
+      "tags": [
+        "digestion",
+        "enzymes",
+        "healthy-lifestyle",
+        "year-8"
+      ],
+      "cardCount": 40,
+      "questionCount": 16,
+      "images": [
+        "biology/images/digestive-system.svg"
+      ]
+    },
+    {
+      "id": "biology/healthy-lifestyle-4-drugs-alcohol-smoking",
+      "path": "biology/healthy-lifestyle-4-drugs-alcohol-smoking.json",
+      "title": "Healthy Lifestyle 4: Drugs, Alcohol and Smoking",
+      "subject": "Biology",
+      "subjectSlug": "biology",
+      "description": "Medicinal and recreational drugs, addiction, alcohol and pregnancy, and how the chemicals in tobacco smoke damage health.",
+      "author": "L.M.",
+      "tags": [
+        "alcohol",
+        "drugs",
+        "healthy-lifestyle",
+        "smoking",
+        "year-8"
+      ],
+      "cardCount": 42,
+      "questionCount": 20
+    },
     {
       "id": "chemistry/separation-techniques-1-revision",
       "path": "chemistry/separation-techniques-1-revision.json",
