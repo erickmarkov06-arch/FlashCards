@@ -49,7 +49,7 @@ decks from any device, by hand or by giving their notes to Claude Code.
 | **Write** | Type the answer. Matching is forgiving: it ignores capitals, spaces, punctuation, accents and small typos, and there's an "I was right" button. |
 | **Match** | Pair terms with definitions against the clock by tapping or dragging. Your best time is saved. |
 | **Stats** | Streaks, cards mastered, Leitner boxes, a 12-week activity chart, per-deck progress, and **export/import** of your progress. |
-| **My decks** | Press **Add to My decks** on any deck to keep it at the top of the home page (and in a "My decks" filter). Syncs when you're signed in. |
+| **My decks** tab | Press **Add to My decks** on any deck to keep it in your own My decks tab. Syncs when you're signed in. |
 | **Accounts** (optional) | Sign in with an email code to sync progress, pick a **username**, and optionally appear on the **leaderboard** (answers this week, streak, cards mastered). Opt-in, signed-in users only. |
 | **Read aloud** | For language decks: a speaker button on each card, and a "Read aloud" switch that reads cards automatically, using the device's own voices. |
 | **Dark mode** | Follows your device. The sun/moon button switches it, and your choice is remembered. |
@@ -146,7 +146,7 @@ and updates the live site.
 │   ├── utils.js             helpers (answer matching, dates, icons…)
 │   ├── flipcard.js          the flippable, swipeable card
 │   └── views/               one file per page: home, deck, flashcards, quiz,
-│                            write, match, review (Learn), stats, leaderboard
+│                            write, match, review (Learn), stats, leaderboard, mydecks
 ├── icons/                   app icons
 ├── supabase/schema.sql      database setup for the optional progress sync
 ├── decks/                   ← ALL STUDY CONTENT LIVES HERE
