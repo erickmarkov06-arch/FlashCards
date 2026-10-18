@@ -561,6 +561,18 @@ main {
   accent-color: var(--primary);
 }
 
+/* Welcome / sign-in screen (shown until signed in with a username) */
+body.gated .bottom-nav {
+  display: none;
+}
+.welcome {
+  max-width: 480px;
+  margin: 24px auto 0;
+}
+.welcome .page-header img {
+  margin-bottom: 12px;
+}
+
 /* "@username" in the top bar when signed in */
 .account-chip {
   margin-left: auto;

@@ -64,6 +64,7 @@ export function syncStatus() {
     email: session?.email || '',
     username: session?.username || '', // '' = not chosen yet (or not loaded yet)
     onLeaderboard: Boolean(session?.onLeaderboard),
+    profileLoaded: Boolean(session?.profileLoaded), // false until we've asked the server for the username
     lastSynced: session?.lastSynced || null,
     syncing,
     error: lastError,
