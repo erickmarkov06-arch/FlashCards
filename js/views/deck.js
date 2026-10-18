@@ -16,22 +16,24 @@ export async function render(container, { deckId }) {
   const id = esc(deck.id);
 
   const modes = [
-    { view: 'flashcards', icon: icons.cards, name: 'Flashcards', text: 'Flip cards and sort them into known and unknown.' },
-    { view: 'review', icon: icons.repeat, name: 'Learn', text: 'Spaced repetition: review each card at the right time.', count: learnCount },
-    { view: 'quiz', icon: icons.quiz, name: 'Quiz', text: 'Multiple-choice questions with a score.', disabled: !deck.questions.length && deck.cards.length < 2 },
+    { view: 'review', icon: icons.repeat, name: 'Learn', text: 'Spaced repetition: each card comes back when it is due.', count: learnCount ? `${learnCount} ready` : '' },
+    { view: 'flashcards', icon: icons.cards, name: 'Flashcards', text: 'Flip through and sort into known and still learning.' },
+    { view: 'quiz', icon: icons.quiz, name: 'Quiz', text: 'Multiple choice, with a score at the end.', disabled: !deck.questions.length && deck.cards.length < 2 },
     { view: 'write', icon: icons.write, name: 'Write', text: 'Type the answer. Small typos are forgiven.' },
     { view: 'match', icon: icons.match, name: 'Match', text: 'Pair terms with definitions against the clock.', disabled: deck.cards.length < 2 },
   ];
+  if (s.wrong) {
+    modes.push({ view: 'flashcards', query: '?wrong=1', icon: icons.x, name: 'Fix mistakes', text: `Flashcards with only the ${plural(s.wrong, 'card')} you last got wrong.` });
+  }
 
   container.innerHTML = `
-    ${pageHeader({ title: deck.title, subtitle: deck.subject, back: '#/', backLabel: 'All decks' })}
+    ${pageHeader({ title: deck.title, eyebrow: deck.subject, back: '#/', backLabel: 'All decks' })}
     ${deck.description ? `<p>${esc(deck.description)}</p>` : ''}
-    <p class="muted small">
-      ${plural(deck.cards.length, 'card')}${deck.questions.length ? ` · ${plural(deck.questions.length, 'question')}` : ''}
-      ${deck.author ? ` · by ${esc(deck.author)}` : ''}
+    <p class="deck-meta-line">
+      ${plural(deck.cards.length, 'card')}${deck.questions.length ? ` · ${plural(deck.questions.length, 'question')}` : ''}${deck.author ? ` · by ${esc(deck.author)}` : ''}
     </p>
 
-    <div class="panel section">
+    <div class="section">
       <div class="progress" aria-hidden="true">
         <span class="mastered" style="width:${pct(s.mastered)}%"></span>
         <span class="learning" style="width:${pct(s.learning)}%"></span>
@@ -44,31 +46,25 @@ export async function render(container, { deckId }) {
       </div>
     </div>
 
-    <h2>Study</h2>
-    <div class="mode-grid">
+    <h2 class="section-label">Study</h2>
+    <ul class="mode-list" style="margin-top:12px">
       ${modes
         .map(
           (m) => `
-          <a class="mode-btn ${m.disabled ? 'disabled' : ''}" href="#/${m.view}/${id}" ${m.disabled ? 'aria-disabled="true" tabindex="-1"' : ''}>
-            ${m.icon}
-            <strong>${m.name}</strong>
-            <span>${m.text}</span>
-            ${m.count ? `<em class="count">${m.count}</em>` : ''}
-          </a>`
+          <li>
+            <a class="mode-row ${m.disabled ? 'disabled' : ''}" href="#/${m.view}/${id}${m.query || ''}" ${m.disabled ? 'aria-disabled="true" tabindex="-1"' : ''}>
+              <span class="icon">${m.icon}</span>
+              <span><strong>${m.name}</strong><span class="text">${m.text}</span></span>
+              ${m.count ? `<span class="count">${m.count}</span>` : `<span class="chev">${icons.chevron}</span>`}
+            </a>
+          </li>`
         )
         .join('')}
-      ${
-        s.wrong
-          ? `<a class="mode-btn" href="#/flashcards/${id}?wrong=1">
-               ${icons.x}<strong>Fix mistakes</strong><span>Flashcards with only the ${plural(s.wrong, 'card')} you last got wrong.</span>
-             </a>`
-          : ''
-      }
-    </div>
+    </ul>
 
     <section class="section">
       <details ${deck.cards.length <= 15 ? 'open' : ''}>
-        <summary>All ${plural(deck.cards.length, 'card')}</summary>
+        <summary class="section-label" style="margin:0">All ${plural(deck.cards.length, 'card')}</summary>
         <ul class="card-list">
           ${deck.cards
             .map(

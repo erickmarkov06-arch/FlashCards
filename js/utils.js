@@ -149,13 +149,13 @@ export function toast(message) {
   toast.timer = setTimeout(() => box.classList.remove('show'), 2600);
 }
 
-/** The header at the top of most pages: an optional back link, a title and an optional subtitle. */
-export function pageHeader({ title, subtitle = '', back = '', backLabel = 'Back' }) {
+/** The header at the top of most pages: an optional back link, a small label (eyebrow) and a title. */
+export function pageHeader({ title, eyebrow = '', back = '', backLabel = 'Back' }) {
   return `
     <div class="page-header">
       ${back ? `<a class="back-link" href="${esc(back)}">${icons.back}<span>${esc(backLabel)}</span></a>` : ''}
+      ${eyebrow ? `<p class="eyebrow">${esc(eyebrow)}</p>` : ''}
       <h1>${esc(title)}</h1>
-      ${subtitle ? `<p class="subtitle">${esc(subtitle)}</p>` : ''}
     </div>`;
 }
 
@@ -184,6 +184,7 @@ const svg = (body) =>
 
 export const icons = {
   back: svg('<path d="M15 18l-6-6 6-6"/>'),
+  chevron: svg('<path d="M9 18l6-6-6-6"/>'),
   cards: svg('<rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/>'),
   repeat: svg('<path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/>'),
   quiz: svg('<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><path d="M12 17h.01"/>'),

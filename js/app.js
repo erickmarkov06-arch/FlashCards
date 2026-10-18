@@ -125,7 +125,7 @@ function applyThemeUi() {
   const button = document.getElementById('theme-toggle');
   button.innerHTML = theme === 'dark' ? icons.sun : icons.moon;
   button.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'dark' ? '#111827' : '#4f46e5');
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'dark' ? '#161512' : '#f6f4ef');
 }
 
 document.getElementById('theme-toggle').addEventListener('click', () => {

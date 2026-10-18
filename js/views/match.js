@@ -27,7 +27,7 @@ export async function render(container, { deckId }) {
   });
 
   container.innerHTML = `
-    ${pageHeader({ title: deck.title, subtitle: 'Match', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
+    ${pageHeader({ title: deck.title, eyebrow: 'Match', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
     <div id="stage"></div>`;
   const stage = container.querySelector('#stage');
 

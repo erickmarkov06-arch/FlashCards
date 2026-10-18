@@ -20,7 +20,7 @@ export async function render(container, { deckId }) {
 
   container.innerHTML = `
     <div class="study">
-      ${pageHeader({ title: deck.title, subtitle: 'Quiz', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
+      ${pageHeader({ title: deck.title, eyebrow: 'Quiz', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
       <div id="stage"></div>
     </div>`;
   const stage = container.querySelector('#stage');

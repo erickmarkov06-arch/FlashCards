@@ -23,7 +23,7 @@ export async function render(container, { deckId }) {
 
   container.innerHTML = `
     <div class="study">
-      ${pageHeader({ title: deck.title, subtitle: 'Write', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
+      ${pageHeader({ title: deck.title, eyebrow: 'Write', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
       <div class="chip-row" role="group" aria-label="Answer with">
         <button type="button" class="chip" data-dir="back">Type the back</button>
         <button type="button" class="chip" data-dir="front">Type the front</button>

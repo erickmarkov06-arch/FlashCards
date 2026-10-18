@@ -27,8 +27,8 @@ export async function render(container) {
         : ''
     }
     <div class="page-header">
+      <p class="eyebrow">${plural(decks.length, 'deck')} · ${plural(index.subjects.length, 'subject')}</p>
       <h1>Decks</h1>
-      <p class="subtitle">${plural(decks.length, 'deck')} in ${plural(index.subjects.length, 'subject')}</p>
     </div>
 
     <div class="filters">
@@ -90,9 +90,9 @@ export async function render(container) {
     results.innerHTML = [...groups]
       .map(
         ([subject, list]) => `
-          <section class="section">
-            <h2>${esc(subject)}</h2>
-            <div class="deck-grid">${list.map((d) => deckCard(d, progress[d.id])).join('')}</div>
+          <section>
+            <h2 class="section-label">${esc(subject)}</h2>
+            <ul class="deck-list">${list.map((d) => `<li>${deckRow(d, progress[d.id])}</li>`).join('')}</ul>
           </section>`
       )
       .join('');
@@ -116,22 +116,26 @@ export async function render(container) {
   draw();
 }
 
-function deckCard(deck, p = { reviewed: 0, mastered: 0, due: 0 }) {
+/** One deck in a list: title and description on the left, card count (and anything due) on the right. */
+export function deckRow(deck, p = { reviewed: 0, mastered: 0, due: 0 }, href = `#/deck/${deck.id}`) {
   const total = Math.max(deck.cardCount, 1);
   const masteredPct = Math.min(100, (p.mastered / total) * 100);
   const learningPct = Math.min(100 - masteredPct, ((p.reviewed - p.mastered) / total) * 100);
   return `
-    <a class="deck-card" href="#/deck/${esc(deck.id)}">
-      <h3>${esc(deck.title)}</h3>
-      ${deck.description ? `<p class="desc">${esc(deck.description)}</p>` : ''}
-      <div class="deck-meta">
-        <span>${plural(deck.cardCount, 'card')}</span>
-        ${deck.questionCount ? `<span>${plural(deck.questionCount, 'question')}</span>` : ''}
-        ${p.due ? `<span class="due-pill">${p.due} due</span>` : ''}
-      </div>
-      <div class="progress" title="${p.mastered} mastered, ${p.reviewed - p.mastered} learning">
-        <span class="mastered" style="width:${masteredPct}%"></span>
-        <span class="learning" style="width:${learningPct}%"></span>
-      </div>
+    <a class="deck-row" href="${esc(href)}">
+      <span class="title">${esc(deck.title)}</span>
+      <span class="meta">
+        ${plural(deck.cardCount, 'card')}
+        ${p.due ? `<span class="due">${p.due} due</span>` : ''}
+      </span>
+      ${deck.description ? `<span class="desc">${esc(deck.description)}</span>` : ''}
+      ${
+        p.reviewed
+          ? `<span class="progress" title="${p.mastered} mastered, ${p.reviewed - p.mastered} learning">
+               <span class="mastered" style="width:${masteredPct}%"></span>
+               <span class="learning" style="width:${learningPct}%"></span>
+             </span>`
+          : ''
+      }
     </a>`;
 }

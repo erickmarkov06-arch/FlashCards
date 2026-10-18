@@ -33,10 +33,10 @@ export async function render(container) {
   const perDeck = progressByDeck();
 
   container.innerHTML = `
-    ${pageHeader({ title: 'Your progress', subtitle: 'Saved on this device only' })}
+    ${pageHeader({ title: 'Progress', eyebrow: 'Saved on this device' })}
 
-    <div class="stat-grid">
-      ${tile(streaks.current, 'day streak',streaks.studiedToday ? 'You studied today' : streaks.current ? 'Study today to keep it going' : '')}
+    <div class="figures">
+      ${tile(streaks.current, 'day streak', streaks.studiedToday ? 'You studied today' : streaks.current ? 'Study today to keep it going' : '')}
       ${tile(streaks.longest, 'longest streak (days)')}
       ${tile(mastered, 'cards mastered')}
       ${tile(due, 'cards due today')}
@@ -44,8 +44,8 @@ export async function render(container) {
       ${tile(accuracy, 'answers correct')}
     </div>
 
-    <section class="section panel">
-      <h2>Leitner boxes</h2>
+    <section class="section">
+      <h2 class="section-label">Leitner boxes</h2>
       <p class="muted small">Cards you have studied in Learn mode, by box. Box ${MAX_BOX} means mastered.</p>
       <div class="box-chart">
         ${boxes
@@ -61,8 +61,8 @@ export async function render(container) {
       </div>
     </section>
 
-    <section class="section panel">
-      <h2>Last ${WEEKS_SHOWN} weeks</h2>
+    <section class="section">
+      <h2 class="section-label">Last ${WEEKS_SHOWN} weeks</h2>
       ${calendar(activity, today)}
       <div class="progress-legend" aria-hidden="true">
         <span>Less</span>
@@ -72,14 +72,14 @@ export async function render(container) {
     </section>
 
     <section class="section">
-      <h2>Decks</h2>
+      <h2 class="section-label">Decks</h2>
       <ul class="deck-progress-list">
         ${index.decks
           .map((d) => {
             const p = perDeck[d.id] || { reviewed: 0, mastered: 0, due: 0 };
             const total = Math.max(1, d.cardCount);
             return `
-              <li class="panel">
+              <li>
                 <a href="#/deck/${esc(d.id)}">${esc(d.title)}</a>
                 <span class="muted small"> · ${esc(d.subject)}</span>
                 <div class="progress" style="margin-top:8px">
@@ -98,8 +98,8 @@ export async function render(container) {
       </ul>
     </section>
 
-    <section class="section panel">
-      <h2>Back up or move your progress</h2>
+    <section class="section">
+      <h2 class="section-label">Back up or move your progress</h2>
       <p class="small">Progress is stored in this browser only. Nothing is uploaded anywhere.
         To move it to another phone or computer, export a file here and import it there.
         Importing merges with what's already on the device.</p>
@@ -146,7 +146,7 @@ export async function render(container) {
 
 function tile(value, label, note = '') {
   return `
-    <div class="stat-tile">
+    <div class="figure">
       <span class="value">${esc(value)}</span>
       <span class="label">${esc(label)}</span>
       ${note ? `<span class="label small">${esc(note)}</span>` : ''}

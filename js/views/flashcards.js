@@ -24,7 +24,7 @@ export async function render(container, { deckId, query }) {
 
   container.innerHTML = `
     <div class="study">
-      ${pageHeader({ title: deck.title, subtitle: 'Flashcards', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
+      ${pageHeader({ title: deck.title, eyebrow: 'Flashcards', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
       <div class="chip-row" id="toolbar"></div>
       <div id="stage"></div>
     </div>`;

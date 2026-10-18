@@ -53,8 +53,8 @@ export async function render(container, { deckId }) {
   }
 
   const header = deckId
-    ? pageHeader({ title: decks[0].title, subtitle: 'Learn · spaced repetition', back: `#/deck/${decks[0].id}`, backLabel: 'Deck' })
-    : pageHeader({ title: 'Review', subtitle: 'Cards due today from all your decks' });
+    ? pageHeader({ title: decks[0].title, eyebrow: 'Learn · spaced repetition', back: `#/deck/${decks[0].id}`, backLabel: 'Deck' })
+    : pageHeader({ title: 'Review', eyebrow: 'Due today, all decks' });
 
   container.innerHTML = `
     <div class="study">
@@ -94,17 +94,17 @@ export async function render(container, { deckId }) {
         </div>
         ${
           toStart.length
-            ? `<h2 class="section">Learn new cards</h2>
-               <div class="deck-grid">${toStart
+            ? `<h2 class="section-label">Learn new cards</h2>
+               <ul class="deck-list">${toStart
                  .map(
                    (d) => `
-                   <a class="deck-card" href="#/review/${esc(d.id)}">
-                     <h3>${esc(d.title)}</h3>
-                     <div class="deck-meta"><span>${esc(d.subject)}</span>
-                       <span>${plural(d.cardCount - (counts[d.id]?.reviewed || 0), 'new card')}</span></div>
-                   </a>`
+                   <li><a class="deck-row" href="#/review/${esc(d.id)}">
+                     <span class="title">${esc(d.title)}</span>
+                     <span class="meta">${plural(d.cardCount - (counts[d.id]?.reviewed || 0), 'new card')}</span>
+                     <span class="desc">${esc(d.subject)}</span>
+                   </a></li>`
                  )
-                 .join('')}</div>`
+                 .join('')}</ul>`
             : ''
         }`;
     }
@@ -134,7 +134,7 @@ export async function render(container, { deckId }) {
       <div id="actions" style="margin-top:12px">
         <button type="button" class="btn btn-block" id="reveal">Show answer</button>
       </div>
-      <p class="helper">Be honest. It only helps you!</p>`;
+      <p class="helper">Tap the card or "Show answer" to check yourself.</p>`;
 
     const el = stage.querySelector('#card');
     attachGestures(el, {
