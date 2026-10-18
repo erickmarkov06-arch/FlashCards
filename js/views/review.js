@@ -5,37 +5,53 @@
  * don't know it -> it goes back to box 1 and comes back today. The waiting time per box is
  * BOX_INTERVALS in store.js (1, 2, 4, 7 and 14 days). Cards in box 5 count as mastered.
  *
+ * Language cards (decks with frontLang/backLang) are also practised back → front, with their own
+ * boxes, once the normal direction reaches box 2. The "Both directions" toggle turns this off.
+ *
  * #/review/<deck>  due cards from one deck, plus up to 10 new ones
  * #/review         due cards from every deck
  */
 import { loadDeck, loadIndex } from '../data.js';
 import {
-  getAllProgress, cardKey, recordReview, progressByDeck, pruneDeck,
+  getAllProgress, cardKey, recordReview, progressByDeck, pruneDeck, getSetting, setSetting,
   NEW_CARDS_PER_SESSION, MAX_BOX, BOX_INTERVALS,
 } from '../store.js';
 import { esc, shuffle, plural, pageHeader, todayKey, describeDay, icons, isTypingTarget, isButtonTarget } from '../utils.js';
 import { flipCardHtml, flip, attachGestures, flyOut, autoRead, readVisibleSide } from '../flipcard.js';
 import { deckCanSpeak, readAloudChip, toggleAutoSpeak, attachSpeakButtons, stopSpeaking } from '../speech.js';
 
+/** Language cards (a language set on either side) can also be practised back → front. */
+const isLanguageCard = (card) => Boolean(card.frontLang || card.backLang);
+/** The back → front direction only starts once the normal direction has reached this box. */
+const REVERSE_FROM_BOX = 2;
+
 export async function render(container, { deckId }) {
   const today = todayKey();
   const progress = getAllProgress();
-  const recordFor = (deck, card) => progress[cardKey(deck.id, card)];
+  const bothWays = getSetting('learnBothWays', true);
+  const recordFor = (deck, card, reverse = false) => progress[cardKey(deck.id, card, reverse)];
+  // Directions a card can be studied in: always front → back, plus back → front for language cards.
+  const directions = (card) => (bothWays && isLanguageCard(card) ? [false, true] : [false]);
   let decks = [];
-  let items = []; // { deck, card } to review this session
+  let items = []; // { deck, card, reverse } to review this session
 
   if (deckId) {
     const deck = await loadDeck(deckId);
-    pruneDeck(deck.id, deck.cards);
+    if (!deck.isMix) pruneDeck(deck.id, deck.cards);
     decks = [deck];
     const due = [];
     const fresh = [];
     for (const card of deck.cards) {
-      const rec = recordFor(deck, card);
-      if (!rec || !rec.box) fresh.push(card);
-      else if (rec.due <= today) due.push(card);
+      for (const reverse of directions(card)) {
+        const rec = recordFor(deck, card, reverse);
+        if (rec && rec.box) {
+          if (rec.due <= today) due.push({ deck, card, reverse });
+        } else if (!reverse || (recordFor(deck, card)?.box || 0) >= REVERSE_FROM_BOX) {
+          fresh.push({ deck, card, reverse });
+        }
+      }
     }
-    items = [...shuffle(due), ...fresh.slice(0, NEW_CARDS_PER_SESSION)].map((card) => ({ deck, card }));
+    items = [...shuffle(due), ...fresh.slice(0, NEW_CARDS_PER_SESSION)];
     container.dataset.title = `Learn · ${deck.title}`;
   } else {
     // Only download the decks that actually have something due.
@@ -45,13 +61,16 @@ export async function render(container, { deckId }) {
     decks = (await Promise.all(ids.map((id) => loadDeck(id).catch(() => null)))).filter(Boolean);
     for (const deck of decks) {
       for (const card of deck.cards) {
-        const rec = recordFor(deck, card);
-        if (rec && rec.box && rec.due <= today) items.push({ deck, card });
+        for (const reverse of directions(card)) {
+          const rec = recordFor(deck, card, reverse);
+          if (rec && rec.box && rec.due <= today) items.push({ deck, card, reverse });
+        }
       }
     }
     items = shuffle(items);
     container.dataset.title = 'Review';
   }
+  const hasLanguageCards = decks.some((d) => d.cards.some(isLanguageCard));
 
   const header = deckId
     ? pageHeader({ title: decks[0].title, eyebrow: 'Learn · spaced repetition', back: `#/deck/${decks[0].id}`, backLabel: 'Deck' })
@@ -60,7 +79,14 @@ export async function render(container, { deckId }) {
   container.innerHTML = `
     <div class="study">
       ${header}
-      ${items.length && decks.some(deckCanSpeak) ? `<div class="chip-row" id="speak-toolbar">${readAloudChip()}</div>` : ''}
+      ${
+        hasLanguageCards || decks.some(deckCanSpeak)
+          ? `<div class="chip-row" id="learn-toolbar">
+               ${decks.some(deckCanSpeak) ? readAloudChip() : ''}
+               ${hasLanguageCards ? `<button type="button" class="chip" data-opt="bothWays" aria-pressed="${bothWays}">${icons.swap} Both directions</button>` : ''}
+             </div>`
+          : ''
+      }
       <div id="stage"></div>
       <details class="section small">
         <summary>How does Learn mode work?</summary>
@@ -68,10 +94,26 @@ export async function render(container, { deckId }) {
         again later: box 2 after ${BOX_INTERVALS[2]} days, box 3 after ${BOX_INTERVALS[3]}, box 4 after ${BOX_INTERVALS[4]}
         and box 5 after ${BOX_INTERVALS[5]}. When you don't know it, it goes back to box 1 and comes back later in this session.
         Cards in box ${MAX_BOX} count as mastered. Each session adds up to ${NEW_CARDS_PER_SESSION} new cards.</p>
+        ${
+          hasLanguageCards
+            ? `<p>With <b>Both directions</b> on, language cards are also asked the other way round (back → front),
+               in their own boxes. That starts once you know a card the normal way (box ${REVERSE_FROM_BOX} or higher).</p>`
+            : ''
+        }
         <p>Your progress is saved on this device only.</p>
       </details>
     </div>`;
   const stage = container.querySelector('#stage');
+
+  // Toolbar: "Read aloud" and "Both directions" (only shown for decks with languages).
+  container.querySelector('#learn-toolbar')?.addEventListener('click', (e) => {
+    const chip = e.target.closest('[data-opt]');
+    if (chip?.dataset.opt === 'autoSpeak') toggleAutoSpeak(chip, () => readVisibleSide(stage.querySelector('#card')));
+    if (chip?.dataset.opt === 'bothWays') {
+      setSetting('learnBothWays', !bothWays);
+      window.dispatchEvent(new HashChangeEvent('hashchange')); // reload this page with the new setting
+    }
+  });
 
   // ---------- nothing to do ----------
   if (!items.length) {
@@ -122,17 +164,17 @@ export async function render(container, { deckId }) {
   let busy = false;
 
   function drawCard() {
-    const { deck, card } = queue[0];
-    const rec = recordFor(deck, card);
+    const { deck, card, reverse } = queue[0];
+    const rec = recordFor(deck, card, reverse);
     revealed = false;
     stage.innerHTML = `
       <div class="study-top">
         <span>${plural(queue.length, 'card')} left</span>
-        <span>${rec && rec.box ? `Box ${rec.box} of ${MAX_BOX}` : 'New card'}</span>
+        <span>${rec && rec.box ? `Box ${rec.box} of ${MAX_BOX}` : 'New'}${reverse ? ` · ${esc(directionLabel(card))}` : ''}</span>
       </div>
       <div class="bar"><span style="width:${(reviewed / (reviewed + queue.length)) * 100}%"></span></div>
       ${!deckId ? `<p class="muted small" style="margin:-8px 0 8px">${esc(deck.title)}</p>` : ''}
-      ${flipCardHtml(card, { langs: { front: deck.frontLang, back: deck.backLang } })}
+      ${flipCardHtml(card, { swap: reverse })}
       <div id="actions" style="margin-top:12px">
         <button type="button" class="btn btn-block" id="reveal">Show answer</button>
       </div>
@@ -174,9 +216,9 @@ export async function render(container, { deckId }) {
     if (busy || !revealed) return;
     busy = true;
     const item = queue.shift();
-    const key = cardKey(item.deck.id, item.card);
+    const key = cardKey(item.deck.id, item.card, item.reverse);
     const isRetry = failed.has(key);
-    progress[key] = recordReview(item.deck.id, item.card, known, isRetry);
+    progress[key] = recordReview(item.deck.id, item.card, known, isRetry, item.reverse);
 
     if (known) {
       if (!isRetry) firstTry++;
@@ -218,14 +260,7 @@ export async function render(container, { deckId }) {
   }
   document.addEventListener('keydown', onKey);
 
-  // "Read aloud" toggle, shown when any deck in this session has languages set.
-  const speakChipRow = container.querySelector('#speak-toolbar');
-  speakChipRow?.addEventListener('click', (e) => {
-    const chip = e.target.closest('[data-opt="autoSpeak"]');
-    if (chip) toggleAutoSpeak(chip, () => readVisibleSide(stage.querySelector('#card')));
-  });
   attachSpeakButtons(stage);
-
   drawCard();
   return () => {
     document.removeEventListener('keydown', onKey);
@@ -239,9 +274,27 @@ function nextDueText(decks) {
   let next = null;
   for (const deck of decks) {
     for (const card of deck.cards) {
-      const rec = all[cardKey(deck.id, card)];
-      if (rec && rec.box && (!next || rec.due < next)) next = rec.due;
+      for (const rec of [all[cardKey(deck.id, card)], all[cardKey(deck.id, card, true)]]) {
+        if (rec && rec.box && (!next || rec.due < next)) next = rec.due;
+      }
     }
   }
   return next ? `Next review: ${describeDay(next)}.` : '';
+}
+
+/** "English → Spanish" for a card asked back → front (falls back to "Back → front"). */
+function directionLabel(card) {
+  const from = languageName(card.backLang);
+  const to = languageName(card.frontLang);
+  return from && to ? `${from} → ${to}` : 'Back → front';
+}
+
+/** "es" -> "Spanish", using the browser's built-in list of language names. */
+function languageName(code) {
+  if (!code) return '';
+  try {
+    return new Intl.DisplayNames([navigator.language || 'en'], { type: 'language' }).of(code) || code;
+  } catch {
+    return code;
+  }
 }

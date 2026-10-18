@@ -166,6 +166,18 @@ export function cardText(text) {
   return `<div class="card-text ${size}">${esc(t)}</div>`;
 }
 
+/** One side of a card: its text, language (for read-aloud) and picture URL. */
+export function cardSide(card, side) {
+  return side === 'front'
+    ? { text: card.front, lang: card.frontLang || '', image: card.frontImageUrl || '' }
+    : { text: card.back, lang: card.backLang || '', image: card.backImageUrl || '' };
+}
+
+/** A card's picture. `draggable=false` so dragging it swipes the card instead. */
+export function cardImage(url, alt = '') {
+  return url ? `<img class="card-image" src="${esc(url)}" alt="${esc(alt)}" draggable="false" decoding="async">` : '';
+}
+
 /** True if a keyboard event came from a text box (so keyboard shortcuts should ignore it). */
 export function isTypingTarget(event) {
   const el = event.target;

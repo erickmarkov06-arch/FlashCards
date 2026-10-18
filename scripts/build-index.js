@@ -46,6 +46,16 @@ function buildIndex() {
     deck.cards.forEach((c) => c && addTags(c.tags));
     questions.forEach((q) => q && addTags(q.tags));
 
+    // List the deck's pictures (relative to decks/) so the app can save them for offline use.
+    const folder = id.slice(0, id.lastIndexOf('/') + 1);
+    const images = new Set();
+    for (const c of deck.cards) {
+      for (const p of [c && c.frontImage, c && c.backImage]) {
+        const safe = typeof p === 'string' && p && !p.includes('..') && !/^[a-z]+:|^\//i.test(p);
+        if (safe && fs.existsSync(path.join(DECKS_DIR, folder, p))) images.add(folder + p); // only real files
+      }
+    }
+
     decks.push({
       id,
       path: `${id}.json`,
@@ -57,6 +67,7 @@ function buildIndex() {
       tags: [...tags].sort(),
       cardCount: deck.cards.length,
       questionCount: questions.length,
+      ...(images.size ? { images: [...images].sort() } : {}),
     });
   }
 

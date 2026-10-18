@@ -1,7 +1,7 @@
 /**
  * Home page: every deck, grouped by subject, with search, subject chips and a tag filter.
  */
-import { loadIndex } from '../data.js';
+import { loadIndex, mixId } from '../data.js';
 import { progressByDeck } from '../store.js';
 import { esc, plural, icons } from '../utils.js';
 
@@ -84,18 +84,33 @@ export async function render(container) {
     // Group by subject, keeping the index's order.
     const groups = new Map();
     for (const d of matching) {
-      if (!groups.has(d.subject)) groups.set(d.subject, []);
-      groups.get(d.subject).push(d);
+      if (!groups.has(d.subjectSlug)) groups.set(d.subjectSlug, { name: d.subject, list: [] });
+      groups.get(d.subjectSlug).list.push(d);
     }
-    results.innerHTML = [...groups]
-      .map(
-        ([subject, list]) => `
+    const subjectSize = (slug) => decks.filter((d) => d.subjectSlug === slug).length;
+
+    // When a tag is picked, offer to study every card with that tag in one go.
+    const tagBanner = filters.tag
+      ? `<div class="banner">
+           <p>Study everything tagged #${esc(filters.tag)} together</p>
+           <a class="btn btn-small" href="#/deck/${esc(mixId.tag(filters.tag))}">Study all</a>
+         </div>`
+      : '';
+
+    results.innerHTML =
+      tagBanner +
+      [...groups]
+        .map(
+          ([slug, { name, list }]) => `
           <section>
-            <h2 class="section-label">${esc(subject)}</h2>
+            <h2 class="section-label with-action">
+              <span>${esc(name)}</span>
+              ${subjectSize(slug) > 1 ? `<a href="#/deck/${esc(mixId.subject(slug))}">Study all ${subjectSize(slug)} decks</a>` : ''}
+            </h2>
             <ul class="deck-list">${list.map((d) => `<li>${deckRow(d, progress[d.id])}</li>`).join('')}</ul>
           </section>`
-      )
-      .join('');
+        )
+        .join('');
   }
 
   container.querySelector('#search').addEventListener('input', (e) => {

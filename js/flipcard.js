@@ -5,32 +5,32 @@
  *   attachGestures(el, handlers)   tap = flip, swipe right = known, swipe left = unknown
  *   flyOut(el, known)              animates the card off screen
  */
-import { cardText } from './utils.js';
+import { cardText, cardSide, cardImage } from './utils.js';
 import { speakButton, speak, autoSpeakOn } from './speech.js';
 
-/** `langs` = { front: "es", back: "en" } from the deck; sides with a language get a speaker button. */
-export function flipCardHtml(card, { swap = false, langs = {} } = {}) {
-  const first = swap ? card.back : card.front;
-  const second = swap ? card.front : card.back;
-  const firstLang = swap ? langs.back : langs.front;
-  const secondLang = swap ? langs.front : langs.back;
+/**
+ * `swap` shows the back first. Sides with a language get a speaker button,
+ * and sides with a picture show it above the text.
+ */
+export function flipCardHtml(card, { swap = false } = {}) {
+  const first = cardSide(card, swap ? 'back' : 'front');
+  const second = cardSide(card, swap ? 'front' : 'back');
+  const face = (side, cls, label) => `
+          <div class="face ${cls} ${side.image ? 'has-image' : ''}" ${cls === 'back' ? 'aria-hidden="true"' : 'aria-live="polite"'}>
+            <span class="face-label">${label}</span>
+            ${speakButton(side.text, side.lang)}
+            ${cardImage(side.image, card.imageAlt)}
+            ${cardText(side.text)}
+          </div>`;
   return `
     <div class="card-stage">
-      <div class="flashcard" id="card" role="button" tabindex="0"
+      <div class="flashcard ${first.image || second.image ? 'tall' : ''}" id="card" role="button" tabindex="0"
            aria-label="Flashcard. Press Space or tap to flip.">
         <span class="swipe-label unknown">Still learning</span>
         <span class="swipe-label known">Know it</span>
         <div class="flashcard-inner">
-          <div class="face front" aria-live="polite">
-            <span class="face-label">${swap ? 'Back' : 'Front'}</span>
-            ${speakButton(first, firstLang)}
-            ${cardText(first)}
-          </div>
-          <div class="face back" aria-hidden="true">
-            <span class="face-label">${swap ? 'Front' : 'Back'}</span>
-            ${speakButton(second, secondLang)}
-            ${cardText(second)}
-          </div>
+          ${face(first, 'front', swap ? 'Back' : 'Front')}
+          ${face(second, 'back', swap ? 'Front' : 'Back')}
         </div>
       </div>
     </div>`;

@@ -65,24 +65,34 @@ export function setSetting(name, value) {
 
 // ---------- card progress ----------
 
-/** A card's ID: the deck ID plus a hash of its front. Editing the front starts that card fresh. */
-export function cardKey(deckId, card) {
+/** Added to a card's ID for the reverse direction (back → front) of language cards in Learn mode. */
+export const REVERSE = '~r';
+
+/**
+ * A card's ID: its deck's ID plus a hash of its front (and front image, if any).
+ * Editing the front starts that card fresh. Cards in a mixed deck carry their own
+ * `deckId`, so progress always belongs to the card's real deck.
+ */
+export function cardKey(deckId, card, reverse = false) {
   const front = String(card.front).toLowerCase().replace(/\s+/g, ' ').trim();
-  return `${deckId}#${hashString(front)}`;
+  const image = card.frontImage ? `|${card.frontImage}` : '';
+  return `${card.deckId || deckId}#${hashString(front + image)}${reverse ? REVERSE : ''}`;
 }
+
+const isReverseKey = (key) => key.endsWith(REVERSE);
 
 export function getAllProgress() {
   return read(KEYS.progress, {});
 }
 
-export function getCardProgress(deckId, card) {
-  return getAllProgress()[cardKey(deckId, card)] || null;
+export function getCardProgress(deckId, card, reverse = false) {
+  return getAllProgress()[cardKey(deckId, card, reverse)] || null;
 }
 
 /** Records an answer from any study mode (does not move Leitner boxes). */
-export function recordAnswer(deckId, card, correct) {
+export function recordAnswer(deckId, card, correct, reverse = false) {
   const all = getAllProgress();
-  const key = cardKey(deckId, card);
+  const key = cardKey(deckId, card, reverse);
   const rec = all[key] || { box: 0, due: todayKey(), seen: 0, correct: 0, wrong: 0 };
   rec.seen++;
   if (correct) rec.correct++;
@@ -112,11 +122,12 @@ export function markLastAnswerCorrect(deckId, card) {
  *   wrong -> back to box 1, and due again today
  * If the card was already answered wrong earlier in this session (`isRetry`), getting it right
  * only schedules it for tomorrow, so a quick second try doesn't count as truly knowing it.
+ * `reverse` = this was the back → front direction, which has its own box.
  */
-export function recordReview(deckId, card, correct, isRetry = false) {
-  recordAnswer(deckId, card, correct);
+export function recordReview(deckId, card, correct, isRetry = false, reverse = false) {
+  recordAnswer(deckId, card, correct, reverse);
   const all = getAllProgress();
-  const key = cardKey(deckId, card);
+  const key = cardKey(deckId, card, reverse);
   const rec = all[key];
   const today = todayKey();
 
@@ -134,7 +145,10 @@ export function recordReview(deckId, card, correct, isRetry = false) {
   return rec;
 }
 
-/** Counts how a deck's cards are doing: new, learning, mastered, due today, and last-answer-wrong. */
+/**
+ * Counts how a deck's cards are doing: new, learning, mastered, due today, and last-answer-wrong.
+ * New/learning/mastered describe the normal direction; "due" also includes reverse reviews.
+ */
 export function deckSummary(deckId, cards) {
   const all = getAllProgress();
   const today = todayKey();
@@ -146,13 +160,15 @@ export function deckSummary(deckId, cards) {
     else summary.learning++;
     if (rec && rec.box && rec.due <= today) summary.due++;
     if (rec && rec.last === false) summary.wrong++;
+    const back = all[cardKey(deckId, card, true)];
+    if (back && back.box && back.due <= today) summary.due++;
   }
   return summary;
 }
 
 /**
  * Summary per deck using only saved records (no need to download the decks).
- * Returns { [deckId]: { reviewed, mastered, due } }.
+ * Returns { [deckId]: { reviewed, mastered, due } }. Reverse reviews only add to "due".
  */
 export function progressByDeck() {
   const today = todayKey();
@@ -161,8 +177,10 @@ export function progressByDeck() {
     const deckId = key.slice(0, key.lastIndexOf('#'));
     const r = (result[deckId] ||= { reviewed: 0, mastered: 0, due: 0 });
     if (rec.box) {
-      r.reviewed++;
-      if (rec.box >= MAX_BOX) r.mastered++;
+      if (!isReverseKey(key)) {
+        r.reviewed++;
+        if (rec.box >= MAX_BOX) r.mastered++;
+      }
       if (rec.due <= today) r.due++;
     }
   }
@@ -172,7 +190,7 @@ export function progressByDeck() {
 /** Removes saved records for cards that no longer exist in a deck (e.g. after a card was edited). */
 export function pruneDeck(deckId, cards) {
   const all = getAllProgress();
-  const keep = new Set(cards.map((c) => cardKey(deckId, c)));
+  const keep = new Set(cards.flatMap((c) => [cardKey(deckId, c), cardKey(deckId, c, true)]));
   let changed = false;
   for (const key of Object.keys(all)) {
     if (key.startsWith(deckId + '#') && !keep.has(key)) {

@@ -3,7 +3,7 @@
  * and buttons to export, import or reset your progress.
  */
 import { loadIndex } from '../data.js';
-import { getAllProgress, getActivity, getStreaks, progressByDeck, exportData, importData, resetAll, MAX_BOX } from '../store.js';
+import { getAllProgress, getActivity, getStreaks, progressByDeck, exportData, importData, resetAll, MAX_BOX, REVERSE } from '../store.js';
 import { esc, plural, pageHeader, todayKey, addDays, toast } from '../utils.js';
 
 const WEEKS_SHOWN = 12;
@@ -14,18 +14,18 @@ export async function render(container) {
   const known = new Set(index.decks.map((d) => d.id));
 
   // Only count cards from decks that still exist.
-  const records = Object.entries(getAllProgress())
-    .filter(([key]) => known.has(key.slice(0, key.lastIndexOf('#'))))
-    .map(([, rec]) => rec);
+  const entries = Object.entries(getAllProgress()).filter(([key]) => known.has(key.slice(0, key.lastIndexOf('#'))));
+  const allRecords = entries.map(([, rec]) => rec); // includes back → front practice of language cards
+  const records = entries.filter(([key]) => !key.endsWith(REVERSE)).map(([, rec]) => rec); // one per card
   const streaks = getStreaks();
   const activity = getActivity();
   const today = todayKey();
 
   const inBoxes = records.filter((r) => r.box > 0);
   const mastered = inBoxes.filter((r) => r.box >= MAX_BOX).length;
-  const due = inBoxes.filter((r) => r.due <= today).length;
-  const right = records.reduce((n, r) => n + (r.correct || 0), 0);
-  const wrong = records.reduce((n, r) => n + (r.wrong || 0), 0);
+  const due = allRecords.filter((r) => r.box > 0 && r.due <= today).length;
+  const right = allRecords.reduce((n, r) => n + (r.correct || 0), 0);
+  const wrong = allRecords.reduce((n, r) => n + (r.wrong || 0), 0);
   const accuracy = right + wrong ? Math.round((right / (right + wrong)) * 100) + '%' : '–';
 
   const boxes = Array.from({ length: MAX_BOX }, (_, i) => inBoxes.filter((r) => r.box === i + 1).length);

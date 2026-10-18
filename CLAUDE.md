@@ -94,6 +94,9 @@ Copy `decks/_template.json` as a starting point. Files starting with `_` are ign
 | `back` | yes | Answer or definition. Aim for under ~200 characters. |
 | `hint` | no | A nudge that doesn't give the answer away |
 | `tags` | no | lowercase-with-hyphens |
+| `frontImage` | no | Picture shown on the front, e.g. `"images/heart-diagram.png"` (path relative to the deck file's folder) |
+| `backImage` | no | Picture shown on the back, same format |
+| `imageAlt` | no | Short description of the picture for screen readers |
 
 **Question fields**
 
@@ -120,6 +123,13 @@ Any other field name is a typo and triggers a warning.
   `"frontLang": "es", "backLang": "en"` for Spanish → English. The site then reads cards aloud with
   the device's built-in voice. Put only the word or phrase itself on a side that will be read aloud.
   Put grammar notes in `hint` or in `(brackets)`. Leave both fields out for non-language decks.
+- **Pictures.** If the user gives you image files (diagrams, maps, labelled photos), copy each one to
+  `decks/<subject-folder>/images/` with a lowercase-hyphen name (`heart-diagram.png`) and reference it
+  from the card: `"frontImage": "images/heart-diagram.png"`. Use `backImage` when the picture is the answer.
+  The card still needs `front` and `back` text, e.g. front "Name the chamber labelled A", back "Left ventricle".
+  Two cards may share the same front text if their `frontImage` differs. Allowed types: PNG, JPG, WebP, GIF and SVG.
+  Keep each file under ~500 KB. Never link to images on other websites; always save the file in the repo.
+  Remember to `git add` the image files along with the deck.
 - Line breaks are allowed with `\n`. No HTML or Markdown: it is shown as plain text.
 - Use `hint` for memory tricks from the notes.
 - Add `questions` when the notes suit multiple choice: 4 options, believable wrong answers,
@@ -154,6 +164,7 @@ git status
 ```bash
 git checkout -b add-deck/<subject>-<deck-name>
 git add decks/<subject>/<deck-name>.json            # add only the deck files you made
+git add decks/<subject>/images/                      # ...and any pictures they use
 git commit -m "Add <Subject> deck: <Title>"
 git push -u origin add-deck/<subject>-<deck-name>
 ```
@@ -201,6 +212,7 @@ decks/                 study content (the only place contributors normally chang
   _template.json       example deck to copy
   index.json           GENERATED list of decks, don't edit
   <subject>/<deck>.json
+  <subject>/images/    pictures used by that subject's cards
 scripts/validate.js    checks every deck (run before committing)
 scripts/build-index.js regenerates decks/index.json
 scripts/serve.js       tiny local web server

@@ -147,7 +147,11 @@ function setUpOffline() {
   loadIndex()
     .then(async (index) => {
       const reg = await navigator.serviceWorker.ready;
-      const urls = ['decks/index.json', ...index.decks.map((d) => `decks/${d.path}`)];
+      const urls = [
+        'decks/index.json',
+        ...index.decks.map((d) => `decks/${d.path}`),
+        ...index.decks.flatMap((d) => (d.images || []).map((p) => `decks/${p}`)), // card pictures
+      ];
       reg.active?.postMessage({ type: 'cache-urls', urls });
     })
     .catch(() => {});

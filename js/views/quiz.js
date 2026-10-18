@@ -5,7 +5,7 @@
  */
 import { loadDeck } from '../data.js';
 import { recordAnswer, logActivity } from '../store.js';
-import { esc, shuffle, plural, pageHeader, cardText, isTypingTarget, isButtonTarget } from '../utils.js';
+import { esc, shuffle, plural, pageHeader, cardText, cardImage, isTypingTarget, isButtonTarget } from '../utils.js';
 
 const LETTERS = 'ABCDEF';
 
@@ -113,7 +113,7 @@ export async function render(container, { deckId }) {
       if (wrong.length === 3) break;
     }
     const options = shuffle([correct, ...wrong]);
-    return { prompt: card.front, subtitle: 'Choose the matching answer', options, answer: options.indexOf(correct), explanation: '', card };
+    return { prompt: card.front, image: card.frontImageUrl, subtitle: 'Choose the matching answer', options, answer: options.indexOf(correct), explanation: '', card };
   }
 
   // ---------- playing ----------
@@ -133,6 +133,7 @@ export async function render(container, { deckId }) {
       <div class="bar"><span style="width:${(pos / questions.length) * 100}%"></span></div>
       <div class="panel question-box">
         ${q.subtitle ? `<p class="muted small">${esc(q.subtitle)}</p>` : ''}
+        ${cardImage(q.image, q.card?.imageAlt)}
         ${cardText(q.prompt)}
       </div>
       <div class="options">

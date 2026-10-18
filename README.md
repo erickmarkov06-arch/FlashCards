@@ -38,7 +38,9 @@ decks from any device, by hand or by giving their notes to Claude Code.
 |---|---|
 | **Home** | Browse decks by subject, search them, and filter by tag. |
 | **Flashcards** | Tap to flip. Swipe right (or tap **Know it**) if you knew it, left (**Still learning**) if not. Shuffle, show the back first, or study **only the cards you got wrong**. |
-| **Learn** (spaced repetition) | A Leitner box system: cards you know come back after longer and longer gaps (1, 2, 4, 7, then 14 days). Cards you miss go back to box 1. Adds up to 10 new cards per session. |
+| **Learn** (spaced repetition) | A Leitner box system: cards you know come back after longer and longer gaps (1, 2, 4, 7, then 14 days). Cards you miss go back to box 1. Adds up to 10 new cards per session. Language decks are also practised the other way round (e.g. English → Spanish) once you know a card; switch this off with **Both directions**. |
+| **Study decks together** | "Study all" on a subject heading, or pick a tag and press **Study all**, to mix several decks into one session in any mode. Progress still counts for each card's own deck. |
+| **Pictures** | Cards can show a diagram or photo on either side. |
 | **Review** tab | All cards due today, from every deck, in one session. |
 | **Quiz** | Multiple choice with instant feedback, explanations and a score. Uses the deck's own questions, or makes them from the flashcards. |
 | **Write** | Type the answer. Matching is forgiving: it ignores capitals, spaces, punctuation, accents and small typos, and there's an "I was right" button. |
@@ -142,7 +144,8 @@ and updates the live site.
 ├── decks/                   ← ALL STUDY CONTENT LIVES HERE
 │   ├── _template.json       copy this to start a new deck
 │   ├── index.json           generated automatically, don't edit
-│   └── <subject>/<deck>.json  one file per deck, e.g. biology/cell-structure.json
+│   ├── <subject>/<deck>.json  one file per deck, e.g. biology/cell-structure.json
+│   └── <subject>/images/      pictures used by that subject's cards
 ├── scripts/
 │   ├── validate.js          checks every deck for mistakes
 │   ├── build-index.js       regenerates decks/index.json
@@ -214,6 +217,9 @@ One JSON file per deck, at **`decks/<subject>/<deck-name>.json`**.
 | `cards[].back` | ✅ | Definition or answer |
 | `cards[].hint` | optional | Shown when you tap **Hint** |
 | `cards[].tags` | optional | Extra tags for this card |
+| `cards[].frontImage` | optional | A picture on the front, e.g. `"images/heart.png"` (see below) |
+| `cards[].backImage` | optional | A picture on the back |
+| `cards[].imageAlt` | optional | Short description of the picture, for screen readers |
 | `questions` | optional | Multiple-choice questions for Quiz mode |
 | `questions[].question` | ✅ | The question |
 | `questions[].options` | ✅ | 2–6 possible answers |
@@ -225,6 +231,10 @@ One JSON file per deck, at **`decks/<subject>/<deck-name>.json`**.
 - Text is shown exactly as written (no HTML). Use `\n` for a line break.
 - In Write mode, `"back": "to do / to make"` accepts either answer, and anything in `(brackets)` is optional.
 - No `questions`? Quiz mode builds multiple-choice questions from the cards automatically.
+- **Pictures:** save image files in an `images` folder next to the deck, e.g. `decks/biology/images/heart.png`,
+  and point to them from a card with `"frontImage": "images/heart.png"` (or `"backImage"` if the picture is the
+  answer). PNG, JPG, WebP, GIF and SVG work. Keep each file under about 500 KB so it loads fast on phones.
+  The validator checks the file exists, and pictures are saved for offline use like everything else.
 - **Language decks can be read aloud.** Add `"frontLang"` and/or `"backLang"` with a language code:
   `"es"` Spanish, `"fr"` French, `"de"` German, `"it"` Italian, `"pt"` Portuguese, `"en"` English,
   `"ja"` Japanese, `"zh-CN"` Chinese… Cards then get a speaker button, and Flashcards, Learn and Write

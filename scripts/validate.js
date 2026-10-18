@@ -22,7 +22,11 @@ const { DECKS_DIR, INDEX_FILE, TEMPLATE_FILE, slugify, isKebabCase, findJsonFile
 
 // Fields each object is allowed to have. Anything else gets a warning (usually a typo).
 const DECK_KEYS = ['title', 'subject', 'description', 'author', 'tags', 'frontLang', 'backLang', 'cards', 'questions'];
-const CARD_KEYS = ['front', 'back', 'hint', 'tags'];
+const CARD_KEYS = ['front', 'back', 'hint', 'tags', 'frontImage', 'backImage', 'imageAlt'];
+
+// Pictures on cards: allowed file types, and the size above which we warn (big files are slow on phones).
+const IMAGE_TYPES = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'];
+const IMAGE_WARN_BYTES = 500 * 1024;
 const QUESTION_KEYS = ['question', 'options', 'answerIndex', 'explanation', 'tags'];
 
 // Colours make the output easier to scan in a terminal. Turned off when not a terminal (e.g. CI logs still work).
@@ -34,6 +38,7 @@ const red = paint(31), yellow = paint(33), green = paint(32), dim = paint(2), bo
 function validateFile(file) {
   const errors = [];
   const warnings = [];
+  const images = []; // full paths of pictures this deck uses
   const isTemplate = path.resolve(file) === TEMPLATE_FILE;
 
   // ---- 1. Where the file lives and what it is called ----
@@ -121,16 +126,21 @@ function validateFile(file) {
       checkRequiredString(card.front, `${name}: "front"`, errors);
       checkRequiredString(card.back, `${name}: "back"`, errors);
       if (card.hint !== undefined) checkRequiredString(card.hint, `${name}: "hint"`, errors, 'Remove "hint" or give it some text.');
+      if (card.imageAlt !== undefined) checkRequiredString(card.imageAlt, `${name}: "imageAlt"`, errors, 'Remove "imageAlt" or describe the picture.');
       checkTags(card.tags, `${name}: "tags"`, errors);
+      for (const key of ['frontImage', 'backImage']) {
+        if (card[key] !== undefined) checkImage(card[key], `${name}: "${key}"`, file, errors, warnings, images);
+      }
 
       if (typeof card.front === 'string' && card.front.trim()) {
-        const key = normalise(card.front);
+        // Two cards may share a front (e.g. "What is labelled A?") if they show different pictures.
+        const key = normalise(card.front) + (typeof card.frontImage === 'string' ? `|${card.frontImage}` : '');
         if (seenFronts.has(key)) {
           errors.push(`${name} is a duplicate: card ${seenFronts.get(key)} has the same front. Merge them or reword one.`);
         } else {
           seenFronts.set(key, i + 1);
         }
-        if (typeof card.back === 'string' && normalise(card.back) === key) {
+        if (typeof card.back === 'string' && normalise(card.back) === normalise(card.front)) {
           warnings.push(`${name}: the front and back are the same.`);
         }
         if (card.front.length > 300) warnings.push(`${name}: the front is very long (${card.front.length} characters). Consider splitting it.`);
@@ -192,7 +202,41 @@ function validateFile(file) {
     }
   }
 
-  return { errors, warnings, deck };
+  return { errors, warnings, deck, images };
+}
+
+/** Checks a card picture path such as "images/heart.png" (relative to the deck file's folder). */
+function checkImage(value, label, deckFile, errors, warnings, images) {
+  if (typeof value !== 'string' || !value.trim()) {
+    errors.push(`${label} must be the path of a picture, e.g. "images/heart.png".`);
+    return;
+  }
+  if (/^[a-z]+:|^\/\//i.test(value)) {
+    errors.push(`${label} is a web link. Download the picture into this deck's images/ folder and use a path like "images/heart.png", so it works offline and can't disappear.`);
+    return;
+  }
+  if (value.startsWith('/') || value.split(/[\\/]/).includes('..')) {
+    errors.push(`${label} must be a path inside this deck's folder, like "images/heart.png" (no leading "/" and no "..").`);
+    return;
+  }
+  const ext = path.extname(value).toLowerCase();
+  if (!IMAGE_TYPES.includes(ext)) {
+    errors.push(`${label}: "${value}" isn't a supported picture type. Use ${IMAGE_TYPES.join(', ')}.`);
+    return;
+  }
+  const full = path.join(path.dirname(path.resolve(deckFile)), value);
+  if (!fs.existsSync(full)) {
+    errors.push(`${label}: the picture ${relPath(full)} doesn't exist. Check the spelling and that the file was added.`);
+    return;
+  }
+  images.push(full);
+  if (!isKebabCase(path.basename(value, path.extname(value)))) {
+    warnings.push(`${label}: rename "${path.basename(value)}" to lowercase words joined by hyphens (e.g. "heart-diagram.png") to avoid problems on some systems.`);
+  }
+  const size = fs.statSync(full).size;
+  if (size > IMAGE_WARN_BYTES) {
+    warnings.push(`${label}: ${relPath(full)} is ${Math.round(size / 1024)} KB. Pictures over ${IMAGE_WARN_BYTES / 1024} KB load slowly on phones. Try shrinking or compressing it.`);
+  }
 }
 
 // ---------- helpers ----------
@@ -350,16 +394,11 @@ function main() {
   const args = process.argv.slice(2).filter((a) => !a.startsWith('-'));
   const files = args.length ? args.map((a) => path.resolve(a)) : findJsonFiles();
 
-  // Warn about stray non-JSON files in decks/ (e.g. notes.txt), which the site ignores.
-  if (!args.length && fs.existsSync(DECKS_DIR)) {
-    const stray = listAll(DECKS_DIR).filter((f) => !f.endsWith('.json') && path.basename(f) !== '.gitkeep');
-    for (const f of stray) console.log(yellow(`⚠ ${relPath(f)}: not a .json file, so the site will ignore it.`));
-  }
-
   let errorCount = 0;
   let warningCount = 0;
   let deckCount = 0;
   const titles = new Map(); // "subject|title" -> file, to warn about duplicate decks
+  const usedImages = new Set(); // pictures referenced by any deck
 
   for (const file of files) {
     if (path.resolve(file) === INDEX_FILE) continue; // generated file, not a deck
@@ -368,7 +407,8 @@ function main() {
       errorCount++;
       continue;
     }
-    const { errors, warnings, deck } = validateFile(file);
+    const { errors, warnings, deck, images } = validateFile(file);
+    images.forEach((img) => usedImages.add(img));
     if (path.resolve(file) !== TEMPLATE_FILE) deckCount++;
 
     if (deck && typeof deck.title === 'string' && typeof deck.subject === 'string' && path.resolve(file) !== TEMPLATE_FILE) {
@@ -387,6 +427,17 @@ function main() {
 
     errorCount += errors.length;
     warningCount += warnings.length;
+  }
+
+  // When checking everything: warn about files in decks/ the site never uses (stray notes, unused pictures).
+  if (!args.length && fs.existsSync(DECKS_DIR)) {
+    for (const f of listAll(DECKS_DIR)) {
+      if (f.endsWith('.json') || path.basename(f) === '.gitkeep') continue;
+      const isImage = IMAGE_TYPES.includes(path.extname(f).toLowerCase());
+      if (isImage && usedImages.has(f)) continue;
+      console.log(yellow(isImage ? `⚠ ${relPath(f)}: no card uses this picture.` : `⚠ ${relPath(f)}: not a .json file, so the site will ignore it.`));
+      warningCount++;
+    }
   }
 
   console.log('');

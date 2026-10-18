@@ -11,7 +11,6 @@ import { deckCanSpeak, readAloudChip, toggleAutoSpeak, attachSpeakButtons, stopS
 export async function render(container, { deckId, query }) {
   const deck = await loadDeck(deckId);
   container.dataset.title = `Flashcards · ${deck.title}`;
-  const langs = { front: deck.frontLang, back: deck.backLang };
   const speakable = deckCanSpeak(deck);
 
   const options = {
@@ -88,7 +87,7 @@ export async function render(container, { deckId, query }) {
         </span>
       </div>
       <div class="bar"><span style="width:${(pos / queue.length) * 100}%"></span></div>
-      ${flipCardHtml(card, { swap: options.swap, langs })}
+      ${flipCardHtml(card, { swap: options.swap })}
       ${card.hint ? `<div id="hint-area"><button type="button" class="btn btn-ghost btn-small" id="hint">Show hint</button></div>` : ''}
       <div class="button-row split" style="margin-top:12px">
         <button type="button" class="btn btn-bad" id="unknown">${icons.x} Still learning</button>

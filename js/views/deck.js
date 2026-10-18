@@ -8,7 +8,7 @@ import { speakButton, attachSpeakButtons } from '../speech.js';
 
 export async function render(container, { deckId }) {
   const deck = await loadDeck(deckId);
-  pruneDeck(deck.id, deck.cards); // forget progress for cards that were removed or reworded
+  if (!deck.isMix) pruneDeck(deck.id, deck.cards); // forget progress for cards that were removed or reworded
   container.dataset.title = deck.title;
 
   const s = deckSummary(deck.id, deck.cards);
@@ -29,7 +29,14 @@ export async function render(container, { deckId }) {
 
   container.innerHTML = `
     ${pageHeader({ title: deck.title, eyebrow: deck.subject, back: '#/', backLabel: 'All decks' })}
-    ${deck.description ? `<p>${esc(deck.description)}</p>` : ''}
+    ${
+      deck.isMix
+        ? `<p>Mixed from ${deck.sources.map((src) => `<a href="#/deck/${esc(src.id)}">${esc(src.title)}</a>`).join(', ')}.
+           Progress is saved to each card's own deck.</p>`
+        : deck.description
+          ? `<p>${esc(deck.description)}</p>`
+          : ''
+    }
     <p class="deck-meta-line">
       ${plural(deck.cards.length, 'card')}${deck.questions.length ? ` · ${plural(deck.questions.length, 'question')}` : ''}${deck.author ? ` · by ${esc(deck.author)}` : ''}
     </p>
@@ -71,8 +78,10 @@ export async function render(container, { deckId }) {
             .map(
               (c) => `
               <li>
-                <span class="front">${esc(c.front)} ${speakButton(c.front, deck.frontLang)}</span>
-                <span class="back">${esc(c.back)} ${speakButton(c.back, deck.backLang)}</span>
+                ${c.frontImageUrl ? `<img class="thumb" src="${esc(c.frontImageUrl)}" alt="" loading="lazy">` : ''}
+                <span class="front">${esc(c.front)} ${speakButton(c.front, c.frontLang)}</span>
+                <span class="back">${esc(c.back)} ${speakButton(c.back, c.backLang)}</span>
+                ${c.backImageUrl ? `<img class="thumb" src="${esc(c.backImageUrl)}" alt="" loading="lazy">` : ''}
                 ${c.tags?.length ? `<span>${c.tags.map((t) => `<span class="tag">#${esc(t)}</span>`).join(' ')}</span>` : ''}
               </li>`
             )
@@ -81,11 +90,11 @@ export async function render(container, { deckId }) {
       </details>
     </section>
 
-    <p class="center"><button type="button" class="btn btn-ghost btn-small" id="reset">Reset progress for this deck</button></p>
+    ${deck.isMix ? '' : `<p class="center"><button type="button" class="btn btn-ghost btn-small" id="reset">Reset progress for this deck</button></p>`}
   `;
 
   attachSpeakButtons(container);
-  container.querySelector('#reset').addEventListener('click', () => {
+  container.querySelector('#reset')?.addEventListener('click', () => {
     if (!confirm(`Reset all progress for "${deck.title}"? This can't be undone.`)) return;
     resetDeck(deck.id);
     toast('Progress reset.');

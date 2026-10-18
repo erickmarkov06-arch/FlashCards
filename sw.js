@@ -9,7 +9,7 @@
  * If you add a new file to the app (e.g. a new js/views/*.js), add it to APP_FILES below
  * and bump CACHE_VERSION so phones download it for offline use.
  */
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const CACHE_NAME = `studydeck-${CACHE_VERSION}`;
 const NETWORK_TIMEOUT_MS = 4000; // after this long, fall back to the cached copy
 
@@ -49,6 +49,9 @@ self.addEventListener('install', (event) => {
       try {
         const index = await (await fetch('decks/index.json', { cache: 'no-cache' })).json();
         await cache.addAll(index.decks.map((d) => `decks/${d.path}`));
+        // Pictures one at a time, so one missing picture cannot stop the rest from saving.
+        const pictures = index.decks.flatMap((d) => (d.images || []).map((p) => `decks/${p}`));
+        await Promise.allSettled(pictures.map((url) => cache.add(url)));
       } catch (err) {
         console.warn('Could not pre-cache decks:', err);
       }

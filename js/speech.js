@@ -54,9 +54,9 @@ export function stopSpeaking() {
   if (canSpeak) speechSynthesis.cancel();
 }
 
-/** True if this deck has a language set for at least one side and the device can speak. */
+/** True if any card in the deck has a language set and the device can speak. */
 export function deckCanSpeak(deck) {
-  return canSpeak && Boolean(deck.frontLang || deck.backLang);
+  return canSpeak && deck.cards.some((c) => c.frontLang || c.backLang);
 }
 
 /** The "read aloud automatically" preference, shared by all study modes. */

@@ -186,6 +186,23 @@ code {
 .section > .section-label {
   margin: 0 0 14px;
 }
+.section-label.with-action {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.section-label a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.section-label a:hover {
+  text-decoration: underline;
+}
 
 /* ---------- Top bar and bottom navigation ---------- */
 .topbar {
@@ -899,6 +916,43 @@ details > summary {
   text-transform: uppercase;
   color: var(--muted);
 }
+/* Pictures on cards */
+.card-image {
+  display: block;
+  max-width: 100%;
+  max-height: 58%;
+  margin: 0 auto 12px;
+  object-fit: contain;
+  border-radius: 3px;
+  pointer-events: none; /* taps and swipes go to the card, not the picture */
+  user-select: none;
+  -webkit-user-select: none;
+}
+.flashcard.tall {
+  height: clamp(300px, 50vh, 520px);
+}
+.face.has-image .text-lg {
+  font-size: 1.35rem;
+}
+.face.has-image .text-md {
+  font-size: 1.15rem;
+}
+.question-box .card-image,
+.feedback .card-image {
+  max-height: 260px;
+  margin: 8px 0 12px;
+}
+.thumb {
+  display: block;
+  max-width: 160px;
+  max-height: 120px;
+  margin: 4px 0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  object-fit: contain;
+  background: var(--surface);
+}
+
 /* Speaker button for reading a card aloud */
 .speak-btn {
   display: inline-grid;
