@@ -1,5 +1,44 @@
 {
   "version": 1,
-  "subjects": [],
-  "decks": []
+  "subjects": [
+    {
+      "name": "Chemistry",
+      "slug": "chemistry",
+      "deckCount": 2
+    }
+  ],
+  "decks": [
+    {
+      "id": "chemistry/separation-techniques-1-revision",
+      "path": "chemistry/separation-techniques-1-revision.json",
+      "title": "Separation Techniques 1: Revision",
+      "subject": "Chemistry",
+      "subjectSlug": "chemistry",
+      "description": "Elements, compounds and mixtures, solutions, fair tests, and separating mixtures by magnet, filtering, crystallising and chromatography.",
+      "author": "L.M.",
+      "tags": [
+        "class-notes",
+        "separation",
+        "year-8"
+      ],
+      "cardCount": 32,
+      "questionCount": 32
+    },
+    {
+      "id": "chemistry/separation-techniques-2-textbook",
+      "path": "chemistry/separation-techniques-2-textbook.json",
+      "title": "Separation Techniques 2: Textbook",
+      "subject": "Chemistry",
+      "subjectSlug": "chemistry",
+      "description": "Textbook questions on mixtures vs compounds, purity, solubility, filtration, crystallisation, distillation and chromatography.",
+      "author": "L.M.",
+      "tags": [
+        "separation",
+        "textbook",
+        "year-8"
+      ],
+      "cardCount": 31,
+      "questionCount": 31
+    }
+  ]
 }
