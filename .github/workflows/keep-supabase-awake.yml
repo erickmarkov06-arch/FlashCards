@@ -1,0 +1,48 @@
+# Supabase's free plan pauses a project after about a week with no activity (e.g. a school holiday).
+# While paused nobody can sign in, so this sends one tiny query to the database every 3 days.
+#
+# It uses the public anon key from js/config.js, which isn't allowed to read any table, so the
+# database replies "permission denied". That reply still comes from Postgres, which is all that's
+# needed to count as activity. No data is read or written.
+#
+# If this fails, the database didn't answer: it's probably already paused. Restore it from the
+# Supabase dashboard. GitHub emails you when a scheduled run fails.
+
+name: Keep Supabase awake
+
+on:
+  schedule:
+    - cron: "17 6 */3 * *" # 06:17 UTC every 3rd day
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+
+      - name: Send a query to the database
+        run: |
+          url=$(sed -n "s/.*SUPABASE_URL *= *'\([^']*\)'.*/\1/p" js/config.js)
+          key=$(sed -n "s/.*SUPABASE_ANON_KEY *= *'\([^']*\)'.*/\1/p" js/config.js)
+          if [ -z "$url" ] || [ -z "$key" ]; then
+            echo "Supabase isn't set up in js/config.js, nothing to do."
+            exit 0
+          fi
+
+          status=$(curl -s -o body.txt -w "%{http_code}" --max-time 30 \
+            "$url/rest/v1/profiles?select=username&limit=1" -H "apikey: $key")
+          echo "HTTP $status"
+          cat body.txt; echo
+
+          # 200 = the query ran; 42501 = Postgres refused the anon key. Both mean the database is awake.
+          if [ "$status" = "200" ] || grep -q '"42501"' body.txt; then
+            echo "The database answered, so it stays awake."
+          else
+            echo "::error::The database didn't answer. It may be paused: restore it in the Supabase dashboard."
+            exit 1
+          fi
