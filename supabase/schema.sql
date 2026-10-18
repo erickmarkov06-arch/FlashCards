@@ -72,16 +72,19 @@ grant execute on function public.delete_my_account() to authenticated;
 -- ---------- usernames and the leaderboard ----------
 
 -- One row per user who has chosen a username. Usernames are public on the leaderboard, so they
--- are limited to lowercase letters, numbers and _ (no spaces, no real-name formatting).
+-- are limited to letters, numbers and _ (no spaces). Capitals are allowed ("MathsFox"), but
+-- names are unique ignoring case, so "mathsfox" can't be taken by someone else.
 -- Nobody appears on the leaderboard unless they switch it on (on_leaderboard).
 create table if not exists public.profiles (
   user_id        uuid primary key default auth.uid() references auth.users (id) on delete cascade,
   username       text not null,
   on_leaderboard boolean not null default false,
-  created_at     timestamptz not null default now(),
-  constraint profiles_username_format check (username ~ '^[a-z0-9_]{3,20}$')
+  created_at     timestamptz not null default now()
 );
-create unique index if not exists profiles_username_key on public.profiles (username);
+alter table public.profiles drop constraint if exists profiles_username_format;
+alter table public.profiles add constraint profiles_username_format check (username ~ '^[A-Za-z0-9_]{3,20}$');
+drop index if exists public.profiles_username_key; -- the old, case-sensitive version
+create unique index if not exists profiles_username_lower_key on public.profiles (lower(username));
 
 alter table public.profiles enable row level security;
 

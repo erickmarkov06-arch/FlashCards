@@ -161,12 +161,12 @@ function profileSection(sync) {
   const form = (value = '') => `
     <form class="sync-form" id="username-form" ${sync.username ? 'hidden' : ''}>
       <div class="button-row">
-        <input class="input" type="text" name="username" required minlength="3" maxlength="20" pattern="[a-z0-9_]{3,20}"
+        <input class="input" type="text" name="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{3,20}"
           autocapitalize="off" autocomplete="off" spellcheck="false" value="${esc(value)}"
-          placeholder="e.g. maths_fox" aria-label="Username">
+          placeholder="e.g. MathsFox" aria-label="Username">
         <button type="submit" class="btn">Save username</button>
       </div>
-      <p class="small muted">3–20 characters: lowercase letters, numbers and _. Other people can see it on the
+      <p class="small muted">3–20 characters: letters, numbers and _ (capitals are fine). Other people can see it on the
         leaderboard, so <strong>don't use your real name</strong>.</p>
     </form>`;
 
@@ -196,7 +196,7 @@ function wireProfile(container, sync) {
   const form = container.querySelector('#username-form');
   if (!form) return;
   form.username.addEventListener('input', () => {
-    form.username.value = form.username.value.toLowerCase().replace(/\s+/g, '_');
+    form.username.value = form.username.value.replace(/\s+/g, '_');
   });
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
