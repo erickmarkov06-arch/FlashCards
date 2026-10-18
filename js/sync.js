@@ -192,6 +192,19 @@ export async function verifyCode(email, code) {
   await syncNow().catch(() => {}); // any problem shows up in syncStatus().error
 }
 
+/**
+ * Deletes the account: the email address and the online copy of the progress
+ * (the delete_my_account function in supabase/schema.sql). Progress on this device is kept.
+ */
+export async function deleteAccount() {
+  const token = await accessToken();
+  await api('/rest/v1/rpc/delete_my_account', { method: 'POST', token, body: {} });
+  saveSession(null); // the account is gone, so there's nothing left to sign out of on the server
+  lastError = '';
+  clearTimeout(timer);
+  notify(false);
+}
+
 /** Signs out on this device. Progress already on the device stays here. */
 export function signOut() {
   const session = loadSession();
