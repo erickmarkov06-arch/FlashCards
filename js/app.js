@@ -12,7 +12,7 @@
  * Using "#" means GitHub Pages never needs special server settings.
  */
 import { icons, esc, toast } from './utils.js';
-import { setSetting, progressByDeck } from './store.js';
+import { setSetting, progressByDeck, getMyDecks } from './store.js';
 import { loadIndex } from './data.js';
 import { startSync, onSyncChange, finishSignInFromLink, syncStatus, syncEnabled } from './sync.js';
 
@@ -122,12 +122,13 @@ function updateNav(view) {
   });
 }
 
-/** Shows how many cards are due on the Review tab. */
+/** Shows how many cards from My decks are due on the Review tab. */
 export function updateDueBadge() {
   const badge = document.getElementById('due-badge');
   loadIndex()
     .then((index) => {
-      const known = new Set(index.decks.map((d) => d.id));
+      const mine = getMyDecks();
+      const known = new Set(index.decks.map((d) => d.id).filter((id) => id in mine));
       const due = Object.entries(progressByDeck())
         .filter(([id]) => known.has(id))
         .reduce((sum, [, p]) => sum + p.due, 0);
