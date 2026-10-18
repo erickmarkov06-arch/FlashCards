@@ -2,7 +2,7 @@
  * Deck page: description, progress, buttons for each study mode, and the list of cards.
  */
 import { loadDeck } from '../data.js';
-import { deckSummary, pruneDeck, resetDeck, NEW_CARDS_PER_SESSION } from '../store.js';
+import { deckSummary, pruneDeck, resetDeck, isMyDeck, setMyDeck, NEW_CARDS_PER_SESSION } from '../store.js';
 import { esc, plural, icons, pageHeader, toast } from '../utils.js';
 import { speakButton, attachSpeakButtons } from '../speech.js';
 
@@ -40,6 +40,7 @@ export async function render(container, { deckId }) {
     <p class="deck-meta-line">
       ${plural(deck.cards.length, 'card')}${deck.questions.length ? ` · ${plural(deck.questions.length, 'question')}` : ''}${deck.author ? ` · by ${esc(deck.author)}` : ''}
     </p>
+    ${deck.isMix ? '' : `<p><button type="button" class="btn btn-small ${isMyDeck(deck.id) ? 'btn-ghost' : ''}" id="my-deck" aria-pressed="${isMyDeck(deck.id)}"></button></p>`}
 
     <div class="section">
       <div class="progress" aria-hidden="true">
@@ -94,6 +95,24 @@ export async function render(container, { deckId }) {
   `;
 
   attachSpeakButtons(container);
+
+  const myButton = container.querySelector('#my-deck');
+  const drawMyButton = () => {
+    const on = isMyDeck(deck.id);
+    myButton.innerHTML = on ? `${icons.check} In My decks` : 'Add to My decks';
+    myButton.classList.toggle('btn-ghost', on);
+    myButton.setAttribute('aria-pressed', String(on));
+  };
+  if (myButton) {
+    drawMyButton();
+    myButton.addEventListener('click', () => {
+      const on = !isMyDeck(deck.id);
+      setMyDeck(deck.id, on);
+      drawMyButton();
+      toast(on ? 'Added to My decks.' : 'Removed from My decks.');
+    });
+  }
+
   container.querySelector('#reset')?.addEventListener('click', () => {
     if (!confirm(`Reset all progress for "${deck.title}"? This can't be undone.`)) return;
     resetDeck(deck.id);

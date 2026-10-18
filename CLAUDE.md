@@ -220,8 +220,8 @@ scripts/validate.js    checks every deck (run before committing)
 scripts/build-index.js regenerates decks/index.json
 scripts/serve.js       tiny local web server
 index.html, css/, js/  the website (plain HTML/CSS/JS, no build step)
-js/sync.js, config.js  optional progress sync with Supabase (off while config.js is empty)
-supabase/schema.sql    database table and row level security for sync
+js/sync.js, config.js  optional accounts with Supabase: progress sync, usernames, leaderboard (off while config.js is empty)
+supabase/schema.sql    database tables, row level security and functions for accounts
 sw.js                  service worker for offline use
 .github/workflows/     deploy.yml (push to main) and validate.yml (pull requests)
 ```

@@ -6,13 +6,14 @@
  *   #/deck/biology/cell-structure   one deck's page
  *   #/flashcards/biology/cell-structure  (also quiz, write, match, review)
  *   #/review                        review due cards from every deck
- *   #/stats                         progress, export/import and sign-in for sync
+ *   #/stats                         progress, export/import, sign-in and username
+ *   #/leaderboard                   rankings of signed-in users who chose to appear
  * Using "#" means GitHub Pages never needs special server settings.
  */
 import { icons, esc, toast } from './utils.js';
 import { setSetting, progressByDeck } from './store.js';
 import { loadIndex } from './data.js';
-import { startSync, onSyncChange, finishSignInFromLink } from './sync.js';
+import { startSync, onSyncChange, finishSignInFromLink, syncStatus } from './sync.js';
 
 import * as home from './views/home.js';
 import * as deck from './views/deck.js';
@@ -22,8 +23,9 @@ import * as write from './views/write.js';
 import * as match from './views/match.js';
 import * as review from './views/review.js';
 import * as stats from './views/stats.js';
+import * as leaderboard from './views/leaderboard.js';
 
-const routes = { '': home, deck, flashcards, quiz, write, match, review, stats };
+const routes = { '': home, deck, flashcards, quiz, write, match, review, stats, leaderboard };
 
 const main = document.getElementById('app');
 let cleanup = null; // function the current page gave us to remove its listeners/timers
@@ -93,7 +95,7 @@ async function router() {
 }
 
 function updateNav(view) {
-  const section = view === 'stats' ? 'stats' : view === 'review' && !parseHash().deckId ? 'review' : 'home';
+  const section = view === 'stats' || view === 'leaderboard' ? 'stats' : view === 'review' && !parseHash().deckId ? 'review' : 'home';
   document.querySelectorAll('.bottom-nav a').forEach((a) => {
     if (a.dataset.nav === section) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
@@ -166,7 +168,17 @@ function setUpOffline() {
 /** Pages that only show progress, so they can be redrawn safely when new progress arrives. */
 const REDRAW_ON_SYNC = new Set(['', 'deck']);
 
+/** "@username" in the top bar while signed in. */
+function updateAccountChip() {
+  const chip = document.getElementById('account-chip');
+  const { signedIn, username } = syncStatus();
+  chip.hidden = !signedIn;
+  chip.textContent = username ? `@${username}` : 'Choose a username';
+  chip.setAttribute('aria-label', username ? `Signed in as ${username}` : 'Choose a username');
+}
+
 onSyncChange((changed) => {
+  updateAccountChip();
   const { view } = parseHash();
   // The Stats page also shows sign-in and "last synced", so it is redrawn after every sync.
   // Study sessions are never interrupted; they read the latest progress as you go.
@@ -184,5 +196,6 @@ window.addEventListener('offline', () => toast("You're offline. Saved decks stil
 const signInMessage = finishSignInFromLink(); // arriving from the link in a sign-in email
 router();
 if (signInMessage) toast(signInMessage);
+updateAccountChip();
 setUpOffline();
 startSync();

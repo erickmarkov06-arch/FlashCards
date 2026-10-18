@@ -4,7 +4,7 @@
  */
 import { loadIndex } from '../data.js';
 import { getAllProgress, getActivity, getStreaks, progressByDeck, exportData, importData, resetAll, MAX_BOX, REVERSE } from '../store.js';
-import { syncEnabled, syncStatus, sendCode, verifyCode, signOut, syncNow, deleteAccount } from '../sync.js';
+import { syncEnabled, syncStatus, sendCode, verifyCode, signOut, syncNow, deleteAccount, saveProfile } from '../sync.js';
 import { esc, plural, pageHeader, todayKey, addDays, toast } from '../utils.js';
 
 const WEEKS_SHOWN = 12;
@@ -100,6 +100,7 @@ export async function render(container) {
       </ul>
     </section>
 
+    ${syncEnabled && sync.signedIn ? profileSection(sync) : ''}
     ${syncEnabled ? syncSection(sync) : ''}
 
     <section class="section">
@@ -151,6 +152,80 @@ export async function render(container) {
   });
 
   if (syncEnabled) wireSync(container, sync);
+  if (syncEnabled && sync.signedIn) wireProfile(container, sync);
+}
+
+// ---------- username and leaderboard (signed in only) ----------
+
+function profileSection(sync) {
+  const form = (value = '') => `
+    <form class="sync-form" id="username-form" ${sync.username ? 'hidden' : ''}>
+      <div class="button-row">
+        <input class="input" type="text" name="username" required minlength="3" maxlength="20" pattern="[a-z0-9_]{3,20}"
+          autocapitalize="off" autocomplete="off" spellcheck="false" value="${esc(value)}"
+          placeholder="e.g. maths_fox" aria-label="Username">
+        <button type="submit" class="btn">Save username</button>
+      </div>
+      <p class="small muted">3–20 characters: lowercase letters, numbers and _. Other people can see it on the
+        leaderboard, so <strong>don't use your real name</strong>.</p>
+    </form>`;
+
+  if (!sync.username) {
+    return `
+      <section class="section">
+        <h2 class="section-label">Choose a username</h2>
+        <p class="small">Pick a username to show in the app and, if you want, on the leaderboard.</p>
+        ${form()}
+      </section>`;
+  }
+  return `
+    <section class="section">
+      <h2 class="section-label">Your profile</h2>
+      <p>Username: <strong>@${esc(sync.username)}</strong>
+        <button type="button" class="btn btn-ghost btn-small" id="change-username">Change</button></p>
+      ${form(sync.username)}
+      <label class="toggle-row small">
+        <input type="checkbox" id="on-leaderboard" ${sync.onLeaderboard ? 'checked' : ''}>
+        Show me on the leaderboard (other signed-in users see your username, streak, cards mastered and answers this week)
+      </label>
+      <p><a class="btn btn-small" href="#/leaderboard">View leaderboard</a></p>
+    </section>`;
+}
+
+function wireProfile(container, sync) {
+  const form = container.querySelector('#username-form');
+  if (!form) return;
+  form.username.addEventListener('input', () => {
+    form.username.value = form.username.value.toLowerCase().replace(/\s+/g, '_');
+  });
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const button = form.querySelector('button[type=submit]');
+    button.disabled = true;
+    try {
+      await saveProfile({ username: form.username.value.trim() });
+      toast('Username saved.');
+    } catch (err) {
+      alert(err.message);
+      button.disabled = false;
+    }
+  });
+  container.querySelector('#change-username')?.addEventListener('click', () => {
+    form.hidden = false;
+    form.username.focus();
+  });
+  container.querySelector('#on-leaderboard')?.addEventListener('change', async (e) => {
+    const box = e.currentTarget;
+    box.disabled = true;
+    try {
+      await saveProfile({ onLeaderboard: box.checked });
+      toast(box.checked ? "You're on the leaderboard." : "You're off the leaderboard.");
+    } catch (err) {
+      box.checked = !box.checked;
+      box.disabled = false;
+      alert(err.message);
+    }
+  });
 }
 
 // ---------- sync across devices (only when config.js is filled in) ----------
@@ -221,13 +296,14 @@ function wireSync(container, sync) {
           'Progress already on this device stays here (use "Reset everything" to remove that too).'
       );
       if (!ok) return;
-      busy(e.currentTarget, true);
+      const button = e.currentTarget; // e.currentTarget is null again once we've awaited
+      busy(button, true);
       try {
         await deleteAccount();
         toast('Your account has been deleted.');
       } catch (err) {
         alert(`Couldn't delete your account: ${err.message}`);
-        busy(e.currentTarget, false);
+        busy(button, false);
       }
     });
     return;

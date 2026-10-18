@@ -546,6 +546,66 @@ main {
   flex: 1 1 220px;
   width: auto;
 }
+.toggle-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 1rem;
+  cursor: pointer;
+}
+.toggle-row input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  flex: none;
+  accent-color: var(--primary);
+}
+
+/* "@username" in the top bar when signed in */
+.account-chip {
+  margin-left: auto;
+  margin-right: 8px;
+  max-width: 45vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.account-chip:hover {
+  color: var(--text);
+}
+
+/* Leaderboard table */
+.leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.leaderboard th,
+.leaderboard td {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.leaderboard th {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.leaderboard .num {
+  text-align: right;
+}
+.leaderboard .rank {
+  width: 2.5em;
+  color: var(--muted);
+}
+.leaderboard tr.me td {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
 .search-box {
   position: relative;
 }
