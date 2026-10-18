@@ -2,7 +2,7 @@
  * Home page: every deck, grouped by subject, with search, subject chips and a tag filter.
  */
 import { loadIndex, mixId } from '../data.js';
-import { progressByDeck } from '../store.js';
+import { progressByDeck, getMyDecks } from '../store.js';
 import { esc, plural, icons } from '../utils.js';
 
 // Kept while the app is open, so coming back to Home keeps your filters.
@@ -13,7 +13,9 @@ export async function render(container) {
   const progress = progressByDeck();
   const decks = index.decks;
 
-  const totalDue = decks.reduce((sum, d) => sum + (progress[d.id]?.due || 0), 0);
+  // The banner links to Review, which only covers My decks.
+  const mine = getMyDecks();
+  const totalDue = decks.reduce((sum, d) => sum + (d.id in mine ? progress[d.id]?.due || 0 : 0), 0);
   const allTags = [...new Set(decks.flatMap((d) => d.tags || []))].sort();
   if (filters.tag && !allTags.includes(filters.tag)) filters.tag = '';
 
