@@ -8,7 +8,7 @@
  * mispronounce it (an English voice reading Spanish sounds wrong).
  */
 import { getSetting, setSetting } from './store.js';
-import { esc, icons } from './utils.js';
+import { esc, icons, toast } from './utils.js';
 
 export const canSpeak = typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
 
@@ -22,29 +22,61 @@ if (canSpeak) {
   speechSynthesis.addEventListener?.('voiceschanged', loadVoices);
 }
 
-/** Best voice for a language code like "es" or "es-MX": exact match first, then the same base language. */
+// Names that usually mean a natural-sounding voice: iPhone "Enhanced"/"Premium" voices,
+// Edge "Natural"/"Online" voices, and Chrome "Google" voices.
+const GOOD_VOICE = /natural|neural|premium|enhanced|siri|google|online/i;
+const normLang = (code) => code.toLowerCase().replace('_', '-');
+
+/**
+ * Best voice for a language code like "es" or "es-MX", or null if the device has none.
+ * Scores each voice: exact region match, natural-sounding name, and (when offline)
+ * voices stored on the device, since online voices can't work without internet.
+ */
 function pickVoice(lang) {
   if (!voices.length) loadVoices();
-  const wanted = lang.toLowerCase().replace('_', '-');
+  const wanted = normLang(lang);
   const base = wanted.split('-')[0];
-  const sameLang = voices.filter((v) => v.lang.toLowerCase().replace('_', '-').split('-')[0] === base);
-  return (
-    sameLang.find((v) => v.lang.toLowerCase().replace('_', '-') === wanted) ||
-    sameLang.find((v) => v.default) ||
-    sameLang.find((v) => v.localService) || // on-device voices also work offline
-    sameLang[0] ||
-    null
-  );
+  const sameLang = voices.filter((v) => normLang(v.lang).split('-')[0] === base);
+  const online = navigator.onLine !== false;
+  const score = (v) =>
+    (normLang(v.lang) === wanted ? 4 : 0) +
+    (GOOD_VOICE.test(v.name) && (online || v.localService) ? 2 : 0) +
+    (!online && v.localService ? 3 : 0) +
+    (v.default ? 0.5 : 0);
+  return sameLang.sort((a, b) => score(b) - score(a))[0] || null;
 }
+
+/** "es" -> "Spanish", using the browser's built-in list of language names. */
+export function languageName(code) {
+  if (!code) return '';
+  try {
+    return new Intl.DisplayNames([navigator.language || 'en'], { type: 'language' }).of(code) || code;
+  } catch {
+    return code;
+  }
+}
+
+// Remember which languages we've already warned about, so the message shows once.
+const warned = new Set();
 
 /** Reads text aloud in the given language. Stops anything already being read. */
 export function speak(text, lang) {
   if (!canSpeak || !text || !lang) return;
   speechSynthesis.cancel();
+  const voice = pickVoice(lang);
+  // The device has voices, but none for this language: reading it in the wrong accent
+  // would teach the wrong pronunciation, so explain how to add a voice instead.
+  if (!voice && voices.length) {
+    const base = normLang(lang).split('-')[0];
+    if (!warned.has(base)) {
+      warned.add(base);
+      toast(`This device has no ${languageName(base)} voice. Add one in your device's speech settings (see README, "Read aloud").`);
+    }
+    return;
+  }
   // "to do / to make" reads better as "to do, to make".
   const utterance = new SpeechSynthesisUtterance(String(text).replace(/\s+\/\s+|\s*\|\s*/g, ', '));
   utterance.lang = lang;
-  const voice = pickVoice(lang);
   if (voice) utterance.voice = voice;
   utterance.rate = getSetting('speechRate', 0.9); // a little slower than normal helps learners
   speechSynthesis.speak(utterance);

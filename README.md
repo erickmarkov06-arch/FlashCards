@@ -241,6 +241,17 @@ One JSON file per deck, at **`decks/<subject>/<deck-name>.json`**.
   get a **Read aloud** switch that reads each card automatically. It uses the voices built into the phone or
   computer, so it's free and works offline. Decks without these fields aren't read aloud, because the
   wrong voice would mispronounce them.
+- **Getting the right accent ("Read aloud").** The app always picks a voice for the card's language, and prefers
+  the most natural-sounding one. If a device has *no* voice for that language, it shows a message instead of
+  reading the word in the wrong accent. To add a voice (free):
+  - **iPhone / iPad:** Settings → Accessibility → Spoken Content → Voices → pick the language → download a voice
+    marked **Enhanced** or **Premium** (these sound much better). Then fully close and reopen StudyDeck.
+  - **Android:** Settings → search "Text-to-speech" → Preferred engine (Speech Services by Google) → settings ⚙ →
+    Install voice data → pick the language.
+  - **Windows:** Settings → Time & language → Speech → Manage voices → Add voices → pick the language.
+    Or use **Microsoft Edge**, which has natural online voices for most languages.
+  - **Mac:** System Settings → Accessibility → Spoken Content → System voice → Manage Voices.
+  - **Chrome on a computer** also has built-in online "Google" voices for most languages.
 - Progress is linked to each card's **front** text. If you reword a front, that card starts fresh.
 - Files starting with `_` (like `_template.json`) are not shown on the site. Use this for drafts.
 
@@ -416,6 +427,9 @@ blocks the bot. Add GitHub Actions to the rule's bypass list (section 8), or rem
 
 **My progress disappeared.** Progress is per device and per browser (section 10). Check you're in the same browser
 or app, and use Export/Import to move it.
+
+**Read aloud uses the wrong accent, or says the device has no voice for a language.** Install a voice for that
+language. Section 5, "Getting the right accent", has the steps for each kind of device.
 
 **`git push` says permission denied.** You aren't a collaborator. Use a fork and pull request (section 8), or ask the owner to add you.
 

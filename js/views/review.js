@@ -18,7 +18,7 @@ import {
 } from '../store.js';
 import { esc, shuffle, plural, pageHeader, todayKey, describeDay, icons, isTypingTarget, isButtonTarget } from '../utils.js';
 import { flipCardHtml, flip, attachGestures, flyOut, autoRead, readVisibleSide } from '../flipcard.js';
-import { deckCanSpeak, readAloudChip, toggleAutoSpeak, attachSpeakButtons, stopSpeaking } from '../speech.js';
+import { deckCanSpeak, readAloudChip, toggleAutoSpeak, attachSpeakButtons, stopSpeaking, languageName } from '../speech.js';
 
 /** Language cards (a language set on either side) can also be practised back → front. */
 const isLanguageCard = (card) => Boolean(card.frontLang || card.backLang);
@@ -287,14 +287,4 @@ function directionLabel(card) {
   const from = languageName(card.backLang);
   const to = languageName(card.frontLang);
   return from && to ? `${from} → ${to}` : 'Back → front';
-}
-
-/** "es" -> "Spanish", using the browser's built-in list of language names. */
-function languageName(code) {
-  if (!code) return '';
-  try {
-    return new Intl.DisplayNames([navigator.language || 'en'], { type: 'language' }).of(code) || code;
-  } catch {
-    return code;
-  }
 }
