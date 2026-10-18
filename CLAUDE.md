@@ -1,9 +1,10 @@
 # CLAUDE.md: instructions for Claude working in this repository
 
 This repo is **StudyDeck**, a static study website (flashcards, quizzes, spaced repetition) hosted on
-GitHub Pages. All study content lives in JSON files under `decks/`. There is no server. The only
-backend is an optional Supabase database that syncs signed-in users' progress (`js/sync.js`,
-`js/config.js`, `supabase/schema.sql`); decks never go through it. Don't add other backends or
+GitHub Pages at https://studydeck.uk/. All study content lives in JSON files under `decks/`. There
+is no server. The only backend is a Supabase database for accounts (`js/sync.js`, `js/config.js`,
+`supabase/schema.sql`). It's switched on in `js/config.js`, so the live site requires everyone to sign
+in and pick a username. It syncs progress and My decks, and powers the leaderboard. Decks never go through it. Don't add other backends or
 services, and never put a secret key (Supabase `service_role` or any other) in the repo. The
 Supabase anon key in `js/config.js` is public by design.
 
@@ -220,12 +221,14 @@ scripts/validate.js    checks every deck (run before committing)
 scripts/build-index.js regenerates decks/index.json
 scripts/serve.js       tiny local web server
 index.html, css/, js/  the website (plain HTML/CSS/JS, no build step)
-js/sync.js, config.js  optional accounts with Supabase: progress sync, usernames, leaderboard (off while config.js is empty)
-supabase/schema.sql    database tables, row level security and functions for accounts
+js/sync.js, config.js  accounts with Supabase: required sign-in, progress sync, usernames, leaderboard (all off if config.js is emptied)
+js/views/welcome.js    the sign-in and username screen shown before the app on a new device
+supabase/schema.sql    database tables, row level security and functions for accounts (changes must be re-run in the Supabase SQL Editor)
 sw.js                  service worker for offline use
-.github/workflows/     deploy.yml (push to main) and validate.yml (pull requests)
+.github/workflows/     deploy.yml (push to main), validate.yml (pull requests),
+                       keep-supabase-awake.yml (every 3 days, stops the free Supabase project pausing)
 ```
 
 When asked to change the website code: keep it dependency-free with no build step, keep paths relative
-(the site lives under `https://<user>.github.io/<repo>/`), and add any new file in `js/` to the `APP_FILES`
+(the live site is at the root of `https://studydeck.uk/`, but copies of the repo live under `https://<user>.github.io/<repo>/`), and add any new file in `js/` to the `APP_FILES`
 list in `sw.js`, then bump `CACHE_VERSION`.

@@ -4,6 +4,8 @@ A free study website for school: **flashcards, quizzes, typing practice, a match
 repetition**. All the study content lives in simple JSON files in this repository, so anyone can add
 decks from any device, by hand or by giving their notes to Claude Code.
 
+**Live site: <https://studydeck.uk/>**
+
 - Works on phones, tablets and computers, and can be **installed like an app**
 - **Works offline** after the first visit
 - **Accounts** with a username: sign in once per device with an email code (no password), and your
@@ -13,9 +15,10 @@ decks from any device, by hand or by giving their notes to Claude Code.
 
 > **No server or paid service is needed.** The site is just static files.
 > Claude Code is only an optional helper for *writing* decks on a contributor's own computer.
-> The website never talks to any AI. The only other service it can use is an optional, free
-> [Supabase](https://supabase.com) database for syncing progress between devices, and that's off
-> until you set it up ([section 10](#10-where-progress-is-stored-and-exportimport)).
+> The website never talks to any AI. The only other service it uses is a free
+> [Supabase](https://supabase.com) database for accounts and syncing progress. It's switched on for
+> studydeck.uk. In a fresh copy it stays off until you set it up
+> ([section 10](#10-where-progress-is-stored-and-exportimport)).
 
 ---
 
@@ -117,16 +120,20 @@ You only do this once. It's free for **public** repositories. (Pages on private 
    (It also runs automatically on every push to `main`.) Wait for the green tick, about 1 minute.
 6. **Visit your site** at `https://<your-username>.github.io/<repo-name>/`.
    The link is also shown in **Settings → Pages** and in the finished workflow run.
+7. **Optional: your own domain.** In **Settings → Pages → Custom domain**, type the domain (this
+   project uses `studydeck.uk`), add the DNS records GitHub shows at your domain provider, and tick
+   **Enforce HTTPS** once it's available. The site then lives at the root of that domain.
 
 From now on, every change that reaches `main` automatically checks the decks, rebuilds `decks/index.json`,
 and updates the live site.
 
-**What the two Actions do**
+**What the Actions do**
 
 | Workflow | When | What |
 |---|---|---|
 | `deploy.yml`, *Build index and deploy site* | every push to `main` | validates decks → rebuilds and commits `decks/index.json` → publishes to Pages |
 | `validate.yml`, *Validate decks* | every pull request | validates decks so mistakes are caught before merging |
+| `keep-supabase-awake.yml`, *Keep Supabase awake* | every 3 days | sends one tiny query to the accounts database so Supabase's free plan doesn't pause it (see [section 10](#accounts-and-syncing-progress)) |
 
 ---
 
@@ -142,14 +149,15 @@ and updates the live site.
 │   ├── app.js               starts the app, page routing, theme toggle
 │   ├── data.js              loads decks/index.json and deck files
 │   ├── store.js             saves progress in localStorage, export/import
-│   ├── sync.js              optional: sign in and sync progress between devices
-│   ├── config.js            Supabase details for sync (empty = sync switched off)
+│   ├── sync.js              accounts: sign in and sync progress between devices
+│   ├── config.js            Supabase details for accounts (empty = accounts switched off)
 │   ├── utils.js             helpers (answer matching, dates, icons…)
 │   ├── flipcard.js          the flippable, swipeable card
 │   └── views/               one file per page: home, deck, flashcards, quiz,
-│                            write, match, review (Learn), stats, leaderboard, mydecks
+│                            write, match, review (Learn), stats, leaderboard, mydecks,
+│                            welcome (the sign-in screen)
 ├── icons/                   app icons
-├── supabase/schema.sql      database setup for the optional progress sync
+├── supabase/schema.sql      database setup for accounts, progress sync and the leaderboard
 ├── decks/                   ← ALL STUDY CONTENT LIVES HERE
 │   ├── _template.json       copy this to start a new deck
 │   ├── index.json           generated automatically, don't edit
@@ -365,7 +373,8 @@ regenerated `decks/index.json` to `main`.
 
 ## 9. Installing it on a phone
 
-Open the site's address (`https://<your-username>.github.io/<repo-name>/`) on the phone first.
+Open the site's address (<https://studydeck.uk/>, or `https://<your-username>.github.io/<repo-name>/`
+for your own copy) on the phone first.
 
 **iPhone / iPad (Safari):**
 1. Tap the **Share** button (square with an arrow).
@@ -398,22 +407,23 @@ Once opened online, every deck is saved for offline use. New decks download next
 - **Reset everything** deletes all progress on this device (it asks first). When you're signed in to
   sync, it deletes it on all your devices.
 
-### Syncing progress (optional)
+### Accounts and syncing progress
 
-If the site owner sets it up, the Stats page shows **Sync across devices**. You type your email and
-click the sign-in link you're emailed (or type the code, if the email has one), and from then on your
-progress is the same on every device where you sign in. There's no password. Progress already on a device is merged in, not replaced. Studying
-offline is fine: it syncs when you're back online.
+Accounts are switched on for studydeck.uk. The first time someone opens the site on a device, a
+welcome screen asks for their email, the code (or link) they're emailed, and a username. After that the
+device remembers them, and their progress is the same on every device where they sign in. There's no
+password. Progress already on a device is merged in, not replaced. Studying offline is fine: it syncs
+when you're back online.
 
 It uses [Supabase](https://supabase.com) (a hosted database with a free tier). The site stays on GitHub
-Pages; the browser talks to Supabase directly. **To switch it on (one time, about 10 minutes):**
+Pages; the browser talks to Supabase directly. **To switch it on in your own copy (one time, about 10 minutes):**
 
 1. Create a free account and a new project at [supabase.com](https://supabase.com).
 2. In the project, open **SQL Editor → New query**, paste everything from
    [`supabase/schema.sql`](supabase/schema.sql) and press **Run**. This makes the `progress` table and
    the rules that let each person see only their own progress.
 3. Tell Supabase where sign-in links should lead: **Authentication → URL Configuration**. Set
-   **Site URL** to your site's address (e.g. `https://<your-username>.github.io/<repo-name>/`) and add
+   **Site URL** to your site's address (e.g. `https://studydeck.uk/` or `https://<your-username>.github.io/<repo-name>/`) and add
    both that address and `http://localhost:8000/**` under **Redirect URLs**.
 4. **Authentication → Sign In / Providers → Email**: make sure Email is enabled.
    Optional, once you have your own email sender (see below): in **Authentication → Emails → Templates**,
@@ -430,7 +440,17 @@ person's progress private. **Never** put the `service_role` / secret key in the 
 emails per hour. Before sharing the site with a class, add your own email provider under
 **Authentication → Emails → SMTP Settings** (services like Resend or Brevo have free plans).
 
-To switch sync off again, empty the two values in `js/config.js`. Progress already on devices is kept.
+**Supabase pauses idle free projects.** After about a week with no activity, Supabase pauses a
+free project, and then nobody can sign in. The *Keep Supabase awake* Action stops that by sending a
+query every 3 days. If that run fails, GitHub emails you, and the project is probably paused:
+restore it from the Supabase dashboard. GitHub also switches scheduled Actions off in a repo with no
+commits for 60 days. It emails you first, and you can switch it back on in the **Actions** tab.
+
+**Changing the database:** edits to `supabase/schema.sql` don't apply themselves. Paste the whole
+file into **SQL Editor → New query** and press **Run** again (it's safe to re-run).
+
+To switch accounts off again, empty the two values in `js/config.js`. The site then works with no
+sign-in, and progress already on devices is kept.
 
 **Privacy:** [`privacy.html`](privacy.html) is the privacy notice, linked from the sign-in box. Keep it
 accurate if you change what's stored or which services are used. Signed-in users can remove their
