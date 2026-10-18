@@ -6,12 +6,13 @@
  *   #/deck/biology/cell-structure   one deck's page
  *   #/flashcards/biology/cell-structure  (also quiz, write, match, review)
  *   #/review                        review due cards from every deck
- *   #/stats                         progress and export/import
+ *   #/stats                         progress, export/import and sign-in for sync
  * Using "#" means GitHub Pages never needs special server settings.
  */
 import { icons, esc, toast } from './utils.js';
 import { setSetting, progressByDeck } from './store.js';
 import { loadIndex } from './data.js';
+import { startSync, onSyncChange, finishSignInFromLink } from './sync.js';
 
 import * as home from './views/home.js';
 import * as deck from './views/deck.js';
@@ -160,6 +161,19 @@ function setUpOffline() {
   navigator.storage?.persist?.().catch(() => {});
 }
 
+// ---------- syncing progress between devices (optional, see sync.js) ----------
+
+/** Pages that only show progress, so they can be redrawn safely when new progress arrives. */
+const REDRAW_ON_SYNC = new Set(['', 'deck']);
+
+onSyncChange((changed) => {
+  const { view } = parseHash();
+  // The Stats page also shows sign-in and "last synced", so it is redrawn after every sync.
+  // Study sessions are never interrupted; they read the latest progress as you go.
+  if (view === 'stats' || (changed && REDRAW_ON_SYNC.has(view))) router();
+  else if (changed) updateDueBadge();
+});
+
 // ---------- start ----------
 
 document.querySelectorAll('[data-icon]').forEach((el) => (el.innerHTML = icons[el.dataset.icon] || ''));
@@ -167,5 +181,8 @@ applyThemeUi();
 window.addEventListener('hashchange', router);
 window.addEventListener('online', () => toast("You're back online."));
 window.addEventListener('offline', () => toast("You're offline. Saved decks still work."));
+const signInMessage = finishSignInFromLink(); // arriving from the link in a sign-in email
 router();
+if (signInMessage) toast(signInMessage);
 setUpOffline();
+startSync();
