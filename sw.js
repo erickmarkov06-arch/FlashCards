@@ -9,13 +9,14 @@
  * If you add a new file to the app (e.g. a new js/views/*.js), add it to APP_FILES below
  * and bump CACHE_VERSION so phones download it for offline use.
  */
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 const CACHE_NAME = `studydeck-${CACHE_VERSION}`;
 const NETWORK_TIMEOUT_MS = 4000; // after this long, fall back to the cached copy
 
 const APP_FILES = [
   './',
   'index.html',
+  'privacy.html',
   'manifest.webmanifest',
   'css/styles.css',
   'js/app.js',
@@ -103,8 +104,11 @@ self.addEventListener('fetch', (event) => {
 
 async function networkFirst(request) {
   const cache = await caches.open(CACHE_NAME);
-  // Page loads (e.g. "/" or "/index.html?x") all use the cached index.html when offline.
-  const cacheKey = request.mode === 'navigate' ? 'index.html' : request;
+  // Loads of the app page (e.g. "/" or "/index.html?x") all use the cached index.html when offline.
+  // Other pages (privacy.html) are cached as themselves.
+  const path = new URL(request.url).pathname;
+  const isAppPage = request.mode === 'navigate' && (path.endsWith('/') || path.endsWith('/index.html'));
+  const cacheKey = isAppPage ? 'index.html' : request;
 
   const network = fetch(request.url, { cache: 'no-cache' }).then((response) => {
     if (response.ok) cache.put(cacheKey, response.clone());

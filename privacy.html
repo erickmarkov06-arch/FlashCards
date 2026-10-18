@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Privacy notice · StudyDeck</title>
+    <meta name="description" content="What StudyDeck stores about you, where, and how to delete it." />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#f6f4ef" />
+    <!-- Apply the saved light/dark theme before the page draws, like index.html. -->
+    <script>
+      try {
+        var saved = JSON.parse(localStorage.getItem('studydeck:settings') || '{}').theme;
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .privacy h2 { margin-top: 2rem; }
+      .privacy ul { padding-left: 1.2rem; }
+      .privacy li { margin-bottom: 0.4rem; }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./#/">
+        <img src="icons/icon.svg" alt="" width="28" height="28" />
+        <span>StudyDeck</span>
+      </a>
+    </header>
+
+    <main class="privacy">
+      <div class="page-header">
+        <p class="eyebrow">Last updated 18 October 2026</p>
+        <h1>Privacy notice</h1>
+      </div>
+
+      <p>StudyDeck is a free study website with no adverts and no tracking. This page explains, in plain
+        English, what it stores about you and what you can do about it.</p>
+
+      <h2>The short version</h2>
+      <ul>
+        <li>You can use StudyDeck <strong>without an account</strong>. Your progress is then saved only on your own device.</li>
+        <li>If you sign in, we store <strong>your email address and your study progress</strong>. Nothing else.</li>
+        <li>We never sell your data, show you adverts, or use tracking or analytics cookies.</li>
+        <li>You can <strong>delete your account</strong> at any time on the Stats page.</li>
+      </ul>
+
+      <h2>If you don't sign in</h2>
+      <p>Your progress (which cards you know, your streaks, your best Match times) and your light/dark
+        setting are saved in your browser's own storage on your device. They are never sent to us.
+        Clearing your browser's data for this site deletes them. This storage is only used to make the
+        site work, so there is no cookie banner.</p>
+
+      <h2>If you sign in to sync your progress</h2>
+      <p>We store:</p>
+      <ul>
+        <li><strong>Your email address</strong>, so we can send you a sign-in code and recognise you.</li>
+        <li><strong>Your study progress</strong>, so it is the same on all your devices.</li>
+        <li><strong>Technical sign-in records</strong> (such as the time you signed in and your IP address),
+          kept for a short time by our database provider to keep accounts secure.</li>
+      </ul>
+      <p>We use this only to provide the sync feature. The legal basis is your consent: you choose to sign
+        in, and you can withdraw it by deleting your account.</p>
+
+      <h2>Who stores it</h2>
+      <ul>
+        <li><strong>Supabase</strong> stores accounts and progress, on servers in Ireland (EU).</li>
+        <li><strong>Resend</strong> sends the sign-in emails, from servers in Ireland (EU).</li>
+        <li><strong>GitHub Pages</strong> and <strong>Cloudflare</strong> deliver the website itself. Like any
+          website host, they see your IP address when you visit.</li>
+      </ul>
+      <p>Some of these companies are based in the United States and may process data there, under their
+        own data protection safeguards.</p>
+
+      <h2>How long we keep it</h2>
+      <p>Your email address and progress are kept until you delete your account. Accounts that haven't
+        been used for two years may be deleted.</p>
+
+      <h2>Your rights</h2>
+      <p>You can ask to see, correct or delete the data we hold about you.</p>
+      <ul>
+        <li><strong>Delete everything yourself:</strong> sign in, go to <a href="./#/stats">Stats</a> and press
+          <strong>Delete my account</strong>. This removes your email address and your online progress straight away.</li>
+        <li><strong>See a copy of your progress:</strong> press <strong>Export progress</strong> on the Stats page.</li>
+        <li><strong>Anything else:</strong> email <a href="mailto:hello@studydeck.uk">hello@studydeck.uk</a>.</li>
+      </ul>
+      <p>If you're unhappy with how we handle your data, you can complain to the Information
+        Commissioner's Office (<a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>).</p>
+
+      <h2>Children</h2>
+      <p>StudyDeck is made for school students. If you're under 13, please ask a parent or carer before
+        signing in. You can always use the site without signing in.</p>
+
+      <h2>Changes</h2>
+      <p>If we change how we use your data, we'll update this page and the date at the top.</p>
+
+      <p><a class="btn" href="./#/">Back to StudyDeck</a></p>
+    </main>
+  </body>
+</html>

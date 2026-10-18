@@ -4,7 +4,7 @@
  */
 import { loadIndex } from '../data.js';
 import { getAllProgress, getActivity, getStreaks, progressByDeck, exportData, importData, resetAll, MAX_BOX, REVERSE } from '../store.js';
-import { syncEnabled, syncStatus, sendCode, verifyCode, signOut, syncNow } from '../sync.js';
+import { syncEnabled, syncStatus, sendCode, verifyCode, signOut, syncNow, deleteAccount } from '../sync.js';
 import { esc, plural, pageHeader, todayKey, addDays, toast } from '../utils.js';
 
 const WEEKS_SHOWN = 12;
@@ -167,15 +167,18 @@ function syncSection(sync) {
         <div class="button-row">
           <button type="button" class="btn" id="sync-now">Sync now</button>
           <button type="button" class="btn btn-ghost" id="sign-out">Sign out</button>
+          <button type="button" class="btn btn-bad" id="delete-account">Delete my account</button>
         </div>
+        <p class="small muted"><a href="privacy.html">Privacy notice</a></p>
       </section>`;
   }
   return `
     <section class="section">
       <h2 class="section-label">Sync across devices</h2>
       <p class="small">Sign in with your email to keep your progress the same on your phone, tablet and computer.
-        There's no password: we email you a sign-in link. Your email address and progress are stored with
-        <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>. Progress already on this device is kept and added to your account.</p>
+        There's no password: we email you a sign-in code. Progress already on this device is kept and added to your account.</p>
+      <p class="small">We store your email address and your study progress, nothing else.
+        <a href="privacy.html">Read the privacy notice</a>. If you're under 13, ask a parent or carer before signing in.</p>
       <form class="sync-form button-row" id="sync-email">
         <input class="input" type="email" name="email" required autocomplete="email" placeholder="you@example.com" aria-label="Email address">
         <button type="submit" class="btn">Email me a sign-in link</button>
@@ -212,6 +215,21 @@ function wireSync(container, sync) {
       signOut();
       toast('Signed out.');
     });
+    container.querySelector('#delete-account').addEventListener('click', async (e) => {
+      const ok = confirm(
+        `Delete your account?\n\nThis permanently removes ${sync.email} and your progress saved online, on every device. ` +
+          'Progress already on this device stays here (use "Reset everything" to remove that too).'
+      );
+      if (!ok) return;
+      busy(e.currentTarget, true);
+      try {
+        await deleteAccount();
+        toast('Your account has been deleted.');
+      } catch (err) {
+        alert(`Couldn't delete your account: ${err.message}`);
+        busy(e.currentTarget, false);
+      }
+    });
     return;
   }
 
@@ -226,8 +244,8 @@ function wireSync(container, sync) {
     busy(button, true);
     try {
       await sendCode(email);
-      container.querySelector('#sync-sent').innerHTML = `We sent an email to <strong>${esc(email)}</strong>. Open it in this browser
-        and click the sign-in link. If the email has a code, you can type it here instead. It can take a minute; check your spam folder too.`;
+      container.querySelector('#sync-sent').innerHTML = `We sent an email to <strong>${esc(email)}</strong>. Type the code from it below,
+        or click its sign-in link in this browser. It can take a minute; check your spam folder too.`;
       emailForm.hidden = true;
       codeForm.hidden = false;
       codeForm.code.focus();

@@ -51,3 +51,20 @@ $$;
 drop trigger if exists progress_touch on public.progress;
 create trigger progress_touch before insert or update on public.progress
   for each row execute function public.progress_touch();
+
+-- "Delete my account" on the Stats page calls this. It removes the signed-in user's account
+-- (email address) and, through "on delete cascade" above, their saved progress.
+-- It runs with the database owner's rights (security definer) but can only ever delete the
+-- account of whoever is calling it.
+create or replace function public.delete_my_account() returns void
+language plpgsql security definer set search_path = '' as $$
+begin
+  if auth.uid() is null then
+    raise exception 'Not signed in';
+  end if;
+  delete from auth.users where id = auth.uid();
+end;
+$$;
+
+revoke all on function public.delete_my_account() from public, anon;
+grant execute on function public.delete_my_account() to authenticated;

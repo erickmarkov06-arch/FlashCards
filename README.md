@@ -429,6 +429,11 @@ emails per hour. Before sharing the site with a class, add your own email provid
 
 To switch sync off again, empty the two values in `js/config.js`. Progress already on devices is kept.
 
+**Privacy:** [`privacy.html`](privacy.html) is the privacy notice, linked from the sign-in box. Keep it
+accurate if you change what's stored or which services are used. Signed-in users can remove their
+account and online progress with **Delete my account** on the Stats page. That button calls the
+`delete_my_account` function in `supabase/schema.sql`, so re-run that file after updating it.
+
 ---
 
 ## 11. Troubleshooting
