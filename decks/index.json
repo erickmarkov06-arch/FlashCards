@@ -10,6 +10,11 @@
       "name": "Chemistry",
       "slug": "chemistry",
       "deckCount": 2
+    },
+    {
+      "name": "Spanish",
+      "slug": "spanish",
+      "deckCount": 2
     }
   ],
   "decks": [
@@ -116,6 +121,41 @@
       ],
       "cardCount": 31,
       "questionCount": 31
+    },
+    {
+      "id": "spanish/describing-subjects-adjectives",
+      "path": "spanish/describing-subjects-adjectives.json",
+      "title": "Describing Subjects: Adjectives",
+      "subject": "Spanish",
+      "subjectSlug": "spanish",
+      "description": "Adjectives to describe subjects and teachers, and how they change for masculine, feminine and plural.",
+      "author": "L.M.",
+      "tags": [
+        "adjectives",
+        "agreement",
+        "school",
+        "year-8"
+      ],
+      "cardCount": 14,
+      "questionCount": 8
+    },
+    {
+      "id": "spanish/school-subjects-and-opinions",
+      "path": "spanish/school-subjects-and-opinions.json",
+      "title": "School Subjects and Opinions",
+      "subject": "Spanish",
+      "subjectSlug": "spanish",
+      "description": "School subjects (las asignaturas), saying what you like with me gusta / me gustan, and -amos verbs for school activities.",
+      "author": "L.M.",
+      "tags": [
+        "me-gusta",
+        "school",
+        "subjects",
+        "verbs",
+        "year-8"
+      ],
+      "cardCount": 24,
+      "questionCount": 6
     }
   ]
 }
