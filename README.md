@@ -141,9 +141,7 @@ and updates the live site.
 ├── decks/                   ← ALL STUDY CONTENT LIVES HERE
 │   ├── _template.json       copy this to start a new deck
 │   ├── index.json           generated automatically, don't edit
-│   ├── biology/cell-structure.json
-│   ├── chemistry/atomic-structure.json
-│   └── spanish/everyday-verbs.json
+│   └── <subject>/<deck>.json  one file per deck, e.g. biology/cell-structure.json
 ├── scripts/
 │   ├── validate.js          checks every deck for mistakes
 │   ├── build-index.js       regenerates decks/index.json
@@ -288,7 +286,7 @@ exactly how to format the deck, where to save it, how to check it, and how to su
 
    More examples:
    - *"Turn the attached PDF of my history notes into decks (one per topic) following CLAUDE.md, validate them and open a pull request."*
-   - *"Add these 10 cards to the existing Spanish everyday-verbs deck, following CLAUDE.md, and submit it."*
+   - *"Add these 10 cards to my existing Spanish verbs deck, following CLAUDE.md, and submit it."*
    - *"I have write access. Make a chemistry deck from these notes following CLAUDE.md and push it straight to main."*
 4. **Claude creates** `decks/<subject>/<deck-name>.json`.
 5. **Claude validates** it with `node scripts/validate.js` and fixes any problems. Have a quick look at the cards too.
