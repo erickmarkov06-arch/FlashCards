@@ -16,7 +16,9 @@
  *       cards        the most recently studied copy wins, unless it was deleted after that
  *       activity     the higher answer count for each day
  *       match times  the faster time
- *     Deletions (resets, edited cards) are remembered in `deleted` so they reach other devices.
+ *       My decks     in, unless it was taken out after it was added
+ *     Deletions (resets, edited cards, decks taken out of My decks) are remembered in `deleted`
+ *     so they reach other devices.
  *   - It syncs when the app opens, a few seconds after you answer cards, when you leave the app,
  *     and when you come back online. Studying offline is fine: it catches up later.
  *
@@ -54,12 +56,14 @@ function saveSession(session) {
 let lastError = '';
 let syncing = false;
 
-/** What the Stats page shows: { signedIn, email, lastSynced, syncing, error }. */
+/** What the Stats page shows: { signedIn, email, username, onLeaderboard, lastSynced, syncing, error }. */
 export function syncStatus() {
   const session = syncEnabled ? loadSession() : null;
   return {
     signedIn: Boolean(session),
     email: session?.email || '',
+    username: session?.username || '', // '' = not chosen yet (or not loaded yet)
+    onLeaderboard: Boolean(session?.onLeaderboard),
     lastSynced: session?.lastSynced || null,
     syncing,
     error: lastError,
@@ -94,6 +98,7 @@ async function api(path, { method = 'GET', body, token, prefer } = {}) {
   if (!response.ok) {
     const error = new Error(data?.msg || data?.error_description || data?.message || `Sync server error (${response.status}).`);
     error.status = response.status;
+    error.code = data?.code; // Postgres error code, e.g. 23505 = that username is taken
     throw error;
   }
   return data;
@@ -189,6 +194,7 @@ export async function verifyCode(email, code) {
   const data = await api('/auth/v1/verify', { method: 'POST', body: { type: 'email', email, token: code } });
   saveSession(sessionFrom(data, email));
   lastError = '';
+  await loadProfile().catch(() => {});
   await syncNow().catch(() => {}); // any problem shows up in syncStatus().error
 }
 
@@ -347,7 +353,16 @@ export function mergeData(a, b) {
     }
   }
 
-  return { progress, activity, match, deleted };
+  // My decks: a deck stays in if it was added after it was last taken out (on any device).
+  const mydecks = {};
+  for (const source of [a, b]) {
+    for (const [deckId, added] of Object.entries(asObject(source.mydecks))) {
+      if (typeof added !== 'string' || added <= (deleted[`mydeck:${deckId}`] || '')) continue;
+      mydecks[deckId] = later(mydecks[deckId], added);
+    }
+  }
+
+  return { progress, activity, match, deleted, mydecks };
 }
 
 /** JSON with object keys sorted, so two copies with the same content always compare equal. */
@@ -386,9 +401,60 @@ function syncSoon(delay = SAVE_DELAY_MS) {
   }, delay);
 }
 
+// ---------- username and leaderboard ----------
+
+/** Usernames: 3–20 lowercase letters, numbers or _. Same rule as the database (supabase/schema.sql). */
+export const USERNAME_PATTERN = /^[a-z0-9_]{3,20}$/;
+
+/** Loads this user's username and leaderboard choice into the saved session. */
+export async function loadProfile() {
+  if (!syncEnabled || !loadSession()) return;
+  const token = await accessToken();
+  const [row] = await api('/rest/v1/profiles?select=username,on_leaderboard', { token });
+  const session = loadSession();
+  if (!session) return;
+  saveSession({ ...session, username: row?.username || '', onLeaderboard: Boolean(row?.on_leaderboard), profileLoaded: true });
+  notify(false);
+}
+
+/** Sets the username and/or the leaderboard choice. Throws a friendly Error if the username is taken. */
+export async function saveProfile({ username, onLeaderboard }) {
+  const session = loadSession();
+  if (!session) throw new Error('Sign in first.');
+  const row = {
+    username: username ?? session.username,
+    on_leaderboard: onLeaderboard ?? Boolean(session.onLeaderboard),
+  };
+  if (!USERNAME_PATTERN.test(row.username)) {
+    throw new Error('Usernames are 3 to 20 characters: lowercase letters, numbers and _ only.');
+  }
+  const token = await accessToken();
+  try {
+    // Create the row, or update it if this user already has one.
+    await api('/rest/v1/profiles?on_conflict=user_id', {
+      method: 'POST',
+      token,
+      prefer: 'resolution=merge-duplicates,return=minimal',
+      body: row,
+    });
+  } catch (err) {
+    if (err.code === '23505') throw new Error(`"${row.username}" is already taken. Try another one.`);
+    throw err;
+  }
+  saveSession({ ...loadSession(), username: row.username, onLeaderboard: row.on_leaderboard, profileLoaded: true });
+  notify(false);
+}
+
+/** Everyone on the leaderboard (plus you): [{ username, answers_week, streak, mastered, is_me }]. */
+export async function getLeaderboard() {
+  const token = await accessToken();
+  return api('/rest/v1/rpc/leaderboard', { method: 'POST', token, body: {} });
+}
+
 /** Called once when the app starts. */
 export function startSync() {
   if (!syncEnabled) return;
+  if (loadSession()) loadProfile().catch(() => {});
   onProgressChange(() => {
     if (loadSession()) syncSoon();
   });

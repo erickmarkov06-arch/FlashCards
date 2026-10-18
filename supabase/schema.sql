@@ -68,3 +68,81 @@ $$;
 
 revoke all on function public.delete_my_account() from public, anon;
 grant execute on function public.delete_my_account() to authenticated;
+
+-- ---------- usernames and the leaderboard ----------
+
+-- One row per user who has chosen a username. Usernames are public on the leaderboard, so they
+-- are limited to lowercase letters, numbers and _ (no spaces, no real-name formatting).
+-- Nobody appears on the leaderboard unless they switch it on (on_leaderboard).
+create table if not exists public.profiles (
+  user_id        uuid primary key default auth.uid() references auth.users (id) on delete cascade,
+  username       text not null,
+  on_leaderboard boolean not null default false,
+  created_at     timestamptz not null default now(),
+  constraint profiles_username_format check (username ~ '^[a-z0-9_]{3,20}$')
+);
+create unique index if not exists profiles_username_key on public.profiles (username);
+
+alter table public.profiles enable row level security;
+
+drop policy if exists "Read own profile" on public.profiles;
+create policy "Read own profile" on public.profiles
+  for select to authenticated using (user_id = auth.uid());
+
+drop policy if exists "Create own profile" on public.profiles;
+create policy "Create own profile" on public.profiles
+  for insert to authenticated with check (user_id = auth.uid());
+
+drop policy if exists "Update own profile" on public.profiles;
+create policy "Update own profile" on public.profiles
+  for update to authenticated using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+drop policy if exists "Delete own profile" on public.profiles;
+create policy "Delete own profile" on public.profiles
+  for delete to authenticated using (user_id = auth.uid());
+
+revoke all on public.profiles from anon;
+grant select, insert, update, delete on public.profiles to authenticated;
+
+-- The leaderboard: username and three numbers per person, worked out from their saved progress.
+-- Only people who switched on_leaderboard on are included (plus yourself, so you can see where
+-- you'd be). Only signed-in users can call it. Nothing else about anyone is returned.
+create or replace function public.leaderboard()
+returns table (username text, answers_week integer, streak integer, mastered integer, is_me boolean)
+language sql stable security definer set search_path = '' as $$
+  with people as (
+    select pr.user_id, pr.username,
+           coalesce(p.data -> 'progress', '{}'::jsonb) as progress,
+           coalesce(p.data -> 'activity', '{}'::jsonb) as activity
+    from public.profiles pr
+    left join public.progress p on p.user_id = pr.user_id
+    where pr.on_leaderboard or pr.user_id = auth.uid()
+  ),
+  days as (
+    select people.user_id, a.key::date as day
+    from people, jsonb_each_text(people.activity) a
+    where a.key ~ '^\d{4}-\d{2}-\d{2}$' and a.value ~ '^\d+$' and a.value::int > 0
+  )
+  select
+    people.username,
+    (select coalesce(sum(a.value::int), 0)::int
+       from jsonb_each_text(people.activity) a
+      where a.key ~ '^\d{4}-\d{2}-\d{2}$' and a.value ~ '^\d+$'
+        and a.key >= to_char(current_date - 6, 'YYYY-MM-DD')) as answers_week,
+    -- Days in a row with answers, ending today (or yesterday, if not studied yet today).
+    (select coalesce(min(g), 0)::int
+       from generate_series(0, 3660) g,
+            (select case when exists (select 1 from days d where d.user_id = people.user_id and d.day = current_date)
+                         then current_date else current_date - 1 end as start) s
+      where not exists (select 1 from days d where d.user_id = people.user_id and d.day = s.start - g)) as streak,
+    (select count(*)::int
+       from jsonb_each(people.progress) e
+      where right(e.key, 2) <> '~r' and (e.value ->> 'box') ~ '^\d+$' and (e.value ->> 'box')::int >= 5) as mastered,
+    people.user_id = auth.uid() as is_me
+  from people;
+$$;
+
+revoke all on function public.leaderboard() from public, anon;
+grant execute on function public.leaderboard() to authenticated;
+
+notify pgrst, 'reload schema';

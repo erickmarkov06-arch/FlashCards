@@ -1,17 +1,22 @@
 /**
- * Home page: every deck, grouped by subject, with search, subject chips and a tag filter.
+ * Home page: My decks first, then every deck grouped by subject, with search, subject chips and a tag filter.
  */
 import { loadIndex, mixId } from '../data.js';
-import { progressByDeck } from '../store.js';
+import { progressByDeck, getMyDecks } from '../store.js';
 import { esc, plural, icons } from '../utils.js';
 
 // Kept while the app is open, so coming back to Home keeps your filters.
+// subject MINE = only the decks in My decks.
 const filters = { search: '', subject: '', tag: '' };
+const MINE = '__mine';
 
 export async function render(container) {
   const index = await loadIndex();
   const progress = progressByDeck();
   const decks = index.decks;
+  const mine = getMyDecks();
+  const myList = decks.filter((d) => d.id in mine);
+  if (filters.subject === MINE && !myList.length) filters.subject = '';
 
   const totalDue = decks.reduce((sum, d) => sum + (progress[d.id]?.due || 0), 0);
   const allTags = [...new Set(decks.flatMap((d) => d.tags || []))].sort();
@@ -45,6 +50,7 @@ export async function render(container) {
 
     <div class="chip-row" role="group" aria-label="Filter by subject">
       <button type="button" class="chip" data-subject="">All subjects</button>
+      ${myList.length ? `<button type="button" class="chip" data-subject="${MINE}">My decks (${myList.length})</button>` : ''}
       ${index.subjects.map((s) => `<button type="button" class="chip" data-subject="${esc(s.slug)}">${esc(s.name)}</button>`).join('')}
     </div>
 
@@ -60,7 +66,7 @@ export async function render(container) {
 
     const words = filters.search.toLowerCase().split(/\s+/).filter(Boolean);
     const matching = decks.filter((d) => {
-      if (filters.subject && d.subjectSlug !== filters.subject) return false;
+      if (filters.subject === MINE ? !(d.id in mine) : filters.subject && d.subjectSlug !== filters.subject) return false;
       if (filters.tag && !(d.tags || []).includes(filters.tag)) return false;
       const haystack = [d.title, d.description, d.subject, d.author, ...(d.tags || [])].join(' ').toLowerCase();
       return words.every((w) => haystack.includes(w));
@@ -97,8 +103,20 @@ export async function render(container) {
          </div>`
       : '';
 
+    // With no filters on, My decks come first so they're quick to reach.
+    const noFilters = !filters.search && !filters.subject && !filters.tag;
+    const mySection = !noFilters
+      ? ''
+      : myList.length
+        ? `<section>
+             <h2 class="section-label">My decks</h2>
+             <ul class="deck-list">${myList.map((d) => `<li>${deckRow(d, progress[d.id])}</li>`).join('')}</ul>
+           </section>`
+        : `<p class="muted small">Tip: open a deck and press <strong>Add to My decks</strong> to keep your favourites at the top.</p>`;
+
     results.innerHTML =
       tagBanner +
+      mySection +
       [...groups]
         .map(
           ([slug, { name, list }]) => `

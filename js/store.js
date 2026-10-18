@@ -9,9 +9,11 @@
  *   studydeck:activity  how many answers you gave on each day (for streaks)
  *   studydeck:match     your best Match-game time per deck
  *   studydeck:settings  theme and small preferences
+ *   studydeck:mydecks   decks added to "My decks": { deckId: when it was added }
  *   studydeck:deleted   when progress was deleted (reset, or a card was edited), so syncing
  *                       doesn't bring it back from another device. Keys are card IDs,
- *                       "match:<deckId>" for a best Match time, or "*" for "Reset everything".
+ *                       "match:<deckId>" for a best Match time, "mydeck:<deckId>" for a deck
+ *                       taken out of My decks, or "*" for "Reset everything".
  *
  * A card record looks like:
  *   { box: 2, due: "2026-10-20", seen: 5, correct: 4, wrong: 1, last: true, lastSeen: "2026-10-18T09:30:00.000Z" }
@@ -27,10 +29,11 @@ const KEYS = {
   match: 'studydeck:match',
   settings: 'studydeck:settings',
   deleted: 'studydeck:deleted',
+  mydecks: 'studydeck:mydecks',
 };
 
-/** The keys that hold study progress (everything except settings). Sync copies these. */
-const SYNCED = [KEYS.progress, KEYS.activity, KEYS.match, KEYS.deleted];
+/** The keys that hold study progress and My decks (everything except settings). Sync copies these. */
+const SYNCED = [KEYS.progress, KEYS.activity, KEYS.match, KEYS.deleted, KEYS.mydecks];
 
 /** Days to wait before the next review, for each Leitner box (index = box number). */
 export const BOX_INTERVALS = [0, 1, 2, 4, 7, 14];
@@ -284,6 +287,30 @@ export function saveMatchTime(deckId, seconds) {
   return true;
 }
 
+// ---------- My decks ----------
+
+/** Decks in "My decks", as { deckId: ISO time added }. */
+export function getMyDecks() {
+  return read(KEYS.mydecks, {});
+}
+
+export function isMyDeck(deckId) {
+  return deckId in getMyDecks();
+}
+
+/** Adds a deck to My decks (on = true) or takes it out (on = false). */
+export function setMyDeck(deckId, on) {
+  const mine = getMyDecks();
+  if (on) {
+    mine[deckId] = new Date().toISOString();
+    write(KEYS.mydecks, mine);
+  } else if (deckId in mine) {
+    delete mine[deckId];
+    write(KEYS.mydecks, mine);
+    markDeleted([`mydeck:${deckId}`]);
+  }
+}
+
 // ---------- export / import / reset ----------
 
 export function exportData() {
@@ -354,6 +381,7 @@ export function getSyncData() {
     activity: getActivity(),
     match: read(KEYS.match, {}),
     deleted: read(KEYS.deleted, {}),
+    mydecks: getMyDecks(),
   };
 }
 
@@ -363,4 +391,5 @@ export function setSyncData(data) {
   write(KEYS.activity, data.activity, { silent: true });
   write(KEYS.match, data.match, { silent: true });
   write(KEYS.deleted, data.deleted, { silent: true });
+  write(KEYS.mydecks, data.mydecks, { silent: true });
 }
