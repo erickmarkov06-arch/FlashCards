@@ -1,14 +1,17 @@
 /**
  * store.js — everything the app remembers, saved in this browser's localStorage.
  *
- * Nothing is ever sent to a server. Each device/browser keeps its own progress;
- * use Export / Import on the Stats page to move it between devices.
+ * Each device/browser keeps its own progress. Use Export / Import on the Stats page to move it
+ * between devices, or sign in to sync it (only if sync is set up in config.js; see sync.js).
  *
  * What is saved (each under its own localStorage key):
  *   studydeck:progress  one record per card you have answered (see below)
  *   studydeck:activity  how many answers you gave on each day (for streaks)
  *   studydeck:match     your best Match-game time per deck
  *   studydeck:settings  theme and small preferences
+ *   studydeck:deleted   when progress was deleted (reset, or a card was edited), so syncing
+ *                       doesn't bring it back from another device. Keys are card IDs,
+ *                       "match:<deckId>" for a best Match time, or "*" for "Reset everything".
  *
  * A card record looks like:
  *   { box: 2, due: "2026-10-20", seen: 5, correct: 4, wrong: 1, last: true, lastSeen: "2026-10-18T09:30:00.000Z" }
@@ -23,7 +26,11 @@ const KEYS = {
   activity: 'studydeck:activity',
   match: 'studydeck:match',
   settings: 'studydeck:settings',
+  deleted: 'studydeck:deleted',
 };
+
+/** The keys that hold study progress (everything except settings). Sync copies these. */
+const SYNCED = [KEYS.progress, KEYS.activity, KEYS.match, KEYS.deleted];
 
 /** Days to wait before the next review, for each Leitner box (index = box number). */
 export const BOX_INTERVALS = [0, 1, 2, 4, 7, 14];
@@ -42,12 +49,29 @@ function read(key, fallback) {
   }
 }
 
-function write(key, value) {
+function write(key, value, { silent = false } = {}) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (err) {
     console.warn('Could not save progress:', err);
   }
+  if (!silent && SYNCED.includes(key)) listeners.forEach((fn) => fn());
+}
+
+const listeners = new Set();
+
+/** Calls `fn` whenever progress changes on this device (used by sync.js to save it online). */
+export function onProgressChange(fn) {
+  listeners.add(fn);
+}
+
+/** Remembers that these progress entries were deleted just now. */
+function markDeleted(keys) {
+  if (!keys.length) return;
+  const deleted = read(KEYS.deleted, {});
+  const now = new Date().toISOString();
+  for (const key of keys) deleted[key] = now;
+  write(KEYS.deleted, deleted);
 }
 
 // ---------- settings ----------
@@ -191,23 +215,22 @@ export function progressByDeck() {
 export function pruneDeck(deckId, cards) {
   const all = getAllProgress();
   const keep = new Set(cards.flatMap((c) => [cardKey(deckId, c), cardKey(deckId, c, true)]));
-  let changed = false;
-  for (const key of Object.keys(all)) {
-    if (key.startsWith(deckId + '#') && !keep.has(key)) {
-      delete all[key];
-      changed = true;
-    }
-  }
-  if (changed) write(KEYS.progress, all);
+  const removed = Object.keys(all).filter((key) => key.startsWith(deckId + '#') && !keep.has(key));
+  if (!removed.length) return;
+  removed.forEach((key) => delete all[key]);
+  write(KEYS.progress, all);
+  markDeleted(removed);
 }
 
 export function resetDeck(deckId) {
   const all = getAllProgress();
-  for (const key of Object.keys(all)) if (key.startsWith(deckId + '#')) delete all[key];
+  const removed = Object.keys(all).filter((key) => key.startsWith(deckId + '#'));
+  removed.forEach((key) => delete all[key]);
   write(KEYS.progress, all);
   const best = read(KEYS.match, {});
   delete best[deckId];
   write(KEYS.match, best);
+  markDeleted([...removed, `match:${deckId}`]);
 }
 
 // ---------- activity and streaks ----------
@@ -312,11 +335,32 @@ export function importData(data) {
 }
 
 export function resetAll() {
-  for (const key of [KEYS.progress, KEYS.activity, KEYS.match]) {
+  for (const key of [KEYS.progress, KEYS.activity, KEYS.match, KEYS.deleted]) {
     try {
       localStorage.removeItem(key);
     } catch {
       /* ignore */
     }
   }
+  markDeleted(['*']);
+}
+
+// ---------- sync ----------
+
+/** Everything sync.js copies between devices, in the same shape as the online copy. */
+export function getSyncData() {
+  return {
+    progress: getAllProgress(),
+    activity: getActivity(),
+    match: read(KEYS.match, {}),
+    deleted: read(KEYS.deleted, {}),
+  };
+}
+
+/** Replaces this device's progress with merged data from sync.js (without triggering another sync). */
+export function setSyncData(data) {
+  write(KEYS.progress, data.progress, { silent: true });
+  write(KEYS.activity, data.activity, { silent: true });
+  write(KEYS.match, data.match, { silent: true });
+  write(KEYS.deleted, data.deleted, { silent: true });
 }

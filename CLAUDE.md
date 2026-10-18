@@ -1,8 +1,11 @@
 # CLAUDE.md: instructions for Claude working in this repository
 
 This repo is **StudyDeck**, a static study website (flashcards, quizzes, spaced repetition) hosted on
-GitHub Pages. All study content lives in JSON files under `decks/`. There is no backend, no database
-and no API key. Never add any.
+GitHub Pages. All study content lives in JSON files under `decks/`. There is no server. The only
+backend is an optional Supabase database that syncs signed-in users' progress (`js/sync.js`,
+`js/config.js`, `supabase/schema.sql`); decks never go through it. Don't add other backends or
+services, and never put a secret key (Supabase `service_role` or any other) in the repo. The
+Supabase anon key in `js/config.js` is public by design.
 
 The most common request here is: **"Here are my notes, turn them into a deck and submit it."**
 Follow the steps below exactly.
@@ -217,6 +220,8 @@ scripts/validate.js    checks every deck (run before committing)
 scripts/build-index.js regenerates decks/index.json
 scripts/serve.js       tiny local web server
 index.html, css/, js/  the website (plain HTML/CSS/JS, no build step)
+js/sync.js, config.js  optional progress sync with Supabase (off while config.js is empty)
+supabase/schema.sql    database table and row level security for sync
 sw.js                  service worker for offline use
 .github/workflows/     deploy.yml (push to main) and validate.yml (pull requests)
 ```

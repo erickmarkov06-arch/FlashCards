@@ -4,6 +4,7 @@
  */
 import { loadIndex } from '../data.js';
 import { getAllProgress, getActivity, getStreaks, progressByDeck, exportData, importData, resetAll, MAX_BOX, REVERSE } from '../store.js';
+import { syncEnabled, syncStatus, sendCode, verifyCode, signOut, syncNow } from '../sync.js';
 import { esc, plural, pageHeader, todayKey, addDays, toast } from '../utils.js';
 
 const WEEKS_SHOWN = 12;
@@ -31,9 +32,10 @@ export async function render(container) {
   const boxes = Array.from({ length: MAX_BOX }, (_, i) => inBoxes.filter((r) => r.box === i + 1).length);
   const biggestBox = Math.max(1, ...boxes);
   const perDeck = progressByDeck();
+  const sync = syncStatus();
 
   container.innerHTML = `
-    ${pageHeader({ title: 'Progress', eyebrow: 'Saved on this device' })}
+    ${pageHeader({ title: 'Progress', eyebrow: sync.signedIn ? 'Synced to your account' : 'Saved on this device' })}
 
     <div class="figures">
       ${tile(streaks.current, 'day streak', streaks.studiedToday ? 'You studied today' : streaks.current ? 'Study today to keep it going' : '')}
@@ -98,11 +100,15 @@ export async function render(container) {
       </ul>
     </section>
 
+    ${syncEnabled ? syncSection(sync) : ''}
+
     <section class="section">
       <h2 class="section-label">Back up or move your progress</h2>
-      <p class="small">Progress is stored in this browser only. Nothing is uploaded anywhere.
-        To move it to another phone or computer, export a file here and import it there.
-        Importing merges with what's already on the device.</p>
+      <p class="small">${
+        sync.signedIn
+          ? 'You can also save your progress as a file, or load one in.'
+          : 'Progress is stored in this browser only. To move it to another phone or computer, export a file here and import it there.'
+      } Importing merges with what's already on the device.</p>
       <div class="button-row">
         <button type="button" class="btn" id="export">Export progress</button>
         <label class="btn btn-ghost" for="import-file">Import progress</label>
@@ -137,10 +143,118 @@ export async function render(container) {
   });
 
   container.querySelector('#reset').addEventListener('click', () => {
-    if (!confirm('Delete ALL progress, streaks and best times on this device? Export first if you might want it back.')) return;
+    const where = sync.signedIn ? 'on EVERY device signed in to your account' : 'on this device';
+    if (!confirm(`Delete ALL progress, streaks and best times ${where}? Export first if you might want it back.`)) return;
     resetAll();
     toast('All progress deleted.');
     render(container);
+  });
+
+  if (syncEnabled) wireSync(container, sync);
+}
+
+// ---------- sync across devices (only when config.js is filled in) ----------
+
+function syncSection(sync) {
+  if (sync.signedIn) {
+    const when = sync.syncing ? 'Syncing…' : sync.lastSynced ? `Last synced ${new Date(sync.lastSynced).toLocaleString()}.` : 'Not synced yet.';
+    return `
+      <section class="section">
+        <h2 class="section-label">Sync across devices</h2>
+        <p class="small">Signed in as <strong>${esc(sync.email)}</strong>. Your progress is saved online and kept
+          the same on every device where you sign in. <span class="muted">${esc(when)}</span></p>
+        ${sync.error ? `<p class="notice small" role="alert">${esc(sync.error)}</p>` : ''}
+        <div class="button-row">
+          <button type="button" class="btn" id="sync-now">Sync now</button>
+          <button type="button" class="btn btn-ghost" id="sign-out">Sign out</button>
+        </div>
+      </section>`;
+  }
+  return `
+    <section class="section">
+      <h2 class="section-label">Sync across devices</h2>
+      <p class="small">Sign in with your email to keep your progress the same on your phone, tablet and computer.
+        There's no password: we email you a sign-in link. Your email address and progress are stored with
+        <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>. Progress already on this device is kept and added to your account.</p>
+      <form class="sync-form button-row" id="sync-email">
+        <input class="input" type="email" name="email" required autocomplete="email" placeholder="you@example.com" aria-label="Email address">
+        <button type="submit" class="btn">Email me a sign-in link</button>
+      </form>
+      <form class="sync-form" id="sync-code" hidden>
+        <p class="small" id="sync-sent"></p>
+        <div class="button-row">
+          <input class="input" type="text" name="code" required inputmode="numeric" autocomplete="one-time-code"
+            pattern="[0-9]{6,10}" maxlength="10" placeholder="Code from the email" aria-label="Code from the email">
+          <button type="submit" class="btn">Sign in</button>
+        </div>
+        <p><button type="button" class="btn btn-ghost btn-small" id="sync-back">Use a different email</button></p>
+      </form>
+    </section>`;
+}
+
+function wireSync(container, sync) {
+  const busy = (button, on) => {
+    button.disabled = on;
+    button.setAttribute('aria-busy', String(on));
+  };
+
+  if (sync.signedIn) {
+    container.querySelector('#sync-now').addEventListener('click', (e) => {
+      busy(e.currentTarget, true);
+      // The page redraws itself when a sync finishes (see app.js); this just reports the result.
+      syncNow().then(
+        () => toast('Progress synced.'),
+        (err) => toast(err.message)
+      );
+    });
+    container.querySelector('#sign-out').addEventListener('click', () => {
+      if (!confirm('Sign out on this device? Your progress stays on this device and in your account.')) return;
+      signOut();
+      toast('Signed out.');
+    });
+    return;
+  }
+
+  const emailForm = container.querySelector('#sync-email');
+  const codeForm = container.querySelector('#sync-code');
+  let email = '';
+
+  emailForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const button = emailForm.querySelector('button');
+    email = emailForm.email.value.trim();
+    busy(button, true);
+    try {
+      await sendCode(email);
+      container.querySelector('#sync-sent').innerHTML = `We sent an email to <strong>${esc(email)}</strong>. Open it in this browser
+        and click the sign-in link. If the email has a code, you can type it here instead. It can take a minute; check your spam folder too.`;
+      emailForm.hidden = true;
+      codeForm.hidden = false;
+      codeForm.code.focus();
+    } catch (err) {
+      alert(err.message);
+    }
+    busy(button, false);
+  });
+
+  codeForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const button = codeForm.querySelector('button[type=submit]');
+    busy(button, true);
+    try {
+      await verifyCode(email, codeForm.code.value.replace(/\s/g, ''));
+      toast('Signed in. Your progress now syncs.');
+    } catch (err) {
+      alert(err.status === 403 || err.status === 400 ? 'That code is wrong or has expired. Check it, or ask for a new one.' : err.message);
+      busy(button, false);
+    }
+  });
+
+  container.querySelector('#sync-back').addEventListener('click', () => {
+    codeForm.hidden = true;
+    codeForm.code.value = '';
+    emailForm.hidden = false;
+    emailForm.email.focus();
   });
 }
 

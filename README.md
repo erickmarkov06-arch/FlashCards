@@ -6,12 +6,15 @@ decks from any device, by hand or by giving their notes to Claude Code.
 
 - Works on phones, tablets and computers, and can be **installed like an app**
 - **Works offline** after the first visit
-- Progress is saved **on your own device**. No accounts, no sign-up.
+- Progress is saved **on your own device**. No account needed; you can **optionally sign in** to
+  sync progress between your devices
 - Hosted for free on **GitHub Pages**
 
-> **No API key, server, database or paid service is needed.** The site is just static files.
+> **No server or paid service is needed.** The site is just static files.
 > Claude Code is only an optional helper for *writing* decks on a contributor's own computer.
-> The website itself never talks to any AI or any server except GitHub Pages.
+> The website never talks to any AI. The only other service it can use is an optional, free
+> [Supabase](https://supabase.com) database for syncing progress between devices, and that's off
+> until you set it up ([section 10](#10-where-progress-is-stored-and-exportimport)).
 
 ---
 
@@ -136,11 +139,14 @@ and updates the live site.
 │   ├── app.js               starts the app, page routing, theme toggle
 │   ├── data.js              loads decks/index.json and deck files
 │   ├── store.js             saves progress in localStorage, export/import
+│   ├── sync.js              optional: sign in and sync progress between devices
+│   ├── config.js            Supabase details for sync (empty = sync switched off)
 │   ├── utils.js             helpers (answer matching, dates, icons…)
 │   ├── flipcard.js          the flippable, swipeable card
 │   └── views/               one file per page: home, deck, flashcards, quiz,
 │                            write, match, review (Learn), stats
 ├── icons/                   app icons
+├── supabase/schema.sql      database setup for the optional progress sync
 ├── decks/                   ← ALL STUDY CONTENT LIVES HERE
 │   ├── _template.json       copy this to start a new deck
 │   ├── index.json           generated automatically, don't edit
@@ -375,7 +381,8 @@ Once opened online, every deck is saved for offline use. New decks download next
 ## 10. Where progress is stored, and export/import
 
 - Progress (Leitner boxes, right/wrong counts, streaks, best Match times) is stored in your browser's
-  **localStorage**. It stays **on that device, in that browser**, and is never uploaded anywhere.
+  **localStorage**. It stays **on that device, in that browser**, and is only uploaded if you sign in
+  to sync (see below).
 - Different devices or browsers each have their own progress. On iPhone, the **home-screen app and
   Safari have separate storage** too.
 - Clearing your browser's site data, or uninstalling the app, deletes the progress. Safari may also delete
@@ -385,7 +392,42 @@ Once opened online, every deck is saved for offline use. New decks download next
 - **Export progress** downloads a file like `studydeck-progress-2026-10-18.json`.
 - **Import progress** on another device (or after clearing data) loads that file. Importing **merges**:
   for each card the most recently studied record wins, and nothing that's already there is lost.
-- **Reset everything** deletes all progress on this device (it asks first).
+- **Reset everything** deletes all progress on this device (it asks first). When you're signed in to
+  sync, it deletes it on all your devices.
+
+### Syncing progress (optional)
+
+If the site owner sets it up, the Stats page shows **Sync across devices**. You type your email and
+click the sign-in link you're emailed (or type the code, if the email has one), and from then on your
+progress is the same on every device where you sign in. There's no password. Progress already on a device is merged in, not replaced. Studying
+offline is fine: it syncs when you're back online.
+
+It uses [Supabase](https://supabase.com) (a hosted database with a free tier). The site stays on GitHub
+Pages; the browser talks to Supabase directly. **To switch it on (one time, about 10 minutes):**
+
+1. Create a free account and a new project at [supabase.com](https://supabase.com).
+2. In the project, open **SQL Editor → New query**, paste everything from
+   [`supabase/schema.sql`](supabase/schema.sql) and press **Run**. This makes the `progress` table and
+   the rules that let each person see only their own progress.
+3. Tell Supabase where sign-in links should lead: **Authentication → URL Configuration**. Set
+   **Site URL** to your site's address (e.g. `https://<your-username>.github.io/<repo-name>/`) and add
+   both that address and `http://localhost:8000/**` under **Redirect URLs**.
+4. **Authentication → Sign In / Providers → Email**: make sure Email is enabled.
+   Optional, once you have your own email sender (see below): in **Authentication → Emails → Templates**,
+   add `Your code is {{ .Token }}` to the **Magic link** and **Confirm signup** templates. Then people
+   can type the code instead of clicking the link, which is easier in the installed phone app (links
+   open in the browser, which has its own separate sign-in).
+5. **Project Settings → API**: copy the **Project URL** and the **anon / publishable** key into
+   [`js/config.js`](js/config.js), then commit and push.
+
+The anon key is meant to be public. The database rules (row level security) are what keep each
+person's progress private. **Never** put the `service_role` / secret key in the site.
+
+**Sending lots of sign-in emails:** Supabase's built-in email is only for testing and sends just a few
+emails per hour. Before sharing the site with a class, add your own email provider under
+**Authentication → Emails → SMTP Settings** (services like Resend or Brevo have free plans).
+
+To switch sync off again, empty the two values in `js/config.js`. Progress already on devices is kept.
 
 ---
 

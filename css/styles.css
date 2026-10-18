@@ -542,6 +542,10 @@ main {
   outline: 2px solid color-mix(in srgb, var(--accent) 25%, transparent);
   outline-offset: 0;
 }
+.sync-form .input {
+  flex: 1 1 220px;
+  width: auto;
+}
 .search-box {
   position: relative;
 }
