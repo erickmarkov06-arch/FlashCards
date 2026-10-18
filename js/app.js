@@ -14,7 +14,7 @@
 import { icons, esc, toast } from './utils.js';
 import { setSetting, progressByDeck } from './store.js';
 import { loadIndex } from './data.js';
-import { startSync, onSyncChange, finishSignInFromLink, syncStatus } from './sync.js';
+import { startSync, onSyncChange, finishSignInFromLink, syncStatus, syncEnabled } from './sync.js';
 
 import * as home from './views/home.js';
 import * as deck from './views/deck.js';
@@ -26,6 +26,7 @@ import * as review from './views/review.js';
 import * as stats from './views/stats.js';
 import * as leaderboard from './views/leaderboard.js';
 import * as mydecks from './views/mydecks.js';
+import * as welcome from './views/welcome.js';
 
 const routes = { '': home, mydecks, deck, flashcards, quiz, write, match, review, stats, leaderboard };
 
@@ -46,9 +47,26 @@ function parseHash() {
   };
 }
 
+/**
+ * Everyone signs in and picks a username before using the app (when accounts are set up in
+ * config.js). The sign-in is saved on the device, so this only happens once per device.
+ * While the username hasn't been fetched yet (e.g. offline), the app is let through.
+ * Returns the welcome step to show: 'sign-in', 'username', or '' for none.
+ */
+function welcomeStep() {
+  if (!syncEnabled) return '';
+  const s = syncStatus();
+  if (!s.signedIn) return 'sign-in';
+  if (s.profileLoaded && !s.username) return 'username';
+  return '';
+}
+let gate = ''; // the welcome step on screen ('sign-in' or 'username'), or '' once into the app
+
 async function router() {
   const route = parseHash();
-  const page = routes[route.view] || null;
+  gate = welcomeStep();
+  document.body.classList.toggle('gated', Boolean(gate));
+  const page = gate ? welcome : routes[route.view] || null;
   const thisRender = ++renderCount;
 
   if (cleanup) {
@@ -174,13 +192,16 @@ const REDRAW_ON_SYNC = new Set(['', 'mydecks', 'deck']);
 function updateAccountChip() {
   const chip = document.getElementById('account-chip');
   const { signedIn, username } = syncStatus();
-  chip.hidden = !signedIn;
+  chip.hidden = !signedIn || !username;
   chip.textContent = username ? `@${username}` : 'Choose a username';
   chip.setAttribute('aria-label', username ? `Signed in as ${username}` : 'Choose a username');
 }
 
 onSyncChange((changed) => {
   updateAccountChip();
+  // Signed in, signed out, or picked a username: move between the welcome steps and the app.
+  if (welcomeStep() !== gate) return router();
+  if (gate) return;
   const { view } = parseHash();
   // The Stats page also shows sign-in and "last synced", so it is redrawn after every sync.
   // Study sessions are never interrupted; they read the latest progress as you go.

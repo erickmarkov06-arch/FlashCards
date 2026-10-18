@@ -6,8 +6,9 @@ decks from any device, by hand or by giving their notes to Claude Code.
 
 - Works on phones, tablets and computers, and can be **installed like an app**
 - **Works offline** after the first visit
-- Progress is saved **on your own device**. No account needed; you can **optionally sign in** to
-  sync progress between your devices
+- **Accounts** with a username: sign in once per device with an email code (no password), and your
+  progress follows you between devices. (Only when accounts are set up in `js/config.js`; without
+  them, the site works with no sign-in and progress stays on each device.)
 - Hosted for free on **GitHub Pages**
 
 > **No server or paid service is needed.** The site is just static files.
@@ -50,7 +51,7 @@ decks from any device, by hand or by giving their notes to Claude Code.
 | **Match** | Pair terms with definitions against the clock by tapping or dragging. Your best time is saved. |
 | **Stats** | Streaks, cards mastered, Leitner boxes, a 12-week activity chart, per-deck progress, and **export/import** of your progress. |
 | **My decks** tab | Press **Add to My decks** on any deck to keep it in your own My decks tab. Syncs when you're signed in. |
-| **Accounts** (optional) | Sign in with an email code to sync progress, pick a **username**, and optionally appear on the **leaderboard** (answers this week, streak, cards mastered). Opt-in, signed-in users only. |
+| **Accounts** | A welcome screen asks for your email, the emailed code and a **username** the first time you open the site on a device; after that the device remembers you. Progress syncs between devices, and you can choose to appear on the **leaderboard** (answers this week, streak, cards mastered). |
 | **Read aloud** | For language decks: a speaker button on each card, and a "Read aloud" switch that reads cards automatically, using the device's own voices. |
 | **Dark mode** | Follows your device. The sun/moon button switches it, and your choice is remembered. |
 | **Offline / installable** | A Progressive Web App (PWA): add it to your home screen and it works without internet. |
