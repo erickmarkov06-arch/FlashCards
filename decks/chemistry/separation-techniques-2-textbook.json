@@ -1,0 +1,483 @@
+{
+  "title": "Separation Techniques 2: Textbook",
+  "subject": "Chemistry",
+  "description": "Textbook questions on mixtures vs compounds, purity, solubility, filtration, crystallisation, distillation and chromatography.",
+  "author": "L.M.",
+  "tags": [
+    "year-8",
+    "separation",
+    "textbook"
+  ],
+  "cards": [
+    {
+      "front": "In a MIXTURE of iron and sulfur, what happens to the properties of each substance?",
+      "back": "They keep their own properties\n\n(In a mixture, each substance keeps its own properties. You can still see yellow sulfur and shiny grey iron, and the iron is still magnetic.)"
+    },
+    {
+      "front": "How do the AMOUNTS of substances differ in a mixture and in a compound?",
+      "back": "In a mixture you can change the amounts; in a compound the relative amounts are fixed\n\n(You can add more sand or less salt to a mixture. But a compound always has the same ratio, e.g. water is always H₂O.)"
+    },
+    {
+      "front": "How would you split iron sulfide (a compound) back into iron and sulfur?",
+      "back": "You need a chemical reaction\n\n(The atoms are chemically joined, so physical methods like magnets won't work. Only a chemical reaction can split a compound.)"
+    },
+    {
+      "front": "Shilpa heats stearic acid. Sample X stays at 70 °C until it's all melted. Sample Y melts between 70 °C and 80 °C. Which is pure?",
+      "back": "Sample X, because it has a sharp melting point\n\n(A pure substance melts at one exact temperature [flat line]. Y melts over a range, so it's impure.)"
+    },
+    {
+      "front": "What does the word PURE mean in chemistry?",
+      "back": "It has no other substances mixed with it\n\n(Pure means only one substance. 'Pure' orange juice is actually a mixture in chemistry terms!)"
+    },
+    {
+      "front": "What does a solution look like?",
+      "back": "All parts of the mixture are the same and you can't see the separate substances\n\n(A solution is a liquid mixed with a solid or gas, and it looks the same all the way through.)"
+    },
+    {
+      "front": "How do we know a solute hasn't disappeared when it dissolves?",
+      "back": "The mass of the solution = mass of solute + mass of solvent\n\n(Mass is conserved. Also some solutions are coloured [copper sulfate is blue], showing the solute is still there.)"
+    },
+    {
+      "front": "Sarah dissolves 3 g of copper sulfate in 100 g of water. What is the mass of the solution?",
+      "back": "103 g\n\n(Just add them: 100 g + 3 g = 103 g.)",
+      "hint": "Nothing is lost when it dissolves."
+    },
+    {
+      "front": "Using the particle model, what happens when sugar dissolves in water?",
+      "back": "Water particles surround each sugar particle, and they mix randomly\n\n(Solvent particles surround the solute particles. Dissolving is NOT melting – a common exam mistake!)"
+    },
+    {
+      "front": "Nail varnish doesn't dissolve in water. What is nail-varnish remover mainly made of?",
+      "back": "Propanone\n\n(Water isn't the only solvent. Propanone and ethanol are solvents too.)"
+    },
+    {
+      "front": "What makes fizzy drinks fizzy?",
+      "back": "Dissolved carbon dioxide gas\n\n(Gases can dissolve too. When you open the bottle, the carbon dioxide leaves the solution.)"
+    },
+    {
+      "front": "What is the textbook's definition of SOLUBILITY?",
+      "back": "The mass of solute that dissolves in 100 g of water to make a saturated solution\n\n(Learn the '100 g of water' part – exams love it. Every substance has its own solubility.)"
+    },
+    {
+      "front": "At 20 °C, 202 g of sugar or 36 g of salt dissolves in 100 g of water. Which is more soluble?",
+      "back": "Sugar\n\n(The bigger the mass that dissolves in 100 g of water, the more soluble it is.)"
+    },
+    {
+      "front": "How can you tell a solution is saturated just by looking at it?",
+      "back": "There is undissolved solid at the bottom\n\n(Extra solute can't dissolve, so it just falls to the bottom.)"
+    },
+    {
+      "front": "Sugar's solubility goes from 202 g to 476 g between 20 °C and 100 °C. Salt only goes from 36 g to 39 g. What does this show?",
+      "back": "Most substances get more soluble when hotter, but by different amounts\n\n(Both increase, but sugar's solubility increases far more than salt's.)"
+    },
+    {
+      "front": "Cerium(III) sulfate: 21 g dissolves at 0 °C but only 4 g at 60 °C. What's unusual?",
+      "back": "It gets LESS soluble as temperature rises\n\n(Most solids get more soluble when hot, but not all! This is the exception from the end-of-chapter question.)"
+    },
+    {
+      "front": "Which two substances does the textbook give as INSOLUBLE in water?",
+      "back": "Chalk and sand\n\n(Chalk [calcium carbonate] and sand [silicon dioxide] don't dissolve in water.)"
+    },
+    {
+      "front": "Naomi adds 100 g of four compounds to 100 g of water, then filters. Which is MOST soluble? (Residues: calcium chloride 25 g, calcium hydrogen carbonate 84 g, calcium bromide 0 g, calcium iodide 33 g)",
+      "back": "Calcium bromide\n\n(Least residue left = most dissolved. Calcium bromide left 0 g, so all 100 g dissolved. Calcium hydrogen carbonate [84 g left] is the least soluble.)",
+      "hint": "Less left in the filter paper = more dissolved."
+    },
+    {
+      "front": "Filtration separates a liquid from an insoluble solid. What else can it separate?",
+      "back": "A solution from a solid that is mixed with it but not dissolved\n\n(E.g. salt solution passes through the paper, while undissolved sand stays behind.)"
+    },
+    {
+      "front": "Martha filters a mixture of glitter and water. Name the filtrate and the residue.",
+      "back": "Filtrate = water, residue = glitter\n\n(Water passes through [filtrate]; glitter is too big for the holes, so it stays behind [residue].)"
+    },
+    {
+      "front": "Name some uses of filtration from the textbook.",
+      "back": "Making coffee, oil filters in cars, sand filters for drinking water, the LifeStraw\n\n(Filtration can NOT get salt from seawater: the salt is dissolved, so you need evaporation.)"
+    },
+    {
+      "front": "When making copper sulfate crystals, how do you get BIGGER crystals?",
+      "back": "Let the water evaporate slowly\n\n(The more slowly the water evaporates, the bigger the crystals.)"
+    },
+    {
+      "front": "What is DISTILLATION?",
+      "back": "Using evaporation and condensation to get the solvent from a solution\n\n(Distillation collects the SOLVENT [e.g. pure water]. Evaporation keeps the SOLUTE [e.g. salt].)"
+    },
+    {
+      "front": "In distillation apparatus, what does the CONDENSER do?",
+      "back": "Cools the steam so it turns back into liquid water\n\n(Cold water flows around the condenser, cooling the steam so it condenses and drips into the beaker.)"
+    },
+    {
+      "front": "What is the correct order for distilling salty water?",
+      "back": "Water boils → steam leaves → steam cools in condenser → condenses → drips into beaker\n\n(Heat, boil, steam travels into the condenser, cools, condenses, pure water drips into the beaker. The salt stays in the flask.)"
+    },
+    {
+      "front": "You want propanone (the solvent) back out of nail-varnish remover. Which method?",
+      "back": "Distillation, because you want the solvent\n\n(Rule: want the SOLVENT [liquid] → distillation. Want the SOLUTE [solid crystals] → evaporation.)"
+    },
+    {
+      "front": "Chromatography only works if the substances in the mixture are…",
+      "back": "All soluble in the same solvent\n\n(The solvent has to dissolve the dyes to carry them up the paper.)"
+    },
+    {
+      "front": "Why do some dyes travel further up the chromatography paper than others?",
+      "back": "They are more soluble, or stick less strongly to the paper\n\n(More soluble dyes get carried further by the solvent; dyes that stick strongly to the paper stay lower.)"
+    },
+    {
+      "front": "Name some uses of chromatography from the textbook.",
+      "back": "Comparing vitamin A in types of cassava, separating pigments in spinach, dyes in sweet coatings, detectives testing for explosives"
+    },
+    {
+      "front": "Milly dissolves different masses of salt in 100 g of water to see if a golf ball floats. What is the INDEPENDENT variable?",
+      "back": "The mass of salt\n\n(She changes the mass of salt [independent]. She observes whether the ball floats [dependent]. She keeps the mass of water and the golf ball the same [control].)"
+    },
+    {
+      "front": "The ball first floats when 20 g of salt is dissolved in 100 g of water. How much salt would she need for 200 g of water?",
+      "back": "40 g\n\n(Double the water, so double the salt to get the same concentration: 2 × 20 g = 40 g.)",
+      "hint": "What happened to the water?"
+    }
+  ],
+  "questions": [
+    {
+      "question": "In a MIXTURE of iron and sulfur, what happens to the properties of each substance?",
+      "options": [
+        "They keep their own properties",
+        "They combine into brand-new properties",
+        "They lose all their properties",
+        "They swap properties with each other"
+      ],
+      "answerIndex": 0,
+      "explanation": "In a mixture, each substance keeps its own properties. You can still see yellow sulfur and shiny grey iron, and the iron is still magnetic."
+    },
+    {
+      "question": "Which statement about the AMOUNTS of substances is true?",
+      "options": [
+        "In a compound you can change the amounts; in a mixture you can't",
+        "In a mixture you can change the amounts; in a compound the relative amounts are fixed",
+        "You can change the amounts in both",
+        "You can't change the amounts in either"
+      ],
+      "answerIndex": 1,
+      "explanation": "You can add more sand or less salt to a mixture. But a compound always has the same ratio, e.g. water is always H₂O."
+    },
+    {
+      "question": "How would you split iron sulfide (a compound) back into iron and sulfur?",
+      "options": [
+        "Use a magnet",
+        "Filter it",
+        "You need a chemical reaction",
+        "Dissolve it in water"
+      ],
+      "answerIndex": 2,
+      "explanation": "The atoms are chemically joined, so physical methods like magnets won't work. Only a chemical reaction can split a compound."
+    },
+    {
+      "question": "Shilpa heats stearic acid. Sample X stays at 70 °C until it's all melted. Sample Y melts between 70 °C and 80 °C. Which is pure?",
+      "options": [
+        "Sample X, because it has a sharp melting point",
+        "Sample Y, because it melts at a higher temperature",
+        "Both are pure",
+        "Neither is pure"
+      ],
+      "answerIndex": 0,
+      "explanation": "A pure substance melts at one exact temperature (flat line). Y melts over a range, so it's impure."
+    },
+    {
+      "question": "What does the word PURE mean in chemistry?",
+      "options": [
+        "It is natural",
+        "It is clean and safe to eat",
+        "It has no other substances mixed with it",
+        "It is a liquid"
+      ],
+      "answerIndex": 2,
+      "explanation": "Pure means only one substance. 'Pure' orange juice is actually a mixture in chemistry terms!"
+    },
+    {
+      "question": "Which is TRUE about a solution?",
+      "options": [
+        "You can see the separate substances",
+        "All parts of the mixture are the same and you can't see the separate substances",
+        "The solute disappears completely",
+        "It is always colourless"
+      ],
+      "answerIndex": 1,
+      "explanation": "A solution is a liquid mixed with a solid or gas, and it looks the same all the way through."
+    },
+    {
+      "question": "How do we know a solute hasn't disappeared when it dissolves?",
+      "options": [
+        "The mass of the solution = mass of solute + mass of solvent",
+        "The solution gets lighter",
+        "The solution always turns cloudy",
+        "We don't – it really does disappear"
+      ],
+      "answerIndex": 0,
+      "explanation": "Mass is conserved. Also some solutions are coloured (copper sulfate is blue), showing the solute is still there."
+    },
+    {
+      "question": "Sarah dissolves 3 g of copper sulfate in 100 g of water. What is the mass of the solution?",
+      "options": [
+        "97 g",
+        "100 g",
+        "103 g",
+        "300 g"
+      ],
+      "answerIndex": 2,
+      "explanation": "Just add them: 100 g + 3 g = 103 g."
+    },
+    {
+      "question": "Using the particle model, what happens when sugar dissolves in water?",
+      "options": [
+        "Sugar particles turn into water particles",
+        "Water particles surround each sugar particle, and they mix randomly",
+        "Sugar particles melt",
+        "Sugar particles sink to the bottom"
+      ],
+      "answerIndex": 1,
+      "explanation": "Solvent particles surround the solute particles. Dissolving is NOT melting – a common exam mistake!"
+    },
+    {
+      "question": "Nail varnish doesn't dissolve in water. What is nail-varnish remover mainly made of?",
+      "options": [
+        "Salt water",
+        "Propanone",
+        "Oil",
+        "Sugar"
+      ],
+      "answerIndex": 1,
+      "explanation": "Water isn't the only solvent. Propanone and ethanol are solvents too."
+    },
+    {
+      "question": "What makes fizzy drinks fizzy?",
+      "options": [
+        "Dissolved oxygen",
+        "Dissolved carbon dioxide gas",
+        "Undissolved sugar",
+        "Air bubbles from shaking"
+      ],
+      "answerIndex": 1,
+      "explanation": "Gases can dissolve too. When you open the bottle, the carbon dioxide leaves the solution."
+    },
+    {
+      "question": "What is the textbook's definition of SOLUBILITY?",
+      "options": [
+        "How fast something dissolves",
+        "The mass of solute that dissolves in 100 g of water to make a saturated solution",
+        "How hot the water has to be",
+        "Whether it floats or sinks"
+      ],
+      "answerIndex": 1,
+      "explanation": "Learn the '100 g of water' part – exams love it. Every substance has its own solubility."
+    },
+    {
+      "question": "At 20 °C, 202 g of sugar or 36 g of salt dissolves in 100 g of water. Which is more soluble?",
+      "options": [
+        "Salt",
+        "Sugar",
+        "They're the same",
+        "You can't tell"
+      ],
+      "answerIndex": 1,
+      "explanation": "The bigger the mass that dissolves in 100 g of water, the more soluble it is."
+    },
+    {
+      "question": "How can you tell a solution is saturated just by looking at it?",
+      "options": [
+        "It changes colour",
+        "There is undissolved solid at the bottom",
+        "It starts bubbling",
+        "It goes solid"
+      ],
+      "answerIndex": 1,
+      "explanation": "Extra solute can't dissolve, so it just falls to the bottom."
+    },
+    {
+      "question": "Sugar's solubility goes from 202 g to 476 g between 20 °C and 100 °C. Salt only goes from 36 g to 39 g. What does this show?",
+      "options": [
+        "Temperature doesn't affect solubility",
+        "Most substances get more soluble when hotter, but by different amounts",
+        "Salt gets less soluble when hotter",
+        "Sugar is insoluble"
+      ],
+      "answerIndex": 1,
+      "explanation": "Both increase, but sugar's solubility increases far more than salt's."
+    },
+    {
+      "question": "Cerium(III) sulfate: 21 g dissolves at 0 °C but only 4 g at 60 °C. What's unusual?",
+      "options": [
+        "It gets LESS soluble as temperature rises",
+        "It's insoluble",
+        "It gets more soluble as temperature rises",
+        "Nothing, that's normal"
+      ],
+      "answerIndex": 0,
+      "explanation": "Most solids get more soluble when hot, but not all! This is the exception from the end-of-chapter question."
+    },
+    {
+      "question": "Which two substances does the textbook give as INSOLUBLE in water?",
+      "options": [
+        "Salt and sugar",
+        "Chalk and sand",
+        "Coffee and copper sulfate",
+        "Salt and chalk"
+      ],
+      "answerIndex": 1,
+      "explanation": "Chalk (calcium carbonate) and sand (silicon dioxide) don't dissolve in water."
+    },
+    {
+      "question": "Naomi adds 100 g of four compounds to 100 g of water, then filters. Which is MOST soluble? (Residues: calcium chloride 25 g, calcium hydrogen carbonate 84 g, calcium bromide 0 g, calcium iodide 33 g)",
+      "options": [
+        "Calcium hydrogen carbonate",
+        "Calcium iodide",
+        "Calcium bromide",
+        "Calcium chloride"
+      ],
+      "answerIndex": 2,
+      "explanation": "Least residue left = most dissolved. Calcium bromide left 0 g, so all 100 g dissolved. Calcium hydrogen carbonate (84 g left) is the least soluble."
+    },
+    {
+      "question": "Filtration separates a liquid from an insoluble solid. What else can it separate?",
+      "options": [
+        "A solute from its solution",
+        "A solution from a solid that is mixed with it but not dissolved",
+        "Two dyes from each other",
+        "Two liquids"
+      ],
+      "answerIndex": 1,
+      "explanation": "E.g. salt solution passes through the paper, while undissolved sand stays behind."
+    },
+    {
+      "question": "Martha filters a mixture of glitter and water. Name the filtrate and the residue.",
+      "options": [
+        "Filtrate = glitter, residue = water",
+        "Filtrate = water, residue = glitter",
+        "Both are glitter",
+        "Both are water"
+      ],
+      "answerIndex": 1,
+      "explanation": "Water passes through (filtrate); glitter is too big for the holes, so it stays behind (residue)."
+    },
+    {
+      "question": "Which is NOT a use of filtration from the textbook?",
+      "options": [
+        "Oil filters in cars",
+        "Making coffee",
+        "Sand filters to clean drinking water",
+        "Getting salt from seawater"
+      ],
+      "answerIndex": 3,
+      "explanation": "Salt is dissolved, so you need evaporation. Filtration uses include coffee, car oil filters, sand filters and the LifeStraw."
+    },
+    {
+      "question": "When making copper sulfate crystals, how do you get BIGGER crystals?",
+      "options": [
+        "Heat it as fast as possible",
+        "Let the water evaporate slowly",
+        "Add more water",
+        "Filter it twice"
+      ],
+      "answerIndex": 1,
+      "explanation": "The more slowly the water evaporates, the bigger the crystals."
+    },
+    {
+      "question": "What is DISTILLATION?",
+      "options": [
+        "Using a magnet to separate metals",
+        "Using evaporation and condensation to get the solvent from a solution",
+        "Using filter paper to remove solids",
+        "Separating colours on paper"
+      ],
+      "answerIndex": 1,
+      "explanation": "Distillation collects the SOLVENT (e.g. pure water). Evaporation keeps the SOLUTE (e.g. salt)."
+    },
+    {
+      "question": "In distillation apparatus, what does the CONDENSER do?",
+      "options": [
+        "Heats the solution",
+        "Cools the steam so it turns back into liquid water",
+        "Measures the temperature",
+        "Filters out the salt"
+      ],
+      "answerIndex": 1,
+      "explanation": "Cold water flows around the condenser, cooling the steam so it condenses and drips into the beaker."
+    },
+    {
+      "question": "What is the correct order for distilling salty water?",
+      "options": [
+        "Steam condenses → water boils → drips into beaker → steam cools",
+        "Water boils → steam leaves → steam cools in condenser → condenses → drips into beaker",
+        "Drips into beaker → water boils → steam cools",
+        "Steam cools → water boils → condenses"
+      ],
+      "answerIndex": 1,
+      "explanation": "Heat, boil, steam travels into the condenser, cools, condenses, pure water drips into the beaker. The salt stays in the flask."
+    },
+    {
+      "question": "You want propanone (the solvent) back out of nail-varnish remover. Which method?",
+      "options": [
+        "Evaporation, because you want the solid",
+        "Distillation, because you want the solvent",
+        "Filtration",
+        "Magnet"
+      ],
+      "answerIndex": 1,
+      "explanation": "Rule: want the SOLVENT (liquid) → distillation. Want the SOLUTE (solid crystals) → evaporation."
+    },
+    {
+      "question": "Chromatography only works if the substances in the mixture are…",
+      "options": [
+        "All magnetic",
+        "All soluble in the same solvent",
+        "All insoluble",
+        "All the same colour"
+      ],
+      "answerIndex": 1,
+      "explanation": "The solvent has to dissolve the dyes to carry them up the paper."
+    },
+    {
+      "question": "Why do some dyes travel further up the chromatography paper than others?",
+      "options": [
+        "They are heavier",
+        "They are more soluble, or stick less strongly to the paper",
+        "They were spotted higher up",
+        "They are darker colours"
+      ],
+      "answerIndex": 1,
+      "explanation": "More soluble dyes get carried further by the solvent; dyes that stick strongly to the paper stay lower."
+    },
+    {
+      "question": "Which of these is a real use of chromatography from the textbook?",
+      "options": [
+        "Comparing vitamin A in different types of cassava",
+        "Removing dirt from car oil",
+        "Getting drinking water from the sea",
+        "Making salt crystals"
+      ],
+      "answerIndex": 0,
+      "explanation": "Other uses: separating pigments in spinach, dyes in sweet coatings, and detectives testing for explosives."
+    },
+    {
+      "question": "Milly dissolves different masses of salt in 100 g of water to see if a golf ball floats. What is the INDEPENDENT variable?",
+      "options": [
+        "Whether the ball floats",
+        "The mass of salt",
+        "The volume of water",
+        "The size of the golf ball"
+      ],
+      "answerIndex": 1,
+      "explanation": "She changes the mass of salt (independent). She observes whether the ball floats (dependent). She keeps the mass of water and the golf ball the same (control)."
+    },
+    {
+      "question": "The ball first floats when 20 g of salt is dissolved in 100 g of water. How much salt would she need for 200 g of water?",
+      "options": [
+        "10 g",
+        "20 g",
+        "40 g",
+        "200 g"
+      ],
+      "answerIndex": 2,
+      "explanation": "Double the water, so double the salt to get the same concentration: 2 × 20 g = 40 g."
+    }
+  ]
+}

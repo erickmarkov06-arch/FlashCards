@@ -1,0 +1,500 @@
+{
+  "title": "Separation Techniques 1: Revision",
+  "subject": "Chemistry",
+  "description": "Elements, compounds and mixtures, solutions, fair tests, and separating mixtures by magnet, filtering, crystallising and chromatography.",
+  "author": "L.M.",
+  "tags": [
+    "year-8",
+    "separation",
+    "class-notes"
+  ],
+  "cards": [
+    {
+      "front": "What is an atom?",
+      "back": "The building block of all matter\n\n(Atoms are the tiny building blocks that everything is made from.)"
+    },
+    {
+      "front": "What is an element?",
+      "back": "A substance containing only one type of atom\n\n(An element contains just ONE type of atom, e.g. iron, oxygen, sulfur.)",
+      "hint": "Think: how many types of atom?"
+    },
+    {
+      "front": "Define a compound.",
+      "back": "Two or more different elements chemically bonded together\n\n(Compounds = different elements CHEMICALLY BONDED. Water [H₂O] and iron sulfide are compounds.)"
+    },
+    {
+      "front": "What is a mixture?",
+      "back": "Two or more different substances NOT chemically bonded\n\n(In a mixture the substances are just mixed, not bonded, so they can be separated by physical methods [sieve, magnet, filter…].)"
+    },
+    {
+      "front": "A particle diagram shows lots of identical molecules, each made of one big and one small atom joined together. What is it?",
+      "back": "Compound\n\n(Different atoms joined together, and every molecule is the same = compound.)"
+    },
+    {
+      "front": "A particle diagram shows two different kinds of molecule floating around, not joined to each other. What is it?",
+      "back": "Mixture\n\n(More than one kind of particle that are NOT joined to each other = mixture.)",
+      "hint": "Are the different types joined, or just next to each other?"
+    },
+    {
+      "front": "How does a PURE substance behave when it melts?",
+      "back": "It melts at one exact temperature\n\n(A pure substance has a sharp melting point: one temperature, shown as a flat line on the graph.)"
+    },
+    {
+      "front": "How can you tell a substance is IMPURE from its melting graph?",
+      "back": "It melts over a range of temperatures (sloped line)\n\n(Impure substances melt over a RANGE of temperatures, so the 'flat' part slopes upwards.)"
+    },
+    {
+      "front": "What is a solute?",
+      "back": "The substance that dissolves in a liquid to form a solution\n\n(Solute = the thing that dissolves [e.g. salt].)",
+      "hint": "Salt in salty water is the…"
+    },
+    {
+      "front": "What is a solvent?",
+      "back": "The liquid that the solute dissolves into\n\n(Solvent = the liquid doing the dissolving [e.g. water].)"
+    },
+    {
+      "front": "Write a definition for a solution.",
+      "back": "The mixture formed when a solute dissolves in a solvent\n\n(Solute + solvent = solution. Salt + water = salt solution.)"
+    },
+    {
+      "front": "What does SOLUBLE mean?",
+      "back": "It will dissolve\n\n(Soluble = will dissolve. INsoluble = will NOT dissolve [sand is insoluble].)"
+    },
+    {
+      "front": "What do we call a solution that can't take any more solute?",
+      "back": "Saturated\n\n(Saturated = no more solute will dissolve.)"
+    },
+    {
+      "front": "What happens to the solubility of solids as temperature goes up?",
+      "back": "It increases\n\n(Hotter water dissolves more solid. In your experiment, hot water dissolved 12 scoops of salt and cold dissolved 9.)"
+    },
+    {
+      "front": "In the 'temperature vs salt' experiment, what was the INDEPENDENT variable?",
+      "back": "The temperature of the water\n\n(Independent = the one thing WE change. Here that's water temperature.)"
+    },
+    {
+      "front": "In the same experiment, what was the DEPENDENT variable?",
+      "back": "How much salt dissolved\n\n(Dependent = what we measure or find out: how much salt dissolved.)"
+    },
+    {
+      "front": "In the same experiment, what was a CONTROL variable?",
+      "back": "Volume of water\n\n(Control variables are kept the same so the test is fair, e.g. same volume of water.)"
+    },
+    {
+      "front": "How do you make sure a practical is a fair test?",
+      "back": "Only change one thing and keep everything else the same\n\n(Change only the independent variable; keep the control variables the same.)"
+    },
+    {
+      "front": "Best way to separate iron filings from flour?",
+      "back": "Magnet\n\n(Iron is magnetic, flour isn't, so the iron is attracted to the magnet.)"
+    },
+    {
+      "front": "Best way to separate sand from water?",
+      "back": "Filtration (funnel + filter paper)\n\n(Filtration separates an INSOLUBLE solid [sand] from a liquid.)"
+    },
+    {
+      "front": "When you filter a mixture, what gets stuck in the filter paper?",
+      "back": "The residue\n\n(Residue = solid left behind in the paper. Filtrate = liquid that passes through.)",
+      "hint": "Filtrate goes through, ______ stays behind."
+    },
+    {
+      "front": "What does filter paper have in it to let liquid through?",
+      "back": "Tiny holes\n\n(Small particles pass through the tiny holes; bigger solid bits can't.)"
+    },
+    {
+      "front": "What is the correct order to get pure salt from rock salt?",
+      "back": "Crush → add water and stir → filter → evaporate\n\n(Crush, dissolve the salt in water, filter out the rock [residue], then evaporate the salt solution [filtrate] to get crystals.)"
+    },
+    {
+      "front": "What process would you use to get salt crystals out of seawater?",
+      "back": "Evaporation and crystallisation\n\n(Salt is dissolved, so filtering won't work. Heat to drive off the water, then let the salt crystallise.)"
+    },
+    {
+      "front": "When crystallising salt, why do you stop heating when about half the water has gone?",
+      "back": "So the crystals can form slowly – heating too fast spoils them\n\n(Leaving it to crystallise slowly gives proper crystals. Heating too fast breaks them down. Then pat dry with paper towel.)"
+    },
+    {
+      "front": "Liquid → gas is called… and gas → liquid is called…",
+      "back": "Evaporation; condensation\n\n(Evaporation = liquid to gas. Condensation = gas to liquid [like a cold window steaming up].)",
+      "hint": "These two are easy to swap round!"
+    },
+    {
+      "front": "What did we use chromatography to separate?",
+      "back": "The different dyes/pigments in inks\n\n(Paper chromatography separates the pigments in inks, dyes and food colourings.)"
+    },
+    {
+      "front": "Why do we draw the start line in PENCIL in chromatography?",
+      "back": "Pencil won't dissolve and run up the paper like ink would\n\n(Ink would dissolve in the water and spread, messing up the results. Pencil [graphite] stays put.)"
+    },
+    {
+      "front": "Why are the ink spots kept ABOVE the water level?",
+      "back": "So the ink doesn't just dissolve into the water in the beaker\n\n(If the spots sit under the water, the ink washes into the beaker instead of travelling up the paper.)"
+    },
+    {
+      "front": "On a chromatogram, mixture M has spots at the same heights as dyes 1, 4 and 5. What does this tell you?",
+      "back": "M contains dyes 1, 4 and 5\n\n(Spots that line up horizontally are the same dye. M has 3 spots, so it's a mixture of 3 dyes. [The paper is called a chromatogram.])"
+    },
+    {
+      "front": "How is iron sulfide different from a mixture of iron and sulfur?",
+      "back": "The mixture can be separated with a magnet; iron sulfide is chemically bonded, so it can't and it isn't magnetic\n\n(Mixture: yellow powder with black specks, iron can be pulled out with a magnet. Compound [after heating]: a dark lump, a new substance, chemically bonded and hard to separate.)"
+    },
+    {
+      "front": "What units do we use to measure mass?",
+      "back": "g or kg\n\n(Mass = grams [g] or kilograms [kg].)"
+    }
+  ],
+  "questions": [
+    {
+      "question": "What is an atom?",
+      "options": [
+        "The building block of all matter",
+        "Two elements chemically bonded",
+        "A mixture of substances",
+        "A liquid that dissolves things"
+      ],
+      "answerIndex": 0,
+      "explanation": "Atoms are the tiny building blocks that everything is made from."
+    },
+    {
+      "question": "What is an element?",
+      "options": [
+        "Two or more substances mixed together",
+        "A substance containing only one type of atom",
+        "Two or more elements chemically bonded",
+        "Any substance that dissolves in water"
+      ],
+      "answerIndex": 1,
+      "explanation": "An element contains just ONE type of atom, e.g. iron, oxygen, sulfur."
+    },
+    {
+      "question": "Define a compound.",
+      "options": [
+        "Two or more different elements chemically bonded together",
+        "Two or more substances NOT chemically bonded",
+        "A substance with one type of atom",
+        "A solid dissolved in a liquid"
+      ],
+      "answerIndex": 0,
+      "explanation": "Compounds = different elements CHEMICALLY BONDED. Water (H₂O) and iron sulfide are compounds."
+    },
+    {
+      "question": "What is a mixture?",
+      "options": [
+        "Different elements chemically bonded",
+        "Only one type of atom",
+        "Two or more different substances NOT chemically bonded",
+        "A substance that melts at one exact temperature"
+      ],
+      "answerIndex": 2,
+      "explanation": "In a mixture the substances are just mixed, not bonded, so they can be separated by physical methods (sieve, magnet, filter…)."
+    },
+    {
+      "question": "A particle diagram shows lots of identical molecules, each made of one big and one small atom joined together. What is it?",
+      "options": [
+        "Element",
+        "Mixture",
+        "Compound",
+        "Solution"
+      ],
+      "answerIndex": 2,
+      "explanation": "Different atoms joined together, and every molecule is the same = compound."
+    },
+    {
+      "question": "A particle diagram shows two different kinds of molecule floating around, not joined to each other. What is it?",
+      "options": [
+        "Element",
+        "Mixture",
+        "Compound",
+        "Pure substance"
+      ],
+      "answerIndex": 1,
+      "explanation": "More than one kind of particle that are NOT joined to each other = mixture."
+    },
+    {
+      "question": "How does a PURE substance behave when it melts?",
+      "options": [
+        "It melts over a range of temperatures",
+        "It melts at one exact temperature",
+        "It never melts",
+        "It melts and then dissolves"
+      ],
+      "answerIndex": 1,
+      "explanation": "A pure substance has a sharp melting point: one temperature, shown as a flat line on the graph."
+    },
+    {
+      "question": "How can you tell a substance is IMPURE from its melting graph?",
+      "options": [
+        "The line is completely flat",
+        "It melts over a range of temperatures (sloped line)",
+        "It goes down instead of up",
+        "There is no line at all"
+      ],
+      "answerIndex": 1,
+      "explanation": "Impure substances melt over a RANGE of temperatures, so the 'flat' part slopes upwards."
+    },
+    {
+      "question": "What is a solute?",
+      "options": [
+        "The liquid that does the dissolving",
+        "The substance that dissolves in a liquid to form a solution",
+        "The solid left in the filter paper",
+        "A solution that can't take any more"
+      ],
+      "answerIndex": 1,
+      "explanation": "Solute = the thing that dissolves (e.g. salt)."
+    },
+    {
+      "question": "What is a solvent?",
+      "options": [
+        "The liquid that the solute dissolves into",
+        "A substance that won't dissolve",
+        "The solid that dissolves",
+        "Paper with tiny holes"
+      ],
+      "answerIndex": 0,
+      "explanation": "Solvent = the liquid doing the dissolving (e.g. water)."
+    },
+    {
+      "question": "Write a definition for a solution.",
+      "options": [
+        "A compound made by heating",
+        "The mixture formed when a solute dissolves in a solvent",
+        "An insoluble solid in water",
+        "The answer to a question"
+      ],
+      "answerIndex": 1,
+      "explanation": "Solute + solvent = solution. Salt + water = salt solution."
+    },
+    {
+      "question": "What does SOLUBLE mean?",
+      "options": [
+        "It will dissolve",
+        "It will not dissolve",
+        "It is magnetic",
+        "It is a gas"
+      ],
+      "answerIndex": 0,
+      "explanation": "Soluble = will dissolve. INsoluble = will NOT dissolve (sand is insoluble)."
+    },
+    {
+      "question": "What do we call a solution that can't take any more solute?",
+      "options": [
+        "Insoluble",
+        "Filtrate",
+        "Saturated",
+        "Pure"
+      ],
+      "answerIndex": 2,
+      "explanation": "Saturated = no more solute will dissolve."
+    },
+    {
+      "question": "What happens to the solubility of solids as temperature goes up?",
+      "options": [
+        "It decreases",
+        "It stays the same",
+        "It increases",
+        "It drops to zero"
+      ],
+      "answerIndex": 2,
+      "explanation": "Hotter water dissolves more solid. In your experiment, hot water dissolved 12 scoops of salt and cold dissolved 9."
+    },
+    {
+      "question": "In the 'temperature vs salt' experiment, what was the INDEPENDENT variable?",
+      "options": [
+        "How much salt dissolved",
+        "The temperature of the water",
+        "The volume of water",
+        "The type of beaker"
+      ],
+      "answerIndex": 1,
+      "explanation": "Independent = the one thing WE change. Here that's water temperature."
+    },
+    {
+      "question": "In the same experiment, what was the DEPENDENT variable?",
+      "options": [
+        "How much salt dissolved",
+        "The temperature of the water",
+        "The volume of water",
+        "Safety glasses"
+      ],
+      "answerIndex": 0,
+      "explanation": "Dependent = what we measure or find out: how much salt dissolved."
+    },
+    {
+      "question": "Which was a CONTROL variable?",
+      "options": [
+        "Temperature of the water",
+        "Amount of salt dissolved",
+        "Volume of water",
+        "The prediction"
+      ],
+      "answerIndex": 2,
+      "explanation": "Control variables are kept the same so the test is fair, e.g. same volume of water."
+    },
+    {
+      "question": "How do you make sure a practical is a fair test?",
+      "options": [
+        "Change everything at once",
+        "Only change one thing and keep everything else the same",
+        "Do it as fast as possible",
+        "Use hot water every time"
+      ],
+      "answerIndex": 1,
+      "explanation": "Change only the independent variable; keep the control variables the same."
+    },
+    {
+      "question": "Best way to separate iron filings from flour?",
+      "options": [
+        "Filter paper",
+        "Sieve",
+        "Magnet",
+        "Evaporation"
+      ],
+      "answerIndex": 2,
+      "explanation": "Iron is magnetic, flour isn't, so the iron is attracted to the magnet."
+    },
+    {
+      "question": "Best way to separate sand from water?",
+      "options": [
+        "Magnet",
+        "Filtration (funnel + filter paper)",
+        "Chromatography",
+        "Crystallisation"
+      ],
+      "answerIndex": 1,
+      "explanation": "Filtration separates an INSOLUBLE solid (sand) from a liquid."
+    },
+    {
+      "question": "When you filter a mixture, what gets stuck in the filter paper?",
+      "options": [
+        "The filtrate",
+        "The residue",
+        "The solvent",
+        "The solution"
+      ],
+      "answerIndex": 1,
+      "explanation": "Residue = solid left behind in the paper. Filtrate = liquid that passes through."
+    },
+    {
+      "question": "What does filter paper have in it to let liquid through?",
+      "options": [
+        "Magnets",
+        "Tiny holes",
+        "Salt",
+        "Ink"
+      ],
+      "answerIndex": 1,
+      "explanation": "Small particles pass through the tiny holes; bigger solid bits can't."
+    },
+    {
+      "question": "What is the correct order to get pure salt from rock salt?",
+      "options": [
+        "Filter → crush → evaporate → dissolve",
+        "Crush → add water and stir → filter → evaporate",
+        "Evaporate → crush → filter → dissolve",
+        "Dissolve → evaporate → crush → filter"
+      ],
+      "answerIndex": 1,
+      "explanation": "Crush, dissolve the salt in water, filter out the rock (residue), then evaporate the salt solution (filtrate) to get crystals."
+    },
+    {
+      "question": "What process would you use to get salt crystals out of seawater?",
+      "options": [
+        "Filtration",
+        "Magnetism",
+        "Evaporation and crystallisation",
+        "Condensation"
+      ],
+      "answerIndex": 2,
+      "explanation": "Salt is dissolved, so filtering won't work. Heat to drive off the water, then let the salt crystallise."
+    },
+    {
+      "question": "When crystallising salt, why do you stop heating when about half the water has gone?",
+      "options": [
+        "So the crystals can form slowly – heating too fast spoils them",
+        "Because the Bunsen burner runs out",
+        "To make the salt melt",
+        "So the water turns into salt"
+      ],
+      "answerIndex": 0,
+      "explanation": "Leaving it to crystallise slowly gives proper crystals. Heating too fast breaks them down. Then pat dry with paper towel."
+    },
+    {
+      "question": "Liquid → gas is called… and gas → liquid is called…",
+      "options": [
+        "Condensation; evaporation",
+        "Evaporation; condensation",
+        "Melting; freezing",
+        "Dissolving; filtering"
+      ],
+      "answerIndex": 1,
+      "explanation": "Evaporation = liquid to gas. Condensation = gas to liquid (like a cold window steaming up)."
+    },
+    {
+      "question": "What did we use chromatography to separate?",
+      "options": [
+        "Sand from water",
+        "The different dyes/pigments in inks",
+        "Iron from sulfur",
+        "Salt from rock"
+      ],
+      "answerIndex": 1,
+      "explanation": "Paper chromatography separates the pigments in inks, dyes and food colourings."
+    },
+    {
+      "question": "Why do we draw the start line in PENCIL in chromatography?",
+      "options": [
+        "Pencil is easier to rub out",
+        "Pencil won't dissolve and run up the paper like ink would",
+        "Pens aren't allowed in labs",
+        "Pencil makes the water move faster"
+      ],
+      "answerIndex": 1,
+      "explanation": "Ink would dissolve in the water and spread, messing up the results. Pencil (graphite) stays put."
+    },
+    {
+      "question": "Why are the ink spots kept ABOVE the water level?",
+      "options": [
+        "So the ink doesn't just dissolve into the water in the beaker",
+        "So the paper doesn't get wet",
+        "So the pencil line shows up",
+        "It doesn't matter"
+      ],
+      "answerIndex": 0,
+      "explanation": "If the spots sit under the water, the ink washes into the beaker instead of travelling up the paper."
+    },
+    {
+      "question": "On a chromatogram, mixture M has spots at the same heights as dyes 1, 4 and 5. What does this tell you?",
+      "options": [
+        "M is a pure substance",
+        "M contains dyes 1, 4 and 5",
+        "M contains all five dyes",
+        "M contains dyes 2 and 3"
+      ],
+      "answerIndex": 1,
+      "explanation": "Spots that line up horizontally are the same dye. M has 3 spots, so it's a mixture of 3 dyes. (The paper is called a chromatogram.)"
+    },
+    {
+      "question": "How is iron sulfide different from a mixture of iron and sulfur?",
+      "options": [
+        "There's no difference",
+        "The mixture can be separated with a magnet; iron sulfide is chemically bonded, so it can't and it isn't magnetic",
+        "Iron sulfide is a mixture and the other is a compound",
+        "Iron sulfide is yellow with black specks"
+      ],
+      "answerIndex": 1,
+      "explanation": "Mixture: yellow powder with black specks, iron can be pulled out with a magnet. Compound (after heating): a dark lump, a new substance, chemically bonded and hard to separate."
+    },
+    {
+      "question": "What units do we use to measure mass?",
+      "options": [
+        "cm or m",
+        "g or kg",
+        "ml or l",
+        "°C"
+      ],
+      "answerIndex": 1,
+      "explanation": "Mass = grams (g) or kilograms (kg)."
+    }
+  ]
+}
