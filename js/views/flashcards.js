@@ -5,11 +5,14 @@
 import { loadDeck } from '../data.js';
 import { recordAnswer, getCardProgress, getSetting, setSetting } from '../store.js';
 import { esc, shuffle, plural, icons, pageHeader, isTypingTarget, isButtonTarget, toast } from '../utils.js';
-import { flipCardHtml, flip, attachGestures, flyOut } from '../flipcard.js';
+import { flipCardHtml, flip, attachGestures, flyOut, autoRead, readVisibleSide } from '../flipcard.js';
+import { deckCanSpeak, readAloudChip, toggleAutoSpeak, attachSpeakButtons, stopSpeaking } from '../speech.js';
 
 export async function render(container, { deckId, query }) {
   const deck = await loadDeck(deckId);
   container.dataset.title = `Flashcards · ${deck.title}`;
+  const langs = { front: deck.frontLang, back: deck.backLang };
+  const speakable = deckCanSpeak(deck);
 
   const options = {
     shuffle: getSetting('flashShuffle', true),
@@ -30,12 +33,14 @@ export async function render(container, { deckId, query }) {
     </div>`;
   const toolbar = container.querySelector('#toolbar');
   const stage = container.querySelector('#stage');
+  attachSpeakButtons(stage);
 
   const wrongCards = () => deck.cards.filter((c) => getCardProgress(deck.id, c)?.last === false);
 
   function drawToolbar() {
     const wrongCount = wrongCards().length;
     toolbar.innerHTML = `
+      ${speakable ? readAloudChip() : ''}
       <button type="button" class="chip" data-opt="shuffle" aria-pressed="${options.shuffle}">${icons.shuffle} Shuffle</button>
       <button type="button" class="chip" data-opt="swap" aria-pressed="${options.swap}">${icons.swap} Back first</button>
       <button type="button" class="chip" data-opt="onlyWrong" aria-pressed="${options.onlyWrong}" ${wrongCount || options.onlyWrong ? '' : 'disabled'}>
@@ -47,6 +52,10 @@ export async function render(container, { deckId, query }) {
     const chip = e.target.closest('[data-opt]');
     if (!chip) return;
     const name = chip.dataset.opt;
+    if (name === 'autoSpeak') {
+      toggleAutoSpeak(chip, () => readVisibleSide(stage.querySelector('#card')));
+      return; // doesn't restart the round
+    }
     options[name] = !options[name];
     if (name === 'shuffle') setSetting('flashShuffle', options.shuffle);
     if (name === 'swap') setSetting('flashSwap', options.swap);
@@ -79,7 +88,7 @@ export async function render(container, { deckId, query }) {
         </span>
       </div>
       <div class="bar"><span style="width:${(pos / queue.length) * 100}%"></span></div>
-      ${flipCardHtml(card, { swap: options.swap })}
+      ${flipCardHtml(card, { swap: options.swap, langs })}
       ${card.hint ? `<div id="hint-area"><button type="button" class="btn btn-ghost btn-small" id="hint">Show hint</button></div>` : ''}
       <div class="button-row split" style="margin-top:12px">
         <button type="button" class="btn btn-bad" id="unknown">${icons.x} Still learning</button>
@@ -88,10 +97,15 @@ export async function render(container, { deckId, query }) {
       <p class="helper">Tap the card to flip it. Swipe right if you knew it, left if not.</p>`;
 
     const el = stage.querySelector('#card');
-    attachGestures(el, { onTap: () => flip(el), onSwipe: answer, canSwipe: () => !busy });
+    const flipAndRead = () => {
+      flip(el);
+      autoRead(el);
+    };
+    attachGestures(el, { onTap: flipAndRead, onSwipe: answer, canSwipe: () => !busy });
     stage.querySelector('#known').addEventListener('click', () => answer(true));
     stage.querySelector('#unknown').addEventListener('click', () => answer(false));
     stage.querySelector('#hint')?.addEventListener('click', showHint);
+    autoRead(el);
   }
 
   function showHint() {
@@ -131,19 +145,24 @@ export async function render(container, { deckId, query }) {
     stage.querySelector('#restart').addEventListener('click', () => startRound());
   }
 
-  // Keyboard shortcuts: Space/Enter flip, → knew it, ← didn't, H hint.
+  // Keyboard shortcuts: Space/Enter flip, → knew it, ← didn't, H hint, S say it out loud.
   function onKey(e) {
     const el = stage.querySelector('#card');
     if (!el || isTypingTarget(e) || e.ctrlKey || e.metaKey || e.altKey) return;
     if ((e.key === ' ' || e.key === 'Enter') && !isButtonTarget(e)) {
       e.preventDefault();
       flip(el);
+      autoRead(el);
     } else if (e.key === 'ArrowRight') answer(true);
     else if (e.key === 'ArrowLeft') answer(false);
     else if (e.key.toLowerCase() === 'h' && queue[pos]?.hint) showHint();
+    else if (e.key.toLowerCase() === 's') readVisibleSide(el);
   }
   document.addEventListener('keydown', onKey);
 
   startRound();
-  return () => document.removeEventListener('keydown', onKey);
+  return () => {
+    document.removeEventListener('keydown', onKey);
+    stopSpeaking();
+  };
 }

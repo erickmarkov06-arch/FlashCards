@@ -6,10 +6,14 @@
  *   flyOut(el, known)              animates the card off screen
  */
 import { cardText } from './utils.js';
+import { speakButton, speak, autoSpeakOn } from './speech.js';
 
-export function flipCardHtml(card, { swap = false } = {}) {
+/** `langs` = { front: "es", back: "en" } from the deck; sides with a language get a speaker button. */
+export function flipCardHtml(card, { swap = false, langs = {} } = {}) {
   const first = swap ? card.back : card.front;
   const second = swap ? card.front : card.back;
+  const firstLang = swap ? langs.back : langs.front;
+  const secondLang = swap ? langs.front : langs.back;
   return `
     <div class="card-stage">
       <div class="flashcard" id="card" role="button" tabindex="0"
@@ -19,15 +23,35 @@ export function flipCardHtml(card, { swap = false } = {}) {
         <div class="flashcard-inner">
           <div class="face front" aria-live="polite">
             <span class="face-label">${swap ? 'Back' : 'Front'}</span>
+            ${speakButton(first, firstLang)}
             ${cardText(first)}
           </div>
           <div class="face back" aria-hidden="true">
             <span class="face-label">${swap ? 'Front' : 'Back'}</span>
+            ${speakButton(second, secondLang)}
             ${cardText(second)}
           </div>
         </div>
       </div>
     </div>`;
+}
+
+/** The text and language on the side of the card currently showing (for reading it aloud). */
+export function visibleSide(el) {
+  const face = el.querySelector(el.classList.contains('flipped') ? '.face.back' : '.face.front');
+  const button = face.querySelector('.speak-btn');
+  return button ? { text: button.dataset.speak, lang: button.dataset.lang } : null;
+}
+
+/** Reads the side that's showing out loud (if it has a language). */
+export function readVisibleSide(el) {
+  const side = el && visibleSide(el);
+  if (side) speak(side.text, side.lang);
+}
+
+/** Same, but only when the "Read aloud" toggle is on. Call after showing or flipping a card. */
+export function autoRead(el) {
+  if (autoSpeakOn()) readVisibleSide(el);
 }
 
 /** Flips the card over. Returns true if it is now showing the back. */
@@ -58,7 +82,7 @@ export function attachGestures(el, { onTap, onSwipe, canSwipe = () => true }) {
   };
 
   el.addEventListener('pointerdown', (e) => {
-    if (e.button !== 0) return;
+    if (e.button !== 0 || e.target.closest('button')) return; // e.g. the speaker button: don't flip
     tracking = true;
     dragging = false;
     startX = e.clientX;

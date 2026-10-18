@@ -53,6 +53,8 @@ function cleanDeck(raw, entry) {
       q.answerIndex >= 0 &&
       q.answerIndex < q.options.length
   );
+  // Language codes like "es" or "en-GB" switch on read-aloud for that side of the cards.
+  const lang = (v) => (typeof v === 'string' && /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/.test(v) ? v : '');
   return {
     id: entry.id,
     title: raw.title || entry.title,
@@ -60,6 +62,8 @@ function cleanDeck(raw, entry) {
     description: raw.description || '',
     author: raw.author || '',
     tags: Array.isArray(raw.tags) ? raw.tags : [],
+    frontLang: lang(raw.frontLang),
+    backLang: lang(raw.backLang),
     cards,
     questions,
   };

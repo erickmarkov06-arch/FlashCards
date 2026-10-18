@@ -81,6 +81,8 @@ Copy `decks/_template.json` as a starting point. Files starting with `_` are ign
 | `description` | yes | string | One sentence |
 | `author` | yes | string | Ask the user what name or initials to use. If they don't say, use their git `user.name`. |
 | `tags` | no | string[] | lowercase-with-hyphens, no duplicates |
+| `frontLang` | no | string | Language of the card **fronts**, as a code: `"es"`, `"fr"`, `"de"`, `"en"`, `"en-GB"`, `"zh-CN"`… Switches on read-aloud for that side. |
+| `backLang` | no | string | Language of the card **backs**, same format |
 | `cards` | yes | array | At least 1 card |
 | `questions` | no | array | Multiple-choice questions for Quiz mode |
 
@@ -114,6 +116,10 @@ Any other field name is a typo and triggers a warning.
   `(brackets)` and small typos. Put accepted alternatives with ` / ` between them:
   `"back": "to do / to make"` accepts either. Put extra detail in brackets:
   `"back": "to be (permanent / identity)"` accepts "to be".
+- **Language decks** (vocabulary, phrases): always set `frontLang` and `backLang`, e.g.
+  `"frontLang": "es", "backLang": "en"` for Spanish → English. The site then reads cards aloud with
+  the device's built-in voice. Put only the word or phrase itself on a side that will be read aloud.
+  Put grammar notes in `hint` or in `(brackets)`. Leave both fields out for non-language decks.
 - Line breaks are allowed with `\n`. No HTML or Markdown: it is shown as plain text.
 - Use `hint` for memory tricks from the notes.
 - Add `questions` when the notes suit multiple choice: 4 options, believable wrong answers,

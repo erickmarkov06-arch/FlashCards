@@ -4,6 +4,7 @@
 import { loadDeck } from '../data.js';
 import { deckSummary, pruneDeck, resetDeck, NEW_CARDS_PER_SESSION } from '../store.js';
 import { esc, plural, icons, pageHeader, toast } from '../utils.js';
+import { speakButton, attachSpeakButtons } from '../speech.js';
 
 export async function render(container, { deckId }) {
   const deck = await loadDeck(deckId);
@@ -70,8 +71,8 @@ export async function render(container, { deckId }) {
             .map(
               (c) => `
               <li>
-                <span class="front">${esc(c.front)}</span>
-                <span class="back">${esc(c.back)}</span>
+                <span class="front">${esc(c.front)} ${speakButton(c.front, deck.frontLang)}</span>
+                <span class="back">${esc(c.back)} ${speakButton(c.back, deck.backLang)}</span>
                 ${c.tags?.length ? `<span>${c.tags.map((t) => `<span class="tag">#${esc(t)}</span>`).join(' ')}</span>` : ''}
               </li>`
             )
@@ -83,6 +84,7 @@ export async function render(container, { deckId }) {
     <p class="center"><button type="button" class="btn btn-ghost btn-small" id="reset">Reset progress for this deck</button></p>
   `;
 
+  attachSpeakButtons(container);
   container.querySelector('#reset').addEventListener('click', () => {
     if (!confirm(`Reset all progress for "${deck.title}"? This can't be undone.`)) return;
     resetDeck(deck.id);

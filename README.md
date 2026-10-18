@@ -44,10 +44,11 @@ decks from any device, by hand or by giving their notes to Claude Code.
 | **Write** | Type the answer. Matching is forgiving: it ignores capitals, spaces, punctuation, accents and small typos, and there's an "I was right" button. |
 | **Match** | Pair terms with definitions against the clock by tapping or dragging. Your best time is saved. |
 | **Stats** | Streaks, cards mastered, Leitner boxes, a 12-week activity chart, per-deck progress, and **export/import** of your progress. |
+| **Read aloud** | For language decks: a speaker button on each card, and a "Read aloud" switch that reads cards automatically, using the device's own voices. |
 | **Dark mode** | Follows your device. The sun/moon button switches it, and your choice is remembered. |
 | **Offline / installable** | A Progressive Web App (PWA): add it to your home screen and it works without internet. |
 
-Keyboard shortcuts on a computer: **Space** flips, **← / →** = didn't know / knew it, **1–4** picks quiz answers, **Enter** = next.
+Keyboard shortcuts on a computer: **Space** flips, **← / →** = didn't know / knew it, **S** reads the card aloud, **1–4** picks quiz answers, **Enter** = next.
 
 ---
 
@@ -206,6 +207,8 @@ One JSON file per deck, at **`decks/<subject>/<deck-name>.json`**.
 | `description` | ✅ | One sentence about the deck |
 | `author` | ✅ | Who made it (a name or initials is fine) |
 | `tags` | optional | List of lowercase-hyphenated tags, used by the tag filter |
+| `frontLang` | optional | Language of the card fronts, e.g. `"es"`. Turns on **read aloud** (see below) |
+| `backLang` | optional | Language of the card backs, e.g. `"en"` |
 | `cards` | ✅ | List of flashcards (at least one) |
 | `cards[].front` | ✅ | Term or question. Must be unique in the deck. |
 | `cards[].back` | ✅ | Definition or answer |
@@ -222,6 +225,12 @@ One JSON file per deck, at **`decks/<subject>/<deck-name>.json`**.
 - Text is shown exactly as written (no HTML). Use `\n` for a line break.
 - In Write mode, `"back": "to do / to make"` accepts either answer, and anything in `(brackets)` is optional.
 - No `questions`? Quiz mode builds multiple-choice questions from the cards automatically.
+- **Language decks can be read aloud.** Add `"frontLang"` and/or `"backLang"` with a language code:
+  `"es"` Spanish, `"fr"` French, `"de"` German, `"it"` Italian, `"pt"` Portuguese, `"en"` English,
+  `"ja"` Japanese, `"zh-CN"` Chinese… Cards then get a speaker button, and Flashcards, Learn and Write
+  get a **Read aloud** switch that reads each card automatically. It uses the voices built into the phone or
+  computer, so it's free and works offline. Decks without these fields aren't read aloud, because the
+  wrong voice would mispronounce them.
 - Progress is linked to each card's **front** text. If you reword a front, that card starts fresh.
 - Files starting with `_` (like `_template.json`) are not shown on the site. Use this for drafts.
 

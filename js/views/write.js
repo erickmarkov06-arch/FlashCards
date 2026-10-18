@@ -6,10 +6,12 @@
 import { loadDeck } from '../data.js';
 import { recordAnswer, markLastAnswerCorrect, getSetting, setSetting } from '../store.js';
 import { esc, shuffle, plural, pageHeader, cardText, checkAnswer } from '../utils.js';
+import { deckCanSpeak, readAloudChip, toggleAutoSpeak, attachSpeakButtons, speakButton, speak, stopSpeaking, autoSpeakOn } from '../speech.js';
 
 export async function render(container, { deckId }) {
   const deck = await loadDeck(deckId);
   container.dataset.title = `Write · ${deck.title}`;
+  const speakable = deckCanSpeak(deck);
 
   // Default direction: for long definitions it's easier to type the short term.
   const avgBack = deck.cards.reduce((n, c) => n + c.back.length, 0) / deck.cards.length;
@@ -24,13 +26,23 @@ export async function render(container, { deckId }) {
   container.innerHTML = `
     <div class="study">
       ${pageHeader({ title: deck.title, eyebrow: 'Write', back: `#/deck/${deck.id}`, backLabel: 'Deck' })}
-      <div class="chip-row" role="group" aria-label="Answer with">
+      <div class="chip-row">
+        ${speakable ? readAloudChip() : ''}
         <button type="button" class="chip" data-dir="back">Type the back</button>
         <button type="button" class="chip" data-dir="front">Type the front</button>
       </div>
       <div id="stage"></div>
     </div>`;
   const stage = container.querySelector('#stage');
+  attachSpeakButtons(stage);
+  container.querySelector('[data-opt="autoSpeak"]')?.addEventListener('click', (e) => {
+    toggleAutoSpeak(e.currentTarget, () => {
+      const card = queue[pos];
+      if (!card) return;
+      if (state === 'asking') speak(promptOf(card), promptLang());
+      else speak(answerOf(card), answerLang());
+    });
+  });
 
   container.querySelectorAll('[data-dir]').forEach((b) =>
     b.addEventListener('click', () => {
@@ -43,6 +55,8 @@ export async function render(container, { deckId }) {
 
   const promptOf = (card) => (answerWith === 'back' ? card.front : card.back);
   const answerOf = (card) => (answerWith === 'back' ? card.back : card.front);
+  const promptLang = () => (answerWith === 'back' ? deck.frontLang : deck.backLang);
+  const answerLang = () => (answerWith === 'back' ? deck.backLang : deck.frontLang);
 
   function startRound(cards = deck.cards) {
     container.querySelectorAll('[data-dir]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.dir === answerWith)));
@@ -60,6 +74,7 @@ export async function render(container, { deckId }) {
       <div class="bar"><span style="width:${(pos / queue.length) * 100}%"></span></div>
       <div class="panel question-box">
         <p class="muted small">Type the ${answerWith === 'back' ? 'answer' : 'term'} for:</p>
+        ${speakButton(promptOf(card), promptLang())}
         ${cardText(promptOf(card))}
       </div>
       <form id="form" autocomplete="off">
@@ -76,6 +91,7 @@ export async function render(container, { deckId }) {
 
     const input = stage.querySelector('#answer');
     input.focus({ preventScroll: true });
+    if (autoSpeakOn()) speak(promptOf(card), promptLang());
     stage.querySelector('#form').addEventListener('submit', (e) => {
       e.preventDefault();
       if (state === 'asking') check(input.value);
@@ -103,18 +119,20 @@ export async function render(container, { deckId }) {
     const input = stage.querySelector('#answer');
     input.readOnly = true;
     const after = stage.querySelector('#after');
+    const say = speakButton(answer, answerLang(), 'Hear the answer');
     if (result === 'correct') {
-      after.innerHTML = `<div class="feedback good"><strong>Correct!</strong>${answer.trim().toLowerCase() !== typed.trim().toLowerCase() ? `<p>${esc(answer)}</p>` : ''}</div>`;
+      after.innerHTML = `<div class="feedback good"><strong>Correct!</strong><p>${esc(answer)} ${say}</p></div>`;
     } else if (result === 'close') {
-      after.innerHTML = `<div class="feedback close"><strong>Almost! Counted as correct.</strong><p>Check the spelling: <b>${esc(answer)}</b></p></div>`;
+      after.innerHTML = `<div class="feedback close"><strong>Almost! Counted as correct.</strong><p>Check the spelling: <b>${esc(answer)}</b> ${say}</p></div>`;
     } else {
       after.innerHTML = `
         <div class="feedback bad">
           <strong>${typed.trim() ? 'Not quite.' : 'The answer is:'}</strong>
-          <p><b>${esc(answer)}</b></p>
+          <p><b>${esc(answer)}</b> ${say}</p>
           ${typed.trim() ? `<p class="small">You wrote: ${esc(typed)}</p>` : ''}
         </div>`;
     }
+    if (autoSpeakOn()) speak(answer, answerLang());
 
     const last = pos === queue.length - 1;
     stage.querySelector('#buttons').innerHTML = `
@@ -161,4 +179,5 @@ export async function render(container, { deckId }) {
   }
 
   startRound();
+  return stopSpeaking;
 }

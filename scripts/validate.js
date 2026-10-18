@@ -21,7 +21,7 @@ const path = require('path');
 const { DECKS_DIR, INDEX_FILE, TEMPLATE_FILE, slugify, isKebabCase, findJsonFiles, readText, relPath } = require('./lib');
 
 // Fields each object is allowed to have. Anything else gets a warning (usually a typo).
-const DECK_KEYS = ['title', 'subject', 'description', 'author', 'tags', 'cards', 'questions'];
+const DECK_KEYS = ['title', 'subject', 'description', 'author', 'tags', 'frontLang', 'backLang', 'cards', 'questions'];
 const CARD_KEYS = ['front', 'back', 'hint', 'tags'];
 const QUESTION_KEYS = ['question', 'options', 'answerIndex', 'explanation', 'tags'];
 
@@ -83,6 +83,14 @@ function validateFile(file) {
     checkRequiredString(deck[key], `"${key}"`, errors);
   }
   checkTags(deck.tags, 'Deck "tags"', errors);
+
+  // Optional language codes that switch on read-aloud, e.g. "frontLang": "es", "backLang": "en".
+  for (const key of ['frontLang', 'backLang']) {
+    if (deck[key] === undefined) continue;
+    if (typeof deck[key] !== 'string' || !/^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/.test(deck[key])) {
+      errors.push(`"${key}" must be a language code like "es", "fr", "de", "en" or "en-GB" (lowercase, no spaces). Got ${JSON.stringify(deck[key])}.`);
+    }
+  }
 
   // The subject must match the folder so decks are grouped consistently.
   if (!isTemplate && rel.length === 2 && typeof deck.subject === 'string' && deck.subject.trim()) {

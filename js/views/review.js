@@ -14,7 +14,8 @@ import {
   NEW_CARDS_PER_SESSION, MAX_BOX, BOX_INTERVALS,
 } from '../store.js';
 import { esc, shuffle, plural, pageHeader, todayKey, describeDay, icons, isTypingTarget, isButtonTarget } from '../utils.js';
-import { flipCardHtml, flip, attachGestures, flyOut } from '../flipcard.js';
+import { flipCardHtml, flip, attachGestures, flyOut, autoRead, readVisibleSide } from '../flipcard.js';
+import { deckCanSpeak, readAloudChip, toggleAutoSpeak, attachSpeakButtons, stopSpeaking } from '../speech.js';
 
 export async function render(container, { deckId }) {
   const today = todayKey();
@@ -59,6 +60,7 @@ export async function render(container, { deckId }) {
   container.innerHTML = `
     <div class="study">
       ${header}
+      ${items.length && decks.some(deckCanSpeak) ? `<div class="chip-row" id="speak-toolbar">${readAloudChip()}</div>` : ''}
       <div id="stage"></div>
       <details class="section small">
         <summary>How does Learn mode work?</summary>
@@ -130,7 +132,7 @@ export async function render(container, { deckId }) {
       </div>
       <div class="bar"><span style="width:${(reviewed / (reviewed + queue.length)) * 100}%"></span></div>
       ${!deckId ? `<p class="muted small" style="margin:-8px 0 8px">${esc(deck.title)}</p>` : ''}
-      ${flipCardHtml(card)}
+      ${flipCardHtml(card, { langs: { front: deck.frontLang, back: deck.backLang } })}
       <div id="actions" style="margin-top:12px">
         <button type="button" class="btn btn-block" id="reveal">Show answer</button>
       </div>
@@ -140,6 +142,7 @@ export async function render(container, { deckId }) {
     attachGestures(el, {
       onTap: () => {
         if (flip(el)) reveal();
+        autoRead(el);
       },
       onSwipe: answer,
       canSwipe: () => revealed && !busy,
@@ -147,7 +150,9 @@ export async function render(container, { deckId }) {
     stage.querySelector('#reveal').addEventListener('click', () => {
       if (!el.classList.contains('flipped')) flip(el);
       reveal();
+      autoRead(el);
     });
+    autoRead(el);
   }
 
   function reveal() {
@@ -199,20 +204,33 @@ export async function render(container, { deckId }) {
       </div>`;
   }
 
-  // Keyboard: Space/Enter show answer, ← or 1 didn't know, → or 2 knew it.
+  // Keyboard: Space/Enter show answer, ← or 1 didn't know, → or 2 knew it, S say it out loud.
   function onKey(e) {
     const el = stage.querySelector('#card');
     if (!el || isTypingTarget(e) || e.ctrlKey || e.metaKey || e.altKey) return;
     if ((e.key === ' ' || e.key === 'Enter') && !isButtonTarget(e)) {
       e.preventDefault();
       if (flip(el)) reveal();
+      autoRead(el);
     } else if (revealed && (e.key === 'ArrowLeft' || e.key === '1')) answer(false);
     else if (revealed && (e.key === 'ArrowRight' || e.key === '2')) answer(true);
+    else if (e.key.toLowerCase() === 's') readVisibleSide(el);
   }
   document.addEventListener('keydown', onKey);
 
+  // "Read aloud" toggle, shown when any deck in this session has languages set.
+  const speakChipRow = container.querySelector('#speak-toolbar');
+  speakChipRow?.addEventListener('click', (e) => {
+    const chip = e.target.closest('[data-opt="autoSpeak"]');
+    if (chip) toggleAutoSpeak(chip, () => readVisibleSide(stage.querySelector('#card')));
+  });
+  attachSpeakButtons(stage);
+
   drawCard();
-  return () => document.removeEventListener('keydown', onKey);
+  return () => {
+    document.removeEventListener('keydown', onKey);
+    stopSpeaking();
+  };
 }
 
 /** "Next review: tomorrow." based on the earliest due date among the decks' cards. */

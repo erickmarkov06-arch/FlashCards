@@ -9,7 +9,7 @@
  * If you add a new file to the app (e.g. a new js/views/*.js), add it to APP_FILES below
  * and bump CACHE_VERSION so phones download it for offline use.
  */
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = `studydeck-${CACHE_VERSION}`;
 const NETWORK_TIMEOUT_MS = 4000; // after this long, fall back to the cached copy
 
@@ -23,6 +23,7 @@ const APP_FILES = [
   'js/store.js',
   'js/data.js',
   'js/flipcard.js',
+  'js/speech.js',
   'js/views/home.js',
   'js/views/deck.js',
   'js/views/flashcards.js',

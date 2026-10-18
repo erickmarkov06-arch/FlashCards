@@ -899,6 +899,54 @@ details > summary {
   text-transform: uppercase;
   color: var(--muted);
 }
+/* Speaker button for reading a card aloud */
+.speak-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  vertical-align: middle;
+  touch-action: manipulation;
+}
+.speak-btn:hover,
+.speak-btn:active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.speak-btn svg {
+  width: 18px;
+  height: 18px;
+}
+.face .speak-btn,
+.question-box .speak-btn {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  z-index: 1;
+  width: 34px; /* fits above the index card's red line */
+  height: 34px;
+}
+.question-box {
+  position: relative;
+}
+.card-list .speak-btn,
+.feedback .speak-btn {
+  width: 32px;
+  height: 32px;
+  margin-left: 4px;
+}
+.card-list .speak-btn svg,
+.feedback .speak-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
 /* "Know it" / "Still learning" stamps that appear while swiping */
 .swipe-label {
   position: absolute;
