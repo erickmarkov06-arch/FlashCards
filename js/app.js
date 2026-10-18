@@ -3,6 +3,7 @@
  *
  * Pages are chosen by the part of the URL after "#", for example:
  *   #/                              home (all decks)
+ *   #/mydecks                       the decks you added to My decks
  *   #/deck/biology/cell-structure   one deck's page
  *   #/flashcards/biology/cell-structure  (also quiz, write, match, review)
  *   #/review                        review due cards from every deck
@@ -24,8 +25,9 @@ import * as match from './views/match.js';
 import * as review from './views/review.js';
 import * as stats from './views/stats.js';
 import * as leaderboard from './views/leaderboard.js';
+import * as mydecks from './views/mydecks.js';
 
-const routes = { '': home, deck, flashcards, quiz, write, match, review, stats, leaderboard };
+const routes = { '': home, mydecks, deck, flashcards, quiz, write, match, review, stats, leaderboard };
 
 const main = document.getElementById('app');
 let cleanup = null; // function the current page gave us to remove its listeners/timers
@@ -95,7 +97,7 @@ async function router() {
 }
 
 function updateNav(view) {
-  const section = view === 'stats' || view === 'leaderboard' ? 'stats' : view === 'review' && !parseHash().deckId ? 'review' : 'home';
+  const section = view === 'mydecks' ? 'mydecks' : view === 'stats' || view === 'leaderboard' ? 'stats' : view === 'review' && !parseHash().deckId ? 'review' : 'home';
   document.querySelectorAll('.bottom-nav a').forEach((a) => {
     if (a.dataset.nav === section) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
@@ -166,7 +168,7 @@ function setUpOffline() {
 // ---------- syncing progress between devices (optional, see sync.js) ----------
 
 /** Pages that only show progress, so they can be redrawn safely when new progress arrives. */
-const REDRAW_ON_SYNC = new Set(['', 'deck']);
+const REDRAW_ON_SYNC = new Set(['', 'mydecks', 'deck']);
 
 /** "@username" in the top bar while signed in. */
 function updateAccountChip() {
