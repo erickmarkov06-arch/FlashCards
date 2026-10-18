@@ -1,0 +1,79 @@
+{
+  "title": "School Subjects and Opinions",
+  "subject": "Spanish",
+  "description": "School subjects (las asignaturas), saying what you like with me gusta / me gustan, and -amos verbs for school activities.",
+  "author": "L.M.",
+  "tags": ["year-8", "school", "subjects", "me-gusta"],
+  "frontLang": "es",
+  "backLang": "en-GB",
+  "cards": [
+    { "front": "la geografía", "back": "geography", "tags": ["subjects"] },
+    { "front": "las matemáticas", "back": "maths / math", "tags": ["subjects"] },
+    { "front": "la historia", "back": "history", "tags": ["subjects"] },
+    { "front": "el español", "back": "Spanish", "tags": ["subjects"] },
+    { "front": "el francés", "back": "French", "tags": ["subjects"] },
+    { "front": "la religión", "back": "RE / religious education / religion", "tags": ["subjects"] },
+    { "front": "la cocina", "back": "cooking / food technology", "tags": ["subjects"] },
+    { "front": "el deporte", "back": "sport / PE", "hint": "Plural: los deportes", "tags": ["subjects"] },
+    { "front": "las ciencias", "back": "science / sciences", "tags": ["subjects"] },
+    { "front": "el inglés", "back": "English", "tags": ["subjects"] },
+    { "front": "el dibujo", "back": "art / drawing", "tags": ["subjects"] },
+    { "front": "la tecnología", "back": "technology", "tags": ["subjects"] },
+    { "front": "la informática", "back": "computing / ICT", "tags": ["subjects"] },
+    { "front": "el teatro", "back": "drama / theatre / theater", "tags": ["subjects"] },
+    { "front": "Me gusta la geografía.", "back": "I like geography.", "hint": "One subject → gusta", "tags": ["me-gusta"] },
+    { "front": "Me gustan las matemáticas.", "back": "I like maths. / I like math.", "hint": "Plural subject (las …) → gustan", "tags": ["me-gusta"] },
+    { "front": "No me gusta el inglés.", "back": "I don't like English. / I do not like English.", "hint": "\"No\" goes before \"me\"", "tags": ["me-gusta"] },
+    { "front": "No me gusta la historia.", "back": "I don't like history. / I do not like history.", "tags": ["me-gusta"] },
+    { "front": "navegamos", "back": "we browse", "tags": ["verbs"] },
+    { "front": "hablamos", "back": "we speak", "tags": ["verbs"] },
+    { "front": "calculamos", "back": "we calculate", "tags": ["verbs"] },
+    { "front": "mandamos", "back": "we send", "tags": ["verbs"] },
+    { "front": "jugamos", "back": "we play (sport)", "hint": "Football, tennis…", "tags": ["verbs"] },
+    { "front": "tocamos", "back": "we play (an instrument)", "hint": "Piano, guitar…", "tags": ["verbs"] }
+  ],
+  "questions": [
+    {
+      "question": "How do you say \"I like maths\"?",
+      "options": ["Me gusta las matemáticas.", "Me gustan las matemáticas.", "Me gustas las matemáticas.", "Me gustamos las matemáticas."],
+      "answerIndex": 1,
+      "explanation": "Las matemáticas is plural, so it takes gustan.",
+      "tags": ["me-gusta"]
+    },
+    {
+      "question": "How do you say \"I don't like English\"?",
+      "options": ["No me gustan el inglés.", "Me no gusta el inglés.", "No me gusta el inglés.", "No gusta me el inglés."],
+      "answerIndex": 2,
+      "explanation": "El inglés is one subject, so it takes gusta, and \"no\" goes before \"me\".",
+      "tags": ["me-gusta"]
+    },
+    {
+      "question": "Which is correct?",
+      "options": ["Me gustan la historia.", "Me gusta las ciencias.", "Me gusta los deportes.", "Me gustan las ciencias."],
+      "answerIndex": 3,
+      "explanation": "Las ciencias is plural, so gustan. Use gusta with one thing (la historia) and gustan with plurals (las ciencias, los deportes).",
+      "tags": ["me-gusta"]
+    },
+    {
+      "question": "Which verb means \"we play\" for an instrument?",
+      "options": ["jugamos", "hablamos", "mandamos", "tocamos"],
+      "answerIndex": 3,
+      "explanation": "Tocamos is for instruments; jugamos is for sports and games.",
+      "tags": ["verbs"]
+    },
+    {
+      "question": "Which subject is \"computing\"?",
+      "options": ["el teatro", "la tecnología", "la informática", "el dibujo"],
+      "answerIndex": 2,
+      "explanation": "La informática is computing. La tecnología is technology.",
+      "tags": ["subjects"]
+    },
+    {
+      "question": "Which subject is \"art / drawing\"?",
+      "options": ["el dibujo", "el deporte", "la cocina", "el teatro"],
+      "answerIndex": 0,
+      "explanation": "El dibujo is art (drawing). La cocina is cooking.",
+      "tags": ["subjects"]
+    }
+  ]
+}

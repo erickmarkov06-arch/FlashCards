@@ -1,0 +1,200 @@
+{
+  "title": "Describing Subjects: Adjectives",
+  "subject": "Spanish",
+  "description": "Adjectives to describe subjects and teachers, and how they change for masculine, feminine and plural.",
+  "author": "L.M.",
+  "tags": [
+    "year-8",
+    "school",
+    "adjectives",
+    "agreement"
+  ],
+  "frontLang": "es",
+  "backLang": "en-GB",
+  "cards": [
+    {
+      "front": "aburrido",
+      "back": "boring",
+      "hint": "Forms: aburrido / aburrida / aburridos / aburridas"
+    },
+    {
+      "front": "divertido",
+      "back": "fun",
+      "hint": "Forms: divertido / divertida / divertidos / divertidas"
+    },
+    {
+      "front": "práctico",
+      "back": "practical",
+      "hint": "Forms: práctico / práctica / prácticos / prácticas"
+    },
+    {
+      "front": "difícil",
+      "back": "difficult",
+      "hint": "Forms: difícil (m+f) / difíciles (plural)"
+    },
+    {
+      "front": "fácil",
+      "back": "easy",
+      "hint": "Forms: fácil (m+f) / fáciles (plural)"
+    },
+    {
+      "front": "útil",
+      "back": "useful",
+      "hint": "Forms: útil (m+f) / útiles (plural)"
+    },
+    {
+      "front": "raro",
+      "back": "strange",
+      "hint": "Forms: raro / rara / raros / raras"
+    },
+    {
+      "front": "severo",
+      "back": "strict",
+      "hint": "Forms: severo / severa / severos / severas"
+    },
+    {
+      "front": "moderno",
+      "back": "modern",
+      "hint": "Forms: moderno / moderna / modernos / modernas"
+    },
+    {
+      "front": "antiguo",
+      "back": "old",
+      "hint": "Forms: antiguo / antigua / antiguos / antiguas"
+    },
+    {
+      "front": "bonito",
+      "back": "nice",
+      "hint": "Forms: bonito / bonita / bonitos / bonitas"
+    },
+    {
+      "front": "feo",
+      "back": "ugly",
+      "hint": "Forms: feo / fea / feos / feas"
+    },
+    {
+      "front": "pequeño",
+      "back": "small",
+      "hint": "Forms: pequeño / pequeña / pequeños / pequeñas"
+    },
+    {
+      "front": "grande",
+      "back": "big",
+      "hint": "Forms: grande (m+f) / grandes (plural)"
+    }
+  ],
+  "questions": [
+    {
+      "question": "La historia es ___ . (boring)",
+      "options": [
+        "aburrido",
+        "aburrida",
+        "aburridos",
+        "aburridas"
+      ],
+      "answerIndex": 1,
+      "explanation": "La historia is feminine singular, so aburrida.",
+      "tags": [
+        "agreement"
+      ]
+    },
+    {
+      "question": "Las matemáticas son ___ . (difficult)",
+      "options": [
+        "difícil",
+        "difícilas",
+        "difíciles",
+        "difícila"
+      ],
+      "answerIndex": 2,
+      "explanation": "Plural adjectives ending in a consonant add -es: difíciles. Difícil never changes for masculine/feminine.",
+      "tags": [
+        "agreement"
+      ]
+    },
+    {
+      "question": "El dibujo es ___ . (fun)",
+      "options": [
+        "divertido",
+        "divertida",
+        "divertidos",
+        "divertidas"
+      ],
+      "answerIndex": 0,
+      "explanation": "El dibujo is masculine singular, so divertido.",
+      "tags": [
+        "agreement"
+      ]
+    },
+    {
+      "question": "Las ciencias son ___ . (useful)",
+      "options": [
+        "útil",
+        "útila",
+        "útilas",
+        "útiles"
+      ],
+      "answerIndex": 3,
+      "explanation": "Las ciencias is plural, and útil adds -es: útiles.",
+      "tags": [
+        "agreement"
+      ]
+    },
+    {
+      "question": "Los profesores son ___ . (strict)",
+      "options": [
+        "severo",
+        "severas",
+        "severos",
+        "severa"
+      ],
+      "answerIndex": 2,
+      "explanation": "Los profesores is masculine plural, so severos.",
+      "tags": [
+        "agreement"
+      ]
+    },
+    {
+      "question": "La tecnología es ___ . (modern)",
+      "options": [
+        "moderno",
+        "modernos",
+        "moderna",
+        "modernas"
+      ],
+      "answerIndex": 2,
+      "explanation": "La tecnología is feminine singular, so moderna.",
+      "tags": [
+        "agreement"
+      ]
+    },
+    {
+      "question": "Which adjective is the same for masculine and feminine singular?",
+      "options": [
+        "bonito",
+        "grande",
+        "pequeño",
+        "feo"
+      ],
+      "answerIndex": 1,
+      "explanation": "Grande ends in -e, so it doesn't change for gender (like fácil, útil and difícil). Its plural is grandes.",
+      "tags": [
+        "agreement"
+      ]
+    },
+    {
+      "question": "What is the plural of fácil?",
+      "options": [
+        "fácils",
+        "fáciles",
+        "fácilos",
+        "fácilas"
+      ],
+      "answerIndex": 1,
+      "explanation": "Adjectives ending in a consonant add -es in the plural: fácil → fáciles.",
+      "tags": [
+        "agreement"
+      ]
+    }
+  ]
+}
