@@ -1,0 +1,256 @@
+{
+  "title": "Healthy Lifestyle 1: Nutrients and Food Tests",
+  "subject": "Biology",
+  "description": "The seven parts of a balanced diet, what each one does, and how to test foods for starch, lipids, sugar and protein.",
+  "author": "L.M.",
+  "tags": ["year-8", "healthy-lifestyle", "nutrients", "food-tests"],
+  "cards": [
+    {
+      "front": "What is a nutrient?",
+      "back": "A substance your body needs to survive and stay healthy\n\n(We get most of our nutrients from food.)"
+    },
+    {
+      "front": "What is a balanced diet?",
+      "back": "Eating food with the right nutrients in the correct amounts\n\n(Eat different foods from the different food groups, in the right amounts.)"
+    },
+    {
+      "front": "Name the 7 things a healthy diet needs.",
+      "back": "Carbohydrates, lipids, proteins, vitamins, minerals, water and fibre",
+      "hint": "5 nutrients + water + fibre"
+    },
+    {
+      "front": "What is the function of carbohydrates?",
+      "back": "Provide energy\n\n(They are your MAIN source of energy.)"
+    },
+    {
+      "front": "Why do starchy foods release energy more slowly than sugary foods?",
+      "back": "Starch has to be broken down by the body first\n\n(Sugary foods like fruit give quick energy. Starchy foods like pasta and bread release it slowly.)"
+    },
+    {
+      "front": "Give an example of a carbohydrate-rich food.",
+      "back": "Pasta / bread"
+    },
+    {
+      "front": "What is another name for lipids?",
+      "back": "Fats and oils"
+    },
+    {
+      "front": "What are the 3 jobs of lipids?",
+      "back": "Store energy, insulate the body, protect organs\n\n(A layer under the skin keeps you warm, and lipids protect organs like the kidneys and heart from damage.)"
+    },
+    {
+      "front": "Give an example of a lipid-rich food.",
+      "back": "Fish / nuts"
+    },
+    {
+      "front": "What is the function of proteins?",
+      "back": "Growth and repair\n\n(They repair body tissues and make new cells. Muscles, organs and the immune system are mostly made of protein.)"
+    },
+    {
+      "front": "Give an example of a protein-rich food.",
+      "back": "Meat"
+    },
+    {
+      "front": "What is the function of vitamins and minerals?",
+      "back": "Keep you healthy\n\n(You only need tiny amounts.)"
+    },
+    {
+      "front": "Which vitamin is needed for good eyesight?",
+      "back": "Vitamin A"
+    },
+    {
+      "front": "Vitamin D works with which mineral to keep teeth and bones healthy?",
+      "back": "Calcium"
+    },
+    {
+      "front": "Which foods are a good source of vitamins and minerals?",
+      "back": "Fruit and vegetables"
+    },
+    {
+      "front": "What is the function of water in the body?",
+      "back": "Needed in all cells and body fluids\n\n(Your cells are about 70% water.)"
+    },
+    {
+      "front": "List four ways your body loses water.",
+      "back": "Sweat, urine, faeces, breathing out\n\n(Tears count too.)"
+    },
+    {
+      "front": "How much water should you drink every day?",
+      "back": "Over a litre\n\n(Tea, fruit juice and squash also count.)"
+    },
+    {
+      "front": "What is the function of fibre?",
+      "back": "Adds bulk to food to keep it moving through the gut\n\n(This helps prevent constipation.)"
+    },
+    {
+      "front": "Is fibre a nutrient?",
+      "back": "No\n\n(It is a type of carbohydrate but not classed as a nutrient. It is still important for a healthy diet.)"
+    },
+    {
+      "front": "Give an example of a fibre-rich food.",
+      "back": "Wholegrain bread / potatoes / vegetables"
+    },
+    {
+      "front": "What type of diet does the 'eatwell' plate help people plan?",
+      "back": "A balanced diet"
+    },
+    {
+      "front": "Why do scientists use food tests?",
+      "back": "To find out which nutrients are in a food"
+    },
+    {
+      "front": "How do you make a food solution?",
+      "back": "Crush the food, add a few drops of water and mix\n\n(Crush it with a pestle and mortar and use distilled water.)"
+    },
+    {
+      "front": "Which equipment do you use to crush food for a food test?",
+      "back": "Pestle and mortar"
+    },
+    {
+      "front": "What is distilled water?",
+      "back": "Pure water with no other chemical substances in it"
+    },
+    {
+      "front": "Which chemical do you use to test for starch?",
+      "back": "Iodine (solution)"
+    },
+    {
+      "front": "Starch test: what colour does iodine turn if starch is present?",
+      "back": "Blue-black / black\n\n(Iodine starts orange-yellow.)"
+    },
+    {
+      "front": "Which chemical do you use to test a food solution for lipids?",
+      "back": "Ethanol"
+    },
+    {
+      "front": "Lipid test: what do you see if lipids are present?",
+      "back": "Cloudy\n\n(Ethanol starts clear. Add it to the food solution, shake, leave for one minute, then pour into a test tube of water.)"
+    },
+    {
+      "front": "How can you test a solid piece of food for lipids?",
+      "back": "Rub it on filter paper: it goes translucent if lipids are present\n\n(Hold the paper up to the light to check.)"
+    },
+    {
+      "front": "Which chemical do you use to test for sugar?",
+      "back": "Benedict's solution"
+    },
+    {
+      "front": "Sugar test: what colour does Benedict's solution turn if sugar is present?",
+      "back": "Orange-red / orange\n\n(Benedict's solution starts blue.)"
+    },
+    {
+      "front": "Which food test needs heating in a water bath?",
+      "back": "The sugar test (Benedict's solution)"
+    },
+    {
+      "front": "Which chemicals do you use to test for protein?",
+      "back": "Biuret (copper sulfate and sodium hydroxide)"
+    },
+    {
+      "front": "Protein test: what colour do you see if protein is present?",
+      "back": "Purple\n\n(Copper sulfate solution starts pale blue.)"
+    },
+    {
+      "front": "What is a hypothesis?",
+      "back": "An idea that explains what scientists observe\n\n(A hypothesis can be tested in an investigation and used to make a prediction.)"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Which nutrient is the body's main source of energy?",
+      "options": ["Protein", "Carbohydrates", "Vitamins", "Water"],
+      "answerIndex": 1,
+      "explanation": "Carbohydrates are your main source of energy. Lipids also provide energy."
+    },
+    {
+      "question": "Which nutrient is used for growth and repair?",
+      "options": ["Lipids", "Fibre", "Minerals", "Proteins"],
+      "answerIndex": 3,
+      "explanation": "Proteins repair body tissues and make new cells for growth."
+    },
+    {
+      "question": "Which of these is NOT a job of lipids?",
+      "options": ["Storing energy", "Insulating the body", "Repairing body tissues", "Protecting organs"],
+      "answerIndex": 2,
+      "explanation": "Repairing tissues is the job of proteins. Lipids store energy, insulate and protect organs."
+    },
+    {
+      "question": "What does fibre do?",
+      "options": ["Adds bulk to keep food moving through the gut", "Provides most of our energy", "Keeps eyes healthy", "Makes up 70% of our cells"],
+      "answerIndex": 0,
+      "explanation": "Fibre adds bulk to food so it keeps moving through the gut, which helps prevent constipation."
+    },
+    {
+      "question": "Vitamin D works with calcium to keep which parts of the body healthy?",
+      "options": ["Eyes", "Blood", "Teeth and bones", "Skin"],
+      "answerIndex": 2,
+      "explanation": "Vitamin D is needed with the mineral calcium for healthy teeth and bones."
+    },
+    {
+      "question": "Roughly how much of a cell is water?",
+      "options": ["10%", "30%", "50%", "70%"],
+      "answerIndex": 3,
+      "explanation": "Your cells are made up of about 70% water."
+    },
+    {
+      "question": "What does a balanced diet mean?",
+      "options": ["Eating only fruit and vegetables", "Eating the right nutrients in the correct amounts", "Eating the same amount of every food", "Never eating sweets"],
+      "answerIndex": 1,
+      "explanation": "A balanced diet means eating food with the right nutrients in the correct amounts."
+    },
+    {
+      "question": "Which chemical is used to test for starch?",
+      "options": ["Iodine", "Ethanol", "Benedict's solution", "Biuret"],
+      "answerIndex": 0,
+      "explanation": "Iodine solution turns from orange-yellow to blue-black if starch is present."
+    },
+    {
+      "question": "A food solution turns cloudy in the ethanol test. Which nutrient does it contain?",
+      "options": ["Sugar", "Protein", "Lipids", "Starch"],
+      "answerIndex": 2,
+      "explanation": "Ethanol goes cloudy when lipids are present."
+    },
+    {
+      "question": "What colour does Benedict's solution turn if sugar is present?",
+      "options": ["Purple", "Blue-black", "Cloudy white", "Orange-red"],
+      "answerIndex": 3,
+      "explanation": "Benedict's solution starts blue and turns orange-red when heated with sugar."
+    },
+    {
+      "question": "Which food test needs a water bath?",
+      "options": ["Starch test", "Sugar test", "Protein test", "Lipid test"],
+      "answerIndex": 1,
+      "explanation": "In the sugar test you heat the test tube with Benedict's solution in a water bath."
+    },
+    {
+      "question": "What colour shows that protein is present in the Biuret test?",
+      "options": ["Purple", "Orange-red", "Black", "Yellow"],
+      "answerIndex": 0,
+      "explanation": "Copper sulfate and sodium hydroxide (Biuret) turn purple if protein is present."
+    },
+    {
+      "question": "Rubbing a crisp on filter paper makes the paper translucent. What does this show?",
+      "options": ["It contains starch", "It contains water", "It contains lipids", "It contains protein"],
+      "answerIndex": 2,
+      "explanation": "Filter paper going translucent is the test for lipids in a solid food."
+    },
+    {
+      "question": "What should you use to crush food when making a food solution?",
+      "options": ["A test tube", "A pestle and mortar", "Filter paper", "A water bath"],
+      "answerIndex": 1,
+      "explanation": "Crush the food with a pestle and mortar, then add a few drops of distilled water and mix."
+    },
+    {
+      "question": "Which statement about fibre is true?",
+      "options": ["It is a type of protein", "It is a nutrient", "It is a carbohydrate but not a nutrient", "It is a type of lipid"],
+      "answerIndex": 2,
+      "explanation": "Fibre is a type of carbohydrate but is not classed as a nutrient. It is still important for a healthy diet."
+    },
+    {
+      "question": "Which of these is a good source of vitamins and minerals?",
+      "options": ["Fruit and vegetables", "Pasta", "Butter", "Meat"],
+      "answerIndex": 0,
+      "explanation": "Fruit and vegetables are a good source of vitamins and minerals."
+    }
+  ]
+}

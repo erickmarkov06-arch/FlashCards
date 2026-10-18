@@ -1,0 +1,211 @@
+{
+  "title": "Healthy Lifestyle 2: Unhealthy Diet and Energy",
+  "subject": "Biology",
+  "description": "Energy in food, joules and kilojoules, being underweight or overweight, vitamin deficiencies and reading food labels.",
+  "author": "L.M.",
+  "tags": ["year-8", "healthy-lifestyle", "unhealthy-diet", "energy"],
+  "cards": [
+    {
+      "front": "What is malnourishment?",
+      "back": "Eating the wrong amount or the wrong types of food\n\n(It can make people overweight OR underweight.)"
+    },
+    {
+      "front": "What is starvation?",
+      "back": "Not eating enough food (in extreme cases)"
+    },
+    {
+      "front": "Where does your body get its energy from?",
+      "back": "Food\n\n(You need energy for everything you do, even sleeping.)"
+    },
+    {
+      "front": "What units is energy in food measured in?",
+      "back": "Joules (J) / kilojoules (kJ)"
+    },
+    {
+      "front": "How many joules are in 1 kilojoule?",
+      "back": "1000 J"
+    },
+    {
+      "front": "Convert 10 kJ into joules.",
+      "back": "10 000 J",
+      "hint": "Multiply by 1000"
+    },
+    {
+      "front": "Convert 1500 J into kilojoules.",
+      "back": "1.5 kJ",
+      "hint": "Divide by 1000"
+    },
+    {
+      "front": "Convert 150 J into kilojoules.",
+      "back": "0.15 kJ",
+      "hint": "Divide by 1000"
+    },
+    {
+      "front": "Convert 60 kJ into joules.",
+      "back": "60 000 J",
+      "hint": "Multiply by 1000"
+    },
+    {
+      "front": "Where can you find out how much energy is stored in a food?",
+      "back": "On the food label"
+    },
+    {
+      "front": "What happens if you take in LESS energy than you use?",
+      "back": "You lose body mass\n\n(This leads to being underweight.)"
+    },
+    {
+      "front": "What happens if you take in MORE energy than you use?",
+      "back": "You gain body mass\n\n(It is stored as fat under the skin.)"
+    },
+    {
+      "front": "What does obese mean?",
+      "back": "Extremely overweight"
+    },
+    {
+      "front": "Name three problems caused by being underweight.",
+      "back": "Poor immune system, lack of energy (often tired), lack of vitamins or minerals"
+    },
+    {
+      "front": "Overweight people have an increased risk of which four diseases?",
+      "back": "Heart disease, stroke, diabetes, some cancers"
+    },
+    {
+      "front": "True or false: an overweight person cannot have a vitamin deficiency.",
+      "back": "False\n\n(Being overweight does not mean you get enough of every nutrient.)"
+    },
+    {
+      "front": "What is a deficiency?",
+      "back": "Not having enough of a certain vitamin or mineral\n\n(This can damage a person's health.)"
+    },
+    {
+      "front": "A lack of vitamin A causes...",
+      "back": "Night blindness\n\n(Poor eyesight in dim light.)"
+    },
+    {
+      "front": "A lack of vitamin D causes...",
+      "back": "Rickets\n\n(Bones become weak and poorly formed.)"
+    },
+    {
+      "front": "A lack of vitamin C causes...",
+      "back": "Scurvy\n\n(Symptom: bleeding gums.)"
+    },
+    {
+      "front": "What is the cause of obesity?",
+      "back": "Too much food\n\n(Taking in more energy than you use.)"
+    },
+    {
+      "front": "The amount of energy you need depends on which three things?",
+      "back": "Your age, your body size and how active you are\n\n(Age matters because it affects your growth rate.)"
+    },
+    {
+      "front": "Does doing more exercise mean you need more or less energy?",
+      "back": "More"
+    },
+    {
+      "front": "In a healthy food pyramid, which foods should make up the largest part of your diet?",
+      "back": "Carbohydrate-based foods\n\n(Lipids, oils and sweets should only be eaten in very small amounts.)"
+    },
+    {
+      "front": "On a food label, what does the percentage under each nutrient show?",
+      "back": "The % of an adult's Reference Intake (RI)"
+    },
+    {
+      "front": "Food label maths: cereal has 5 g sugar and a chocolate bar has 25.6 g. How much sugar in total?",
+      "back": "30.6 g"
+    },
+    {
+      "front": "Food label maths: a 25 g bar has 6 g of fat. How much fat in two bars?",
+      "back": "12 g"
+    },
+    {
+      "front": "Food label maths: a 25 g bar has 2 g of protein. How much protein is in 100 g?",
+      "back": "8 g\n\n(100 g is 4 bars, so 2 × 4 = 8. The 'Nutty SuperFibre' label wrongly said 6 g.)"
+    }
+  ],
+  "questions": [
+    {
+      "question": "What is energy in food measured in?",
+      "options": ["Grams", "Kilojoules", "Litres", "Degrees"],
+      "answerIndex": 1,
+      "explanation": "Energy in food is measured in joules (J) or kilojoules (kJ)."
+    },
+    {
+      "question": "How many joules is 3.2 kJ?",
+      "options": ["32 J", "320 J", "3200 J", "32 000 J"],
+      "answerIndex": 2,
+      "explanation": "1 kJ = 1000 J, so 3.2 × 1000 = 3200 J."
+    },
+    {
+      "question": "Both being very overweight and very underweight are caused by...",
+      "options": ["Malnourishment", "Exercise", "Bacteria", "Vitamins"],
+      "answerIndex": 0,
+      "explanation": "Malnourishment means eating the wrong amount or the wrong types of food."
+    },
+    {
+      "question": "If you take in more energy than you use, what happens?",
+      "options": ["You lose body mass", "Nothing changes", "You gain body mass", "You become malnourished straight away"],
+      "answerIndex": 2,
+      "explanation": "Extra energy is stored as fat under the skin, so you gain body mass."
+    },
+    {
+      "question": "Which of these is a problem caused by being underweight?",
+      "options": ["Diabetes", "Poor immune system", "Stroke", "Heart disease"],
+      "answerIndex": 1,
+      "explanation": "Underweight people often have a poor immune system, lack energy and lack vitamins or minerals. The other three are risks of being overweight."
+    },
+    {
+      "question": "Which disease are overweight people NOT at higher risk of?",
+      "options": ["Heart disease", "Diabetes", "Rickets", "Stroke"],
+      "answerIndex": 2,
+      "explanation": "Rickets is caused by a lack of vitamin D, not by being overweight."
+    },
+    {
+      "question": "Night blindness is caused by a lack of which vitamin?",
+      "options": ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin K"],
+      "answerIndex": 0,
+      "explanation": "A vitamin A deficiency makes it hard to see in dim light."
+    },
+    {
+      "question": "Rickets is caused by a lack of which vitamin?",
+      "options": ["Vitamin A", "Vitamin C", "Vitamin K", "Vitamin D"],
+      "answerIndex": 3,
+      "explanation": "A vitamin D deficiency causes rickets, where bones become weak."
+    },
+    {
+      "question": "Which symptom goes with scurvy?",
+      "options": ["Very thin body", "Poor eyesight in dim light", "Bleeding gums", "Poorly formed bones"],
+      "answerIndex": 2,
+      "explanation": "Scurvy is caused by a lack of vitamin C and causes bleeding gums."
+    },
+    {
+      "question": "Which person would usually need the most energy each day?",
+      "options": ["A child aged 5 to 11", "An office worker", "A construction worker", "A sleeping adult"],
+      "answerIndex": 2,
+      "explanation": "The more active you are, the more energy you need. Construction work is very active."
+    },
+    {
+      "question": "Most underweight people...",
+      "options": ["lack energy and are often tired", "have too much energy", "never lack vitamins", "are at high risk of diabetes"],
+      "answerIndex": 0,
+      "explanation": "Underweight people often lack energy to do things and are often tired."
+    },
+    {
+      "question": "Which foods should be eaten only in very small amounts?",
+      "options": ["Fruit and vegetables", "Bread and pasta", "Lipids, oils and sweets", "Water"],
+      "answerIndex": 2,
+      "explanation": "In a healthy food pyramid, lipids, oils and sweets are the smallest part."
+    },
+    {
+      "question": "A 25 g bar contains 1.4 mg of vitamin B1. How much is in 100 g?",
+      "options": ["0.34 mg", "1.4 mg", "2.8 mg", "5.6 mg"],
+      "answerIndex": 3,
+      "explanation": "100 g is 4 bars, so 1.4 × 4 = 5.6 mg. The label wrongly said 0.34 mg."
+    },
+    {
+      "question": "How many joules are in 1 kilojoule?",
+      "options": ["10", "100", "1000", "10 000"],
+      "answerIndex": 2,
+      "explanation": "1 kilojoule is the same as 1000 joules."
+    }
+  ]
+}

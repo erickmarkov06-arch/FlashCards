@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="400" height="520" font-family="Arial, Helvetica, sans-serif">
+  <title>Digestive system with parts labelled A to J</title>
+  <rect width="400" height="520" fill="#ffffff"/>
+
+  <!-- body outline -->
+  <g fill="#eef0f3" stroke="#9aa3ad" stroke-width="2">
+    <ellipse cx="200" cy="72" rx="46" ry="54"/>
+    <rect x="182" y="120" width="36" height="28"/>
+    <path d="M118 150 Q200 132 282 150 L292 470 Q200 500 108 470 Z"/>
+  </g>
+
+  <!-- salivary glands -->
+  <g fill="#c9a0dc" stroke="#7d4f94" stroke-width="1.5">
+    <ellipse cx="170" cy="104" rx="9" ry="6"/>
+    <ellipse cx="230" cy="104" rx="9" ry="6"/>
+  </g>
+
+  <!-- mouth -->
+  <ellipse cx="200" cy="96" rx="15" ry="6" fill="#c0392b" stroke="#7b241c" stroke-width="1.5"/>
+
+  <!-- oesophagus -->
+  <path d="M200 102 L200 150 Q202 185 222 212" fill="none" stroke="#d98880" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- liver -->
+  <path d="M126 200 Q160 182 222 196 Q214 236 176 252 Q140 258 126 236 Z" fill="#8e4a3a" stroke="#5a2a20" stroke-width="2"/>
+
+  <!-- stomach -->
+  <path d="M220 208 Q262 196 274 226 Q280 262 244 266 Q220 266 214 252 Q236 252 244 240 Q248 222 222 220 Z" fill="#e59866" stroke="#a04000" stroke-width="2"/>
+
+  <!-- pancreas -->
+  <path d="M196 276 Q230 266 270 272 Q266 284 232 284 Q206 286 196 276 Z" fill="#f4d03f" stroke="#b7950b" stroke-width="1.5"/>
+
+  <!-- large intestine (frame) -->
+  <path d="M152 432 L152 300 Q152 292 162 292 L246 292 Q256 292 256 302 L256 420 Q256 438 218 440 L204 440" fill="none" stroke="#ca6f1e" stroke-width="18" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- small intestine (coils) -->
+  <path d="M178 314 Q228 306 230 322 Q232 338 182 334 Q166 346 214 350 Q238 356 228 370 Q214 382 180 374 Q164 386 196 394 Q236 398 230 412 Q222 424 186 418 Q168 416 160 426" fill="none" stroke="#f1948a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- rectum and anus -->
+  <path d="M202 440 L202 474" fill="none" stroke="#a04000" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="202" cy="486" r="5" fill="#5a2a20"/>
+
+  <!-- label lines -->
+  <g stroke="#333" stroke-width="1.5" fill="none">
+    <line x1="344" y1="92" x2="216" y2="94"/>
+    <line x1="56" y1="104" x2="161" y2="104"/>
+    <line x1="344" y1="160" x2="206" y2="160"/>
+    <line x1="56" y1="224" x2="150" y2="224"/>
+    <line x1="344" y1="232" x2="268" y2="232"/>
+    <line x1="344" y1="278" x2="262" y2="278"/>
+    <line x1="56" y1="362" x2="200" y2="362"/>
+    <line x1="344" y1="350" x2="264" y2="350"/>
+    <line x1="56" y1="458" x2="194" y2="458"/>
+    <line x1="344" y1="486" x2="209" y2="486"/>
+  </g>
+
+  <!-- letters -->
+  <g font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    <circle cx="356" cy="92" r="13" fill="#1f4e79"/><text x="356" y="98">A</text>
+    <circle cx="44" cy="104" r="13" fill="#1f4e79"/><text x="44" y="110">B</text>
+    <circle cx="356" cy="160" r="13" fill="#1f4e79"/><text x="356" y="166">C</text>
+    <circle cx="44" cy="224" r="13" fill="#1f4e79"/><text x="44" y="230">D</text>
+    <circle cx="356" cy="232" r="13" fill="#1f4e79"/><text x="356" y="238">E</text>
+    <circle cx="356" cy="278" r="13" fill="#1f4e79"/><text x="356" y="284">F</text>
+    <circle cx="44" cy="362" r="13" fill="#1f4e79"/><text x="44" y="368">G</text>
+    <circle cx="356" cy="350" r="13" fill="#1f4e79"/><text x="356" y="356">H</text>
+    <circle cx="44" cy="458" r="13" fill="#1f4e79"/><text x="44" y="464">I</text>
+    <circle cx="356" cy="486" r="13" fill="#1f4e79"/><text x="356" y="492">J</text>
+  </g>
+</svg>

@@ -1,0 +1,288 @@
+{
+  "title": "Healthy Lifestyle 3: Digestion, Enzymes and Bacteria",
+  "subject": "Biology",
+  "description": "Parts of the digestive system and what they do, villi, enzymes (carbohydrase, protease, lipase), bile and gut bacteria.",
+  "author": "L.M.",
+  "tags": ["year-8", "healthy-lifestyle", "digestion", "enzymes"],
+  "cards": [
+    {
+      "front": "Name the part labelled A.",
+      "back": "Mouth",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled B.",
+      "back": "Salivary glands",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled C.",
+      "back": "Oesophagus / gullet",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled D.",
+      "back": "Liver",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled E.",
+      "back": "Stomach",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled F.",
+      "back": "Pancreas",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled G.",
+      "back": "Small intestine",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled H.",
+      "back": "Large intestine",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled I.",
+      "back": "Rectum",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "Name the part labelled J.",
+      "back": "Anus",
+      "frontImage": "images/digestive-system.svg",
+      "imageAlt": "Diagram of the digestive system with parts labelled A to J"
+    },
+    {
+      "front": "What is the digestive system?",
+      "back": "A group of organs that work together to break down food\n\n(It is also called the gut.)"
+    },
+    {
+      "front": "What happens during digestion?",
+      "back": "Large food molecules are broken down into small molecules\n\n(The small molecules of nutrients can then pass into the blood.)"
+    },
+    {
+      "front": "What happens to food in the mouth?",
+      "back": "It is chewed by the teeth and mixed with saliva"
+    },
+    {
+      "front": "What does the oesophagus (gullet) do?",
+      "back": "Carries food from the mouth to the stomach"
+    },
+    {
+      "front": "What happens to food in the stomach?",
+      "back": "It is mixed with acid and digestive juices"
+    },
+    {
+      "front": "What else does stomach acid do?",
+      "back": "Kills harmful microorganisms in food\n\n(It also helps digest proteins.)"
+    },
+    {
+      "front": "What happens in the small intestine?",
+      "back": "Digestion is completed and small nutrient molecules are absorbed into the blood\n\n(Digestive juices from the liver and pancreas are added here.)"
+    },
+    {
+      "front": "What happens in the large intestine?",
+      "back": "Water is absorbed back into the body\n\n(What is left is a solid waste called faeces.)"
+    },
+    {
+      "front": "What does the rectum do?",
+      "back": "Stores faeces until they leave the body"
+    },
+    {
+      "front": "What is the anus?",
+      "back": "A muscular ring that faeces pass out through"
+    },
+    {
+      "front": "How does food move along the gut?",
+      "back": "Muscles in the gut wall squeeze it along\n\n(A bit like squeezing a tube of toothpaste.)"
+    },
+    {
+      "front": "Why is a fibre-rich diet important for digestion?",
+      "back": "Fibre gives the gut muscles something to push against, so food keeps moving\n\n(This helps prevent constipation.)"
+    },
+    {
+      "front": "What are villi?",
+      "back": "Tiny structures sticking out of the small intestine wall\n\n(They give it a big surface area so more nutrients can be absorbed.)"
+    },
+    {
+      "front": "How is the small intestine adapted to absorb nutrients quickly?",
+      "back": "Villi (big surface area), a thin wall, and blood capillaries\n\n(The capillaries carry away the absorbed food molecules.)"
+    },
+    {
+      "front": "Where in the digestive system do bacteria live?",
+      "back": "Large intestine"
+    },
+    {
+      "front": "What do gut bacteria feed on?",
+      "back": "Fibre in your diet"
+    },
+    {
+      "front": "Which important vitamin do gut bacteria make?",
+      "back": "Vitamin K"
+    },
+    {
+      "front": "What is a probiotic food?",
+      "back": "A food containing useful bacteria\n\n(For example live yoghurt.)"
+    },
+    {
+      "front": "Why should we eat live yoghurt?",
+      "back": "It contains useful bacteria that help make vitamin K"
+    },
+    {
+      "front": "What is an enzyme?",
+      "back": "A special protein that breaks large molecules into small molecules"
+    },
+    {
+      "front": "Why are enzymes called biological catalysts?",
+      "back": "They speed up digestion without being used up"
+    },
+    {
+      "front": "Carbohydrase breaks down carbohydrates into...",
+      "back": "Sugars (e.g. glucose)",
+      "hint": "Starch is a long chain of these"
+    },
+    {
+      "front": "Where are carbohydrates digested?",
+      "back": "Mouth, stomach and small intestine\n\n(Carbohydrase in saliva starts breaking down starch.)"
+    },
+    {
+      "front": "Protease breaks down proteins into...",
+      "back": "Amino acids"
+    },
+    {
+      "front": "Where are proteins digested?",
+      "back": "Stomach and small intestine"
+    },
+    {
+      "front": "Lipase breaks down lipids into...",
+      "back": "Fatty acids and glycerol"
+    },
+    {
+      "front": "Where are lipids digested?",
+      "back": "Small intestine"
+    },
+    {
+      "front": "What is bile and what does it do?",
+      "back": "A substance made in the liver that breaks lipids into small droplets\n\n(The small droplets are easier for lipase to work on.)"
+    },
+    {
+      "front": "At what temperature do digestive enzymes work best?",
+      "back": "37 °C (body temperature)"
+    },
+    {
+      "front": "Enzyme practical: why did the iodine stop turning black after a few minutes?",
+      "back": "The starch had been broken down by the enzyme (amylase), so no starch was left\n\n(Iodine turns black only when starch is present.)"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Which part of the digestive system absorbs small nutrient molecules into the blood?",
+      "options": ["Stomach", "Large intestine", "Small intestine", "Rectum"],
+      "answerIndex": 2,
+      "explanation": "Digestion is completed in the small intestine and nutrients pass through its wall into the bloodstream."
+    },
+    {
+      "question": "Where is water absorbed back into the body?",
+      "options": ["Large intestine", "Mouth", "Oesophagus", "Stomach"],
+      "answerIndex": 0,
+      "explanation": "Water is absorbed back in the large intestine, leaving solid faeces."
+    },
+    {
+      "question": "Where are faeces stored until they leave the body?",
+      "options": ["Anus", "Rectum", "Small intestine", "Liver"],
+      "answerIndex": 1,
+      "explanation": "The rectum stores faeces. They leave through the anus."
+    },
+    {
+      "question": "Which tube carries food from the mouth to the stomach?",
+      "options": ["Small intestine", "Windpipe", "Rectum", "Oesophagus"],
+      "answerIndex": 3,
+      "explanation": "The oesophagus (gullet) carries food from the mouth to the stomach."
+    },
+    {
+      "question": "In which organ is food mixed with acid and digestive juices?",
+      "options": ["Mouth", "Stomach", "Large intestine", "Pancreas"],
+      "answerIndex": 1,
+      "explanation": "The stomach mixes food with acid and digestive juices. The acid also kills harmful microorganisms."
+    },
+    {
+      "question": "How do villi help the small intestine?",
+      "options": ["They make food move faster", "They make bile", "They give a big surface area for absorption", "They kill bacteria"],
+      "answerIndex": 2,
+      "explanation": "Villi increase the surface area so more nutrients can be absorbed quickly."
+    },
+    {
+      "question": "Which enzyme breaks down proteins?",
+      "options": ["Protease", "Lipase", "Carbohydrase", "Bile"],
+      "answerIndex": 0,
+      "explanation": "Protease breaks proteins down into amino acids."
+    },
+    {
+      "question": "Lipase breaks lipids down into...",
+      "options": ["amino acids", "sugars", "starch", "fatty acids and glycerol"],
+      "answerIndex": 3,
+      "explanation": "Lipase breaks lipids into fatty acids and glycerol."
+    },
+    {
+      "question": "What are carbohydrates broken down into?",
+      "options": ["Amino acids", "Sugars", "Fatty acids", "Vitamins"],
+      "answerIndex": 1,
+      "explanation": "Carbohydrase breaks carbohydrates such as starch into sugar molecules."
+    },
+    {
+      "question": "Where is bile made?",
+      "options": ["Stomach", "Pancreas", "Liver", "Small intestine"],
+      "answerIndex": 2,
+      "explanation": "Bile is made in the liver. It breaks lipids into small droplets so lipase can work on them."
+    },
+    {
+      "question": "Why are enzymes called biological catalysts?",
+      "options": ["They speed up digestion without being used up", "They are made of fat", "They kill microorganisms", "They are used up during digestion"],
+      "answerIndex": 0,
+      "explanation": "A catalyst speeds up a reaction without being used up."
+    },
+    {
+      "question": "Which vitamin do bacteria in the large intestine make?",
+      "options": ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin K"],
+      "answerIndex": 3,
+      "explanation": "Gut bacteria live on fibre and make vitamins such as vitamin K."
+    },
+    {
+      "question": "Why is live yoghurt good for you?",
+      "options": ["It contains lots of fibre", "It contains useful bacteria", "It contains enzymes that make bile", "It has no sugar"],
+      "answerIndex": 1,
+      "explanation": "Live yoghurt is a probiotic food. Its useful bacteria help make vitamin K."
+    },
+    {
+      "question": "At what temperature do digestive enzymes work best?",
+      "options": ["0 °C", "20 °C", "37 °C", "100 °C"],
+      "answerIndex": 2,
+      "explanation": "Digestive enzymes work best at body temperature, 37 °C."
+    },
+    {
+      "question": "Where are proteins digested?",
+      "options": ["Mouth only", "Stomach and small intestine", "Large intestine", "Rectum"],
+      "answerIndex": 1,
+      "explanation": "Proteins are digested in the stomach and small intestine."
+    },
+    {
+      "question": "Which two organs add digestive juices in the small intestine?",
+      "options": ["Liver and pancreas", "Stomach and rectum", "Mouth and oesophagus", "Large intestine and anus"],
+      "answerIndex": 0,
+      "explanation": "Digestive juices from the liver and pancreas are added in the small intestine."
+    }
+  ]
+}
