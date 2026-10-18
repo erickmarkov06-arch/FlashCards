@@ -1,0 +1,29 @@
+# Checks the decks in every pull request, so mistakes are caught before they reach the live site.
+# If this fails, click "Details" next to the check to see exactly which file and line is wrong.
+
+name: Validate decks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Validate decks
+        run: node scripts/validate.js
+
+      - name: Check the index can be built
+        run: node scripts/build-index.js

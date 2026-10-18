@@ -1,0 +1,27 @@
+{
+  "title": "Deck Title Goes Here",
+  "subject": "Subject Name",
+  "description": "One sentence saying what this deck covers.",
+  "author": "Your name or initials",
+  "tags": ["optional", "deck-level-tags"],
+  "cards": [
+    {
+      "front": "Term or question (required)",
+      "back": "Definition or answer (required)"
+    },
+    {
+      "front": "A card with the optional extras",
+      "back": "Write-mode also accepts either half of an answer split with ' / ', like 'to do / to make'",
+      "hint": "Optional hint shown when the student taps Hint",
+      "tags": ["optional-card-tag"]
+    }
+  ],
+  "questions": [
+    {
+      "question": "Optional multiple-choice question. Which option is correct?",
+      "options": ["Wrong answer", "Right answer", "Another wrong answer", "One more wrong answer"],
+      "answerIndex": 1,
+      "explanation": "Optional. answerIndex counts from 0, so 1 means the second option."
+    }
+  ]
+}

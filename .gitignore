@@ -1,0 +1,15 @@
+# Operating system clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor and tool settings that are personal to one computer
+.vscode/
+.idea/
+.claude/settings.local.json
+
+# Not used by this project, but people sometimes run npm install by habit
+node_modules/
+
+# Progress files exported from the Stats page (personal, keep them out of the repo)
+studydeck-progress-*.json

@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "subjects": [
+    {
+      "name": "Biology",
+      "slug": "biology",
+      "deckCount": 1
+    },
+    {
+      "name": "Chemistry",
+      "slug": "chemistry",
+      "deckCount": 1
+    },
+    {
+      "name": "Spanish",
+      "slug": "spanish",
+      "deckCount": 1
+    }
+  ],
+  "decks": [
+    {
+      "id": "biology/cell-structure",
+      "path": "biology/cell-structure.json",
+      "title": "Cell Structure",
+      "subject": "Biology",
+      "subjectSlug": "biology",
+      "description": "Organelles of animal, plant and bacterial cells, plus the magnification formula.",
+      "author": "StudyDeck sample",
+      "tags": [
+        "cells",
+        "gcse",
+        "maths-skills",
+        "organelles",
+        "plant-cells",
+        "prokaryotes"
+      ],
+      "cardCount": 12,
+      "questionCount": 6
+    },
+    {
+      "id": "chemistry/atomic-structure",
+      "path": "chemistry/atomic-structure.json",
+      "title": "Atomic Structure",
+      "subject": "Chemistry",
+      "subjectSlug": "chemistry",
+      "description": "Protons, neutrons, electrons, isotopes, ions and electron shells.",
+      "author": "StudyDeck sample",
+      "tags": [
+        "atoms",
+        "gcse",
+        "numbers",
+        "particles",
+        "periodic-table",
+        "shells"
+      ],
+      "cardCount": 11,
+      "questionCount": 5
+    },
+    {
+      "id": "spanish/everyday-verbs",
+      "path": "spanish/everyday-verbs.json",
+      "title": "Everyday Verbs",
+      "subject": "Spanish",
+      "subjectSlug": "spanish",
+      "description": "Fifteen of the most common Spanish verbs. Good practice for Write mode.",
+      "author": "StudyDeck sample",
+      "tags": [
+        "ar-verbs",
+        "er-verbs",
+        "ir-verbs",
+        "irregular",
+        "verbs",
+        "vocabulary"
+      ],
+      "cardCount": 15,
+      "questionCount": 0
+    }
+  ]
+}

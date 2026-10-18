@@ -1,0 +1,167 @@
+/**
+ * app.js — starts the app: theme toggle, page routing, offline support.
+ *
+ * Pages are chosen by the part of the URL after "#", for example:
+ *   #/                              home (all decks)
+ *   #/deck/biology/cell-structure   one deck's page
+ *   #/flashcards/biology/cell-structure  (also quiz, write, match, review)
+ *   #/review                        review due cards from every deck
+ *   #/stats                         progress and export/import
+ * Using "#" means GitHub Pages never needs special server settings.
+ */
+import { icons, esc, toast } from './utils.js';
+import { setSetting, progressByDeck } from './store.js';
+import { loadIndex } from './data.js';
+
+import * as home from './views/home.js';
+import * as deck from './views/deck.js';
+import * as flashcards from './views/flashcards.js';
+import * as quiz from './views/quiz.js';
+import * as write from './views/write.js';
+import * as match from './views/match.js';
+import * as review from './views/review.js';
+import * as stats from './views/stats.js';
+
+const routes = { '': home, deck, flashcards, quiz, write, match, review, stats };
+
+const main = document.getElementById('app');
+let cleanup = null; // function the current page gave us to remove its listeners/timers
+let renderCount = 0;
+
+// ---------- routing ----------
+
+/** "#/flashcards/biology/cells?wrong=1" -> { view: "flashcards", deckId: "biology/cells", query: {wrong: "1"} } */
+function parseHash() {
+  const [path, queryString = ''] = location.hash.replace(/^#\/?/, '').split('?');
+  const [view = '', ...rest] = path.split('/').filter(Boolean);
+  return {
+    view: decodeURIComponent(view),
+    deckId: rest.map(decodeURIComponent).join('/'),
+    query: Object.fromEntries(new URLSearchParams(queryString)),
+  };
+}
+
+async function router() {
+  const route = parseHash();
+  const page = routes[route.view] || null;
+  const thisRender = ++renderCount;
+
+  if (cleanup) {
+    try {
+      cleanup();
+    } catch (err) {
+      console.error(err);
+    }
+    cleanup = null;
+  }
+
+  // Each page draws into a fresh container. If the user navigates away while a page is
+  // still loading, its container is simply thrown away.
+  const container = document.createElement('div');
+  container.className = 'view';
+  main.replaceChildren(container);
+  window.scrollTo(0, 0);
+  updateNav(route.view);
+
+  if (!page) {
+    container.innerHTML = `<div class="empty-state"><h1>Page not found</h1><p><a class="btn" href="#/">Go to all decks</a></p></div>`;
+    return;
+  }
+
+  container.innerHTML = `<div class="loading" aria-live="polite">Loading…</div>`;
+  try {
+    const result = await page.render(container, route);
+    if (thisRender !== renderCount) {
+      if (typeof result === 'function') result(); // user already moved on
+      return;
+    }
+    cleanup = typeof result === 'function' ? result : null;
+    document.title = container.dataset.title ? `${container.dataset.title} · StudyDeck` : 'StudyDeck';
+  } catch (err) {
+    console.error(err);
+    if (thisRender !== renderCount) return;
+    container.innerHTML = `
+      <div class="empty-state">
+        <h1>Something went wrong</h1>
+        <p>${esc(err.message || err)}</p>
+        <p><button class="btn" type="button" onclick="location.reload()">Try again</button>
+           <a class="btn btn-ghost" href="#/">All decks</a></p>
+      </div>`;
+  }
+  updateDueBadge();
+}
+
+function updateNav(view) {
+  const section = view === 'stats' ? 'stats' : view === 'review' && !parseHash().deckId ? 'review' : 'home';
+  document.querySelectorAll('.bottom-nav a').forEach((a) => {
+    if (a.dataset.nav === section) a.setAttribute('aria-current', 'page');
+    else a.removeAttribute('aria-current');
+  });
+}
+
+/** Shows how many cards are due on the Review tab. */
+export function updateDueBadge() {
+  const badge = document.getElementById('due-badge');
+  loadIndex()
+    .then((index) => {
+      const known = new Set(index.decks.map((d) => d.id));
+      const due = Object.entries(progressByDeck())
+        .filter(([id]) => known.has(id))
+        .reduce((sum, [, p]) => sum + p.due, 0);
+      badge.hidden = due === 0;
+      badge.textContent = due > 99 ? '99+' : String(due);
+    })
+    .catch(() => (badge.hidden = true));
+}
+
+// ---------- light / dark theme ----------
+
+function currentTheme() {
+  return document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+}
+
+function applyThemeUi() {
+  const theme = currentTheme();
+  const button = document.getElementById('theme-toggle');
+  button.innerHTML = theme === 'dark' ? icons.sun : icons.moon;
+  button.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'dark' ? '#111827' : '#4f46e5');
+}
+
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  setSetting('theme', next);
+  applyThemeUi();
+});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyThemeUi);
+
+// ---------- offline support (service worker) ----------
+
+function setUpOffline() {
+  if (!('serviceWorker' in navigator) || location.protocol === 'file:') return;
+
+  navigator.serviceWorker.register('sw.js').catch((err) => console.warn('Offline mode unavailable:', err));
+
+  // Ask the service worker to save every deck, so they all work offline (not only the ones opened).
+  loadIndex()
+    .then(async (index) => {
+      const reg = await navigator.serviceWorker.ready;
+      const urls = ['decks/index.json', ...index.decks.map((d) => `decks/${d.path}`)];
+      reg.active?.postMessage({ type: 'cache-urls', urls });
+    })
+    .catch(() => {});
+
+  // Ask the browser not to clear our saved progress when space runs low.
+  navigator.storage?.persist?.().catch(() => {});
+}
+
+// ---------- start ----------
+
+document.querySelectorAll('[data-icon]').forEach((el) => (el.innerHTML = icons[el.dataset.icon] || ''));
+applyThemeUi();
+window.addEventListener('hashchange', router);
+window.addEventListener('online', () => toast("You're back online."));
+window.addEventListener('offline', () => toast("You're offline. Saved decks still work."));
+router();
+setUpOffline();

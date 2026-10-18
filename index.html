@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>StudyDeck</title>
+    <meta name="description" content="Flashcards, quizzes and spaced repetition for school. Free, open and works offline." />
+
+    <!-- App / install settings -->
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="StudyDeck" />
+
+    <!-- Apply the saved light/dark theme before the page draws, so it doesn't flash. -->
+    <script>
+      try {
+        var saved = JSON.parse(localStorage.getItem('studydeck:settings') || '{}').theme;
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      } catch (e) {}
+    </script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#app">Skip to content</a>
+
+    <header class="topbar">
+      <a class="brand" href="#/">
+        <img src="icons/icon.svg" alt="" width="28" height="28" />
+        <span>StudyDeck</span>
+      </a>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch theme"></button>
+    </header>
+
+    <main id="app" tabindex="-1">
+      <noscript><p class="notice">StudyDeck needs JavaScript turned on.</p></noscript>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main">
+      <a href="#/" data-nav="home"><span class="nav-icon" data-icon="cards"></span><span>Decks</span></a>
+      <a href="#/review" data-nav="review">
+        <span class="nav-icon" data-icon="repeat"></span><span>Review</span>
+        <span class="nav-badge" id="due-badge" hidden></span>
+      </a>
+      <a href="#/stats" data-nav="stats"><span class="nav-icon" data-icon="stats"></span><span>Stats</span></a>
+    </nav>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

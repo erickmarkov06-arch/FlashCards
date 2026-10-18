@@ -1,0 +1,44 @@
+{
+  "title": "Everyday Verbs",
+  "subject": "Spanish",
+  "description": "Fifteen of the most common Spanish verbs. Good practice for Write mode.",
+  "author": "StudyDeck sample",
+  "tags": ["vocabulary", "verbs"],
+  "cards": [
+    { "front": "hablar", "back": "to speak", "tags": ["ar-verbs"] },
+    { "front": "comer", "back": "to eat", "tags": ["er-verbs"] },
+    { "front": "vivir", "back": "to live", "tags": ["ir-verbs"] },
+    {
+      "front": "ser",
+      "back": "to be (permanent / identity)",
+      "hint": "Used for who or what something is: Soy estudiante.",
+      "tags": ["irregular"]
+    },
+    {
+      "front": "estar",
+      "back": "to be (temporary / location)",
+      "hint": "Used for feelings and places: Estoy en casa.",
+      "tags": ["irregular"]
+    },
+    { "front": "tener", "back": "to have", "tags": ["irregular"] },
+    { "front": "ir", "back": "to go", "tags": ["irregular"] },
+    { "front": "hacer", "back": "to do / to make", "tags": ["irregular"] },
+    { "front": "poder", "back": "to be able to / can", "tags": ["irregular"] },
+    { "front": "querer", "back": "to want / to love", "tags": ["irregular"] },
+    { "front": "decir", "back": "to say / to tell", "tags": ["irregular"] },
+    { "front": "ver", "back": "to see", "tags": ["irregular"] },
+    { "front": "dar", "back": "to give", "tags": ["irregular"] },
+    {
+      "front": "saber",
+      "back": "to know (facts / how to)",
+      "hint": "Sé nadar = I know how to swim.",
+      "tags": ["irregular"]
+    },
+    {
+      "front": "conocer",
+      "back": "to know (people / places)",
+      "hint": "Conozco a María = I know María.",
+      "tags": ["irregular"]
+    }
+  ]
+}

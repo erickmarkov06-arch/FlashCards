@@ -1,0 +1,15 @@
+{
+  "name": "studydeck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static flashcard and quiz website whose content lives in JSON files. No build step, no dependencies.",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "validate": "node scripts/validate.js",
+    "build-index": "node scripts/build-index.js",
+    "check": "node scripts/validate.js && node scripts/build-index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
