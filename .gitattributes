@@ -1,0 +1,5 @@
+# Use the same (LF) line endings on every computer, so Windows, Mac and Linux
+# contributors never create "changed" files that only differ in invisible characters.
+* text=auto eol=lf
+
+*.png binary
