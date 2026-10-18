@@ -113,7 +113,10 @@ grant select, insert, update, delete on public.profiles to authenticated;
 create or replace function public.leaderboard()
 returns table (username text, answers_week integer, streak integer, mastered integer, is_me boolean)
 language sql stable security definer set search_path = '' as $$
-  with people as (
+  -- "Today" in UK time (summer time included), to match the dates the app saves on students'
+  -- devices. The database's own clock is UTC, which puts the day boundary an hour out in summer.
+  with uk as (select (now() at time zone 'Europe/London')::date as today),
+  people as (
     select pr.user_id, pr.username,
            coalesce(p.data -> 'progress', '{}'::jsonb) as progress,
            coalesce(p.data -> 'activity', '{}'::jsonb) as activity
@@ -131,18 +134,18 @@ language sql stable security definer set search_path = '' as $$
     (select coalesce(sum(a.value::int), 0)::int
        from jsonb_each_text(people.activity) a
       where a.key ~ '^\d{4}-\d{2}-\d{2}$' and a.value ~ '^\d+$'
-        and a.key >= to_char(current_date - 6, 'YYYY-MM-DD')) as answers_week,
+        and a.key >= to_char(uk.today - 6, 'YYYY-MM-DD')) as answers_week,
     -- Days in a row with answers, ending today (or yesterday, if not studied yet today).
     (select coalesce(min(g), 0)::int
        from generate_series(0, 3660) g,
-            (select case when exists (select 1 from days d where d.user_id = people.user_id and d.day = current_date)
-                         then current_date else current_date - 1 end as start) s
+            (select case when exists (select 1 from days d where d.user_id = people.user_id and d.day = uk.today)
+                         then uk.today else uk.today - 1 end as start) s
       where not exists (select 1 from days d where d.user_id = people.user_id and d.day = s.start - g)) as streak,
     (select count(*)::int
        from jsonb_each(people.progress) e
       where right(e.key, 2) <> '~r' and (e.value ->> 'box') ~ '^\d+$' and (e.value ->> 'box')::int >= 5) as mastered,
     people.user_id = auth.uid() as is_me
-  from people;
+  from people, uk;
 $$;
 
 revoke all on function public.leaderboard() from public, anon;
