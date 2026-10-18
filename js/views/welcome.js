@@ -107,10 +107,10 @@ function usernameStep(container) {
         <label class="section-label" for="username">Choose a username</label>
         <div class="button-row">
           <input class="input" type="text" id="username" name="username" required minlength="3" maxlength="20"
-            pattern="[a-z0-9_]{3,20}" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="e.g. maths_fox">
+            pattern="[A-Za-z0-9_]{3,20}" autocapitalize="none" autocomplete="off" spellcheck="false" placeholder="e.g. MathsFox">
           <button type="submit" class="btn">Continue</button>
         </div>
-        <p class="small muted">3–20 characters: lowercase letters, numbers and _. Other people may see it on the
+        <p class="small muted">3–20 characters: letters, numbers and _ (capitals are fine). Other people may see it on the
           leaderboard (only if you switch that on), so <strong>don't use your real name</strong>.</p>
       </form>
       ${finePrint}
@@ -119,7 +119,7 @@ function usernameStep(container) {
   const form = container.querySelector('#username-form');
   form.username.focus();
   form.username.addEventListener('input', () => {
-    form.username.value = form.username.value.toLowerCase().replace(/\s+/g, '_');
+    form.username.value = form.username.value.replace(/\s+/g, '_');
   });
   form.addEventListener('submit', async (e) => {
     e.preventDefault();

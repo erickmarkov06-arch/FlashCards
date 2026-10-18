@@ -404,8 +404,8 @@ function syncSoon(delay = SAVE_DELAY_MS) {
 
 // ---------- username and leaderboard ----------
 
-/** Usernames: 3–20 lowercase letters, numbers or _. Same rule as the database (supabase/schema.sql). */
-export const USERNAME_PATTERN = /^[a-z0-9_]{3,20}$/;
+/** Usernames: 3–20 letters (capitals allowed), numbers or _. Same rule as the database (supabase/schema.sql). */
+export const USERNAME_PATTERN = /^[A-Za-z0-9_]{3,20}$/;
 
 /** Loads this user's username and leaderboard choice into the saved session. */
 export async function loadProfile() {
@@ -427,7 +427,7 @@ export async function saveProfile({ username, onLeaderboard }) {
     on_leaderboard: onLeaderboard ?? Boolean(session.onLeaderboard),
   };
   if (!USERNAME_PATTERN.test(row.username)) {
-    throw new Error('Usernames are 3 to 20 characters: lowercase letters, numbers and _ only.');
+    throw new Error('Usernames are 3 to 20 characters: letters, numbers and _ only (no spaces).');
   }
   const token = await accessToken();
   try {
