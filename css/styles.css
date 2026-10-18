@@ -662,6 +662,20 @@ main {
   padding: 0;
   display: grid;
 }
+/* My decks: the deck row plus a remove (×) button beside it */
+.deck-list .removable {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.deck-list .removable .deck-row {
+  flex: 1;
+  min-width: 0;
+  border-bottom: 0;
+}
+.deck-list .removable .icon-btn:hover {
+  color: var(--bad, var(--text));
+}
 .deck-row {
   display: grid;
   grid-template-columns: 1fr auto;
