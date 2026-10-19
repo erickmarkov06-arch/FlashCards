@@ -311,6 +311,14 @@ export function setMyDeck(deckId, on) {
   }
 }
 
+/** Adds several decks to My decks at once (one save, so one sync). */
+export function addMyDecks(deckIds) {
+  const mine = getMyDecks();
+  const now = new Date().toISOString();
+  for (const id of deckIds) mine[id] = now;
+  write(KEYS.mydecks, mine);
+}
+
 // ---------- export / import / reset ----------
 
 export function exportData() {

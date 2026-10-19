@@ -202,10 +202,12 @@ onSyncChange((changed) => {
   // Signed in, signed out, or picked a username: move between the welcome steps and the app.
   if (welcomeStep() !== gate) return router();
   if (gate) return;
-  const { view } = parseHash();
+  const { view, deckId } = parseHash();
   // The Stats page also shows sign-in and "last synced", so it is redrawn after every sync.
   // Study sessions are never interrupted; they read the latest progress as you go.
-  if (view === 'stats' || (changed && REDRAW_ON_SYNC.has(view))) router();
+  // Nor is "Add decks" (#/mydecks/add), which would lose the decks you've ticked.
+  const picking = view === 'mydecks' && deckId === 'add';
+  if (view === 'stats' || (changed && REDRAW_ON_SYNC.has(view) && !picking)) router();
   else if (changed) updateDueBadge();
 });
 
