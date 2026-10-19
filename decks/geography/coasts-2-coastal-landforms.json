@@ -1,0 +1,246 @@
+{
+  "title": "Coasts 2: Coastal Landforms",
+  "subject": "Geography",
+  "description": "Headlands and bays, concordant and discordant coasts, the eroding headland, wave-cut platforms, spits, bars, tombolos and sand dunes.",
+  "author": "Erick",
+  "tags": ["gcse", "coasts", "landforms", "sand-dunes"],
+  "cards": [
+    { "front": "Headland", "back": "An area of land that sticks out from the coast (usually hard rock)." },
+    { "front": "Bay", "back": "A curve inland along the coast (usually soft rock)." },
+    {
+      "front": "Differential erosion",
+      "back": "When hard rock and soft rock are next to each other, perpendicular to the sea, and erode at different rates."
+    },
+    { "front": "Examples of hard (resistant) rock", "back": "Limestone / chalk" },
+    { "front": "Examples of soft (less resistant) rock", "back": "Mudstone / sandstone / clay" },
+    {
+      "front": "Explain how headlands and bays are formed.",
+      "back": "They form because of differences in geology. Soft rock erodes faster and forms bays. Hard rock erodes more slowly and is left sticking out as headlands.",
+      "backImage": "images/headlands-and-bays.svg",
+      "imageAlt": "Plan view of hard rock headlands either side of a soft rock bay"
+    },
+    {
+      "front": "Discordant coastline",
+      "back": "Bands of hard and soft rock run perpendicular (at right angles) to the coast, so headlands and bays form.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Concordant coastline",
+      "back": "Bands of rock run parallel to the coast. The hard rock protects the soft rock behind it. If the sea breaks through, it can erode a cove (e.g. Lulworth Cove).",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Swanage, Dorset: which rocks form the headlands?",
+      "back": "Limestone and chalk (hard rock)"
+    },
+    {
+      "front": "Swanage, Dorset: which rock forms the bays?",
+      "back": "Clay (soft rock)"
+    },
+    {
+      "front": "Put the eroding headland sequence in order.",
+      "back": "Crack → cave → arch → large arch → stack → stump → wave-cut platform"
+    },
+    {
+      "front": "Eroding headland: how does a cave form?",
+      "back": "Marine erosion weakens the headland along lines of weakness and cracks start to form. The crack grows into a cave."
+    },
+    {
+      "front": "Eroding headland: how does an arch form?",
+      "back": "The cave is eroded until it breaks through to the other side of the headland."
+    },
+    {
+      "front": "Eroding headland: how does a stack form?",
+      "back": "The arch gets bigger as the material above is weakened, until the roof collapses, leaving a stack (a pillar of rock)."
+    },
+    {
+      "front": "Eroding headland: how does a stump form?",
+      "back": "The stack is eroded down over time into a stump. Finally it becomes a wave-cut platform at sea level."
+    },
+    {
+      "front": "Eroding headland: name the feature labelled A.",
+      "back": "Crack",
+      "frontImage": "images/headland-erosion.svg",
+      "imageAlt": "Eroding headland with features labelled A to F"
+    },
+    {
+      "front": "Eroding headland: name the feature labelled B.",
+      "back": "Cave",
+      "frontImage": "images/headland-erosion.svg",
+      "imageAlt": "Eroding headland with features labelled A to F"
+    },
+    {
+      "front": "Eroding headland: name the feature labelled C.",
+      "back": "Arch",
+      "frontImage": "images/headland-erosion.svg",
+      "imageAlt": "Eroding headland with features labelled A to F"
+    },
+    {
+      "front": "Eroding headland: name the feature labelled D.",
+      "back": "Stack",
+      "frontImage": "images/headland-erosion.svg",
+      "imageAlt": "Eroding headland with features labelled A to F"
+    },
+    {
+      "front": "Eroding headland: name the feature labelled E.",
+      "back": "Stump",
+      "frontImage": "images/headland-erosion.svg",
+      "imageAlt": "Eroding headland with features labelled A to F"
+    },
+    {
+      "front": "Eroding headland: name the feature labelled F.",
+      "back": "Wave-cut platform",
+      "frontImage": "images/headland-erosion.svg",
+      "imageAlt": "Eroding headland with features labelled A to F"
+    },
+    {
+      "front": "Explain the formation of a wave-cut notch.",
+      "back": "Waves erode the base of a cliff between high and low tide (by hydraulic action and abrasion), cutting a notch.",
+      "backImage": "images/wave-cut-platform.svg",
+      "imageAlt": "Cliff with a wave-cut notch at high tide level and a wave-cut platform",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Explain the formation of a wave-cut platform.",
+      "back": "The notch gets deeper until the cliff above collapses. This repeats, so the cliff retreats and leaves a flat rocky platform that is exposed at low tide.",
+      "backImage": "images/wave-cut-platform.svg",
+      "imageAlt": "Cliff with a wave-cut notch at high tide level and a wave-cut platform",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Explain the formation of a spit.",
+      "back": "Longshore drift carries material along the coast. Where the coast changes direction, material is deposited out into the sea, forming a long ridge of sand or shingle. Changing winds can curve the end (recurved end) and salt marsh forms behind it.",
+      "backImage": "images/spit.svg",
+      "imageAlt": "Plan view of a spit growing out from a bend in the coast",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Bar",
+      "back": "A spit that grows right across a bay, joining two headlands and trapping a lagoon behind it.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Tombolo",
+      "back": "A spit or bar that joins the mainland to an island.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Sand dunes: what begins the process?",
+      "back": "An obstacle on the beach. Sand is deposited around it, making it larger."
+    },
+    { "front": "Embryo dune", "back": "Forms as more and more sand is deposited around an obstacle." },
+    { "front": "Fore dune", "back": "Forms when embryo dunes build up and join together." },
+    { "front": "Yellow dune", "back": "Mobile and often the largest dune." },
+    {
+      "front": "Grey dune",
+      "back": "Plants die and decay forming humus (soil); the dead plant material turns the sand grey. With more soil and vegetation the dune becomes fixed."
+    },
+    {
+      "front": "Mature dune",
+      "back": "Once the dunes are fixed, trees begin to grow. Diversity decreases because trees take most of the water, sunlight and nutrients."
+    },
+    {
+      "front": "Dune slack",
+      "back": "A damp hollow between dunes where the water table reaches the surface.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "What role does marram grass play in sand dunes?",
+      "back": "It colonises the dune, resists drought, grows upwards as it is buried, and its roots anchor the sand and prevent erosion."
+    },
+    {
+      "front": "Why are early dunes alkaline?",
+      "back": "Because of calcareous (calcium-rich) sea shells in the sand."
+    },
+    {
+      "front": "Why are later dunes more acidic?",
+      "back": "The calcium is washed away by rainwater."
+    },
+    {
+      "front": "Why do only salt-tolerant plants grow near the sea?",
+      "back": "Early dunes are salty and have extremely good drainage, so conditions are harsh."
+    },
+    {
+      "front": "How does soil change the drainage of a dune?",
+      "back": "The soil slows down the drainage of water, so a greater variety of plants can grow."
+    },
+    {
+      "front": "Why do foredunes move inland?",
+      "back": "Sand builds up on the leeward (sheltered) side, where conditions are less harsh."
+    },
+    {
+      "front": "Sand dunes: name the dune labelled A.",
+      "back": "Embryo dune",
+      "frontImage": "images/sand-dunes.svg",
+      "imageAlt": "Sand dune succession with dunes labelled A to F"
+    },
+    {
+      "front": "Sand dunes: name the dune labelled B.",
+      "back": "Fore dune",
+      "frontImage": "images/sand-dunes.svg",
+      "imageAlt": "Sand dune succession with dunes labelled A to F"
+    },
+    {
+      "front": "Sand dunes: name the dune labelled C.",
+      "back": "Yellow dune",
+      "frontImage": "images/sand-dunes.svg",
+      "imageAlt": "Sand dune succession with dunes labelled A to F"
+    },
+    {
+      "front": "Sand dunes: name the dune labelled D.",
+      "back": "Grey dune",
+      "frontImage": "images/sand-dunes.svg",
+      "imageAlt": "Sand dune succession with dunes labelled A to F"
+    },
+    {
+      "front": "Sand dunes: name the feature labelled E.",
+      "back": "Dune slack",
+      "frontImage": "images/sand-dunes.svg",
+      "imageAlt": "Sand dune succession with dunes labelled A to F"
+    },
+    {
+      "front": "Sand dunes: name the dune labelled F.",
+      "back": "Mature dune",
+      "frontImage": "images/sand-dunes.svg",
+      "imageAlt": "Sand dune succession with dunes labelled A to F"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Why do bays form?",
+      "options": ["Hard rock erodes faster", "Soft rock erodes faster than hard rock", "Deposition from longshore drift", "Waves are weaker in bays"],
+      "answerIndex": 1,
+      "explanation": "Soft rock such as clay erodes faster than hard rock, forming bays between headlands."
+    },
+    {
+      "question": "What comes straight after a cave in the eroding headland sequence?",
+      "options": ["Stack", "Stump", "Arch", "Wave-cut platform"],
+      "answerIndex": 2,
+      "explanation": "Crack → cave → arch → stack → stump → wave-cut platform."
+    },
+    {
+      "question": "Which is an example of soft rock?",
+      "options": ["Chalk", "Limestone", "Granite", "Clay"],
+      "answerIndex": 3,
+      "explanation": "Clay, mudstone and sandstone are soft. Limestone and chalk are hard."
+    },
+    {
+      "question": "Which dune is mobile and often the largest?",
+      "options": ["Yellow dune", "Embryo dune", "Grey dune", "Mature dune"],
+      "answerIndex": 0,
+      "explanation": "The yellow dune is mobile and often the largest."
+    },
+    {
+      "question": "What does marram grass do?",
+      "options": ["Makes the sand acidic", "Anchors the sand with its roots", "Stops sand being deposited", "Turns the sand grey"],
+      "answerIndex": 1,
+      "explanation": "Marram grass roots anchor the sand and prevent erosion."
+    },
+    {
+      "question": "A landform that joins the mainland to an island is a...",
+      "options": ["Bar", "Spit", "Stack", "Tombolo"],
+      "answerIndex": 3,
+      "explanation": "A tombolo joins an island to the mainland. A bar joins two headlands."
+    }
+  ]
+}

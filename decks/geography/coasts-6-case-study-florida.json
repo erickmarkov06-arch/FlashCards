@@ -1,0 +1,79 @@
+{
+  "title": "Coasts 6: Case Study - Florida, USA",
+  "subject": "Geography",
+  "description": "Case study of coastal erosion and tropical storms in Florida: causes, impacts and management.",
+  "author": "Erick",
+  "tags": ["gcse", "coasts", "case-study", "florida", "tropical-storms"],
+  "cards": [
+    { "front": "Florida: which country is it a state of?", "back": "USA" },
+    { "front": "Florida: which ocean lies to the east?", "back": "Atlantic Ocean" },
+    { "front": "Florida: which sea lies to the south?", "back": "Gulf of Mexico" },
+    { "front": "Florida's coastline is the ___ longest of all US states.", "back": "Second" },
+    {
+      "front": "Florida: how does the type of coastline cause erosion and flooding?",
+      "back": "It is made of soft sediment with sandy beaches and very few cliffs."
+    },
+    {
+      "front": "Florida: how does the relief cause erosion and flooding?",
+      "back": "Florida is very flat."
+    },
+    {
+      "front": "Florida: how do tropical storms cause erosion and flooding?",
+      "back": "Florida is very vulnerable to tropical storms and gets hit majorly every year. It is one of the most hurricane-prone states."
+    },
+    {
+      "front": "Florida: how has urbanisation increased erosion?",
+      "back": "Coastal development has altered natural processes such as longshore drift, reducing the ability of beaches to adapt to changing conditions."
+    },
+    {
+      "front": "Florida: how much of its 1,328 km of sandy beach is critically eroded?",
+      "back": "696 km (over half of the coastline)"
+    },
+    {
+      "front": "Florida: what does 'critically eroded' mean?",
+      "back": "The land has been lost to the sea and can't be recovered."
+    },
+    {
+      "front": "Florida: what happened to coastal properties in Naples and Sarasota?",
+      "back": "Erosion damaged waterfront homes and hotels, and weakened natural defences against storm surges."
+    },
+    {
+      "front": "Florida: what has happened in the Everglades and the Florida Keys?",
+      "back": "Mangroves and coastal habitats have become increasingly vulnerable to erosion, leading to habitat loss and removing a natural coastal defence."
+    },
+    {
+      "front": "Florida: how are tropical storms managed?",
+      "back": "Evacuation zones, emergency shelters with food and supplies, and early warning systems."
+    },
+    {
+      "front": "Where is the US National Hurricane Center?",
+      "back": "Miami, Florida"
+    }
+  ],
+  "questions": [
+    {
+      "question": "How much of Florida's sandy beach is critically eroded?",
+      "options": ["About a quarter", "Over half (696 km)", "All of it", "About 10%"],
+      "answerIndex": 1,
+      "explanation": "696 km out of 1,328 km of sandy beach is critically eroded: over half."
+    },
+    {
+      "question": "Which sea lies to the south of Florida?",
+      "options": ["Caribbean Sea", "North Sea", "Gulf of Mexico", "Irish Sea"],
+      "answerIndex": 2,
+      "explanation": "The Gulf of Mexico is to the south and the Atlantic Ocean to the east."
+    },
+    {
+      "question": "Which is a human cause of erosion in Florida?",
+      "options": ["Urbanisation altering longshore drift", "Very few cliffs", "Flat relief", "Tropical storms"],
+      "answerIndex": 0,
+      "explanation": "Coastal development has altered natural processes like longshore drift. The others are physical causes."
+    },
+    {
+      "question": "Where in Florida did erosion damage waterfront homes and hotels?",
+      "options": ["The Everglades", "Miami and Orlando", "The Florida Keys", "Naples and Sarasota"],
+      "answerIndex": 3,
+      "explanation": "In Naples and Sarasota, erosion damaged waterfront homes and hotels."
+    }
+  ]
+}

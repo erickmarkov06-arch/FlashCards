@@ -1,0 +1,170 @@
+{
+  "title": "Coasts 5: Coral Reefs and Mangroves",
+  "subject": "Geography",
+  "description": "Where coral reefs and mangroves are found, the 3 types of reef, why they matter, the threats they face and how they are managed.",
+  "author": "Erick",
+  "tags": ["gcse", "coasts", "coral-reefs", "mangroves", "ecosystems"],
+  "cards": [
+    {
+      "front": "Between which latitudes are coral reefs found?",
+      "back": "30°N and 30°S"
+    },
+    {
+      "front": "Name areas where coral reefs are found.",
+      "back": "Australia / Mexico / Indonesia / Madagascar"
+    },
+    {
+      "front": "Where are mangroves found?",
+      "back": "In tropical and sub-tropical regions, e.g. Indonesia, Australia, the Brazil coast, Madagascar and Mexico."
+    },
+    {
+      "front": "What conditions do coral reefs need?",
+      "back": "Warm, shallow, clear, salty water with plenty of sunlight.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Coral reefs are often described as the...",
+      "back": "Rainforests of the sea"
+    },
+    {
+      "front": "Fringing reef",
+      "back": "A reef that grows right next to the shore.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Barrier reef",
+      "back": "A reef separated from the shore by a wide, deep lagoon (e.g. the Great Barrier Reef).",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Atoll",
+      "back": "A ring-shaped reef around a lagoon, left behind where a volcanic island has sunk.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Name the type of coral reef labelled A.",
+      "back": "Fringing reef",
+      "frontImage": "images/coral-reef-types.svg",
+      "imageAlt": "The three types of coral reef labelled A, B and C",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Name the type of coral reef labelled B.",
+      "back": "Barrier reef",
+      "frontImage": "images/coral-reef-types.svg",
+      "imageAlt": "The three types of coral reef labelled A, B and C",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Name the type of coral reef labelled C.",
+      "back": "Atoll",
+      "frontImage": "images/coral-reef-types.svg",
+      "imageAlt": "The three types of coral reef labelled A, B and C",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Importance of coral reefs: biodiversity",
+      "back": "Although they cover a small area of the ocean, they provide diverse habitats for huge numbers of fish and other marine species."
+    },
+    {
+      "front": "Importance of coral reefs: economic",
+      "back": "Fishing communities depend on their fish, and tourism (e.g. diving and snorkelling) brings in billions of dollars a year and creates jobs."
+    },
+    {
+      "front": "How do coral reefs protect the coast?",
+      "back": "They act as natural barriers, absorbing wave energy before it reaches the coast."
+    },
+    {
+      "front": "Importance of mangroves: wildlife",
+      "back": "They provide diverse wildlife habitats and sheltered nursery grounds where young fish grow before moving into deeper water."
+    },
+    {
+      "front": "Importance of mangroves: people",
+      "back": "Fishing communities rely on them for food."
+    },
+    {
+      "front": "How do mangroves protect the coast?",
+      "back": "Their roots trap sediment and reduce erosion, and they absorb wave energy, which limits flooding and damage to settlements during storms."
+    },
+    {
+      "front": "How do mangroves help fight climate change?",
+      "back": "They absorb and store large amounts of carbon (CO₂), produce oxygen, and improve water quality by filtering pollutants."
+    },
+    {
+      "front": "What is the most serious threat to coral reefs and mangroves?",
+      "back": "Climate change"
+    },
+    {
+      "front": "Coral bleaching",
+      "back": "Rising sea temperatures cause the organisms that make up coral to die off, leaving it white."
+    },
+    {
+      "front": "How do storms threaten reefs and mangroves?",
+      "back": "Storms add sediment over reefs, damaging the coral, and disrupt the sediment deposition that mangroves need to develop."
+    },
+    {
+      "front": "Ocean acidification",
+      "back": "The ocean becoming more acidic; along with warming oceans, scientists see it as a main threat to reefs."
+    },
+    {
+      "front": "How does pollution threaten coral reefs?",
+      "back": "Pollution from agriculture, sewage and urban development reduces water quality and smothers coral with sediment. Extra nutrients cause excessive algae growth."
+    },
+    {
+      "front": "Human threats to mangroves",
+      "back": "Pollution killing the wildlife, people removing and harvesting the mangrove wood, and urban development (resorts, ports and housing)."
+    },
+    {
+      "front": "Other human pressures on coral reefs and mangroves",
+      "back": "Overfishing, destructive fishing practices and poorly managed tourism."
+    },
+    {
+      "front": "Marine Protected Areas",
+      "back": "Areas where damaging activities are restricted so ecosystems can recover naturally."
+    },
+    {
+      "front": "Zoning",
+      "back": "Separating tourism, fishing and conservation activities into different areas."
+    },
+    {
+      "front": "Coral seeding",
+      "back": "Taking pieces of coral that have been bleached and moving them to a safer place to regrow (restoring damaged reefs)."
+    },
+    {
+      "front": "How are mangroves managed?",
+      "back": "Making mangrove protected areas, water quality (pollution) control, and replanting mangroves."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Between which latitudes are coral reefs found?",
+      "options": ["10°N and 10°S", "30°N and 30°S", "45°N and 45°S", "60°N and 60°S"],
+      "answerIndex": 1,
+      "explanation": "Coral reefs are found between 30°N and 30°S."
+    },
+    {
+      "question": "What causes coral bleaching?",
+      "options": ["Rising sea temperatures", "Too much sunlight", "Mangrove roots", "Cold currents"],
+      "answerIndex": 0,
+      "explanation": "Rising sea temperatures from climate change cause bleaching, where the coral organisms die off."
+    },
+    {
+      "question": "Which is a way mangroves protect the coast?",
+      "options": ["They raise sea levels", "They make waves bigger", "Their roots trap sediment", "They add nutrients to the sea"],
+      "answerIndex": 2,
+      "explanation": "Mangrove roots trap sediment and absorb wave energy, reducing erosion and flooding."
+    },
+    {
+      "question": "Which reef type is a ring around a lagoon with no island in the middle?",
+      "options": ["Fringing reef", "Barrier reef", "Patch reef", "Atoll"],
+      "answerIndex": 3,
+      "explanation": "An atoll is a ring of reef left when a volcanic island sinks."
+    },
+    {
+      "question": "Separating tourism, fishing and conservation into different areas is called...",
+      "options": ["Coral seeding", "Zoning", "Beach nourishment", "Managed retreat"],
+      "answerIndex": 1,
+      "explanation": "Zoning separates activities so damaging ones are kept away from sensitive areas."
+    }
+  ]
+}

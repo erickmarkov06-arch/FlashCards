@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300" font-family="Arial, Helvetica, sans-serif">
+  <title>Diagram of the two bands where tropical storms form, between 5 and 30 degrees north and south of the equator</title>
+  <rect width="560" height="300" fill="#e8f1fa"/>
+  <rect x="60" y="40" width="480" height="90" fill="#f4a261" opacity="0.75"/>
+  <rect x="60" y="170" width="480" height="90" fill="#f4a261" opacity="0.75"/>
+  <line x1="60" y1="150" x2="540" y2="150" stroke="#c0392b" stroke-width="2.5"/>
+  <g stroke="#7a8a99" stroke-width="1" stroke-dasharray="5 4">
+    <line x1="60" y1="40" x2="540" y2="40"/><line x1="60" y1="130" x2="540" y2="130"/>
+    <line x1="60" y1="170" x2="540" y2="170"/><line x1="60" y1="260" x2="540" y2="260"/>
+  </g>
+  <g font-size="13" fill="#222" text-anchor="end">
+    <text x="54" y="44">30°N</text><text x="54" y="134">5°N</text>
+    <text x="54" y="154">0°</text>
+    <text x="54" y="174">5°S</text><text x="54" y="264">30°S</text>
+  </g>
+  <text x="300" y="146" font-size="12" fill="#c0392b" text-anchor="middle">equator: too little Coriolis effect for storms to spin</text>
+  <g font-size="14" font-weight="bold" fill="#5a2a00" text-anchor="middle">
+    <text x="130" y="80">Hurricanes</text><text x="130" y="98">(Atlantic: Caribbean, USA)</text>
+    <text x="300" y="80">Cyclones</text><text x="300" y="98">(Indian Ocean: India)</text>
+    <text x="465" y="80">Typhoons</text><text x="465" y="98">(Pacific: SE Asia, Japan)</text>
+    <text x="210" y="215">Cyclones</text><text x="210" y="233">(Madagascar)</text>
+    <text x="420" y="215">Cyclones</text><text x="420" y="233">(Northern Australia)</text>
+  </g>
+  <text x="300" y="290" font-size="13" fill="#222" text-anchor="middle">Shaded bands: where tropical storms form (ocean 26°C or warmer)</text>
+</svg>

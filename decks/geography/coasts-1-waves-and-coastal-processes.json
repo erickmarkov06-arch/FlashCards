@@ -1,0 +1,223 @@
+{
+  "title": "Coasts 1: Waves and Coastal Processes",
+  "subject": "Geography",
+  "description": "Wave terms, constructive and destructive waves, marine erosion, weathering, transport, longshore drift, deposition and wave refraction.",
+  "author": "Erick",
+  "tags": ["gcse", "coasts", "waves", "erosion", "transport"],
+  "cards": [
+    {
+      "front": "Define the coast.",
+      "back": "The area where the land meets the sea.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Give reasons why we need to know about the coast (UK / Isle of Man).",
+      "back": "We live on an island surrounded by water, many people depend on the coast for work, sea levels are rising, and tides affect sailing times."
+    },
+    {
+      "front": "How are waves created?",
+      "back": "By wind blowing over the surface of the sea. Friction between the wind and the water transfers energy to the water, making waves.",
+      "hint": "Think about fetch.",
+      "tags": ["not-yet-taught"]
+    },
+    { "front": "Fetch", "back": "The distance that the wind blows over the water." },
+    { "front": "Swash", "back": "The movement of water up the beach." },
+    { "front": "Backwash", "back": "The movement of water down the beach." },
+    { "front": "Crest", "back": "The highest point of a wave." },
+    { "front": "Trough", "back": "The lowest point of a wave." },
+    { "front": "Wave height", "back": "The difference (height) between the crest and the trough." },
+    { "front": "Wavelength", "back": "The distance between two waves (crest to crest)." },
+    {
+      "front": "Wave profile: name the part labelled A.",
+      "back": "Crest",
+      "frontImage": "images/wave-profile.svg",
+      "imageAlt": "Cross profile of a wave with parts labelled A to G"
+    },
+    {
+      "front": "Wave profile: name the part labelled B.",
+      "back": "Trough",
+      "frontImage": "images/wave-profile.svg",
+      "imageAlt": "Cross profile of a wave with parts labelled A to G"
+    },
+    {
+      "front": "Wave profile: name the part labelled C.",
+      "back": "Swash",
+      "frontImage": "images/wave-profile.svg",
+      "imageAlt": "Cross profile of a wave with parts labelled A to G"
+    },
+    {
+      "front": "Wave profile: name the part labelled D.",
+      "back": "Backwash",
+      "frontImage": "images/wave-profile.svg",
+      "imageAlt": "Cross profile of a wave with parts labelled A to G"
+    },
+    {
+      "front": "Wave profile: name the part labelled E.",
+      "back": "Wavelength",
+      "frontImage": "images/wave-profile.svg",
+      "imageAlt": "Cross profile of a wave with parts labelled A to G"
+    },
+    {
+      "front": "Wave profile: name the part labelled F.",
+      "back": "Wave height",
+      "frontImage": "images/wave-profile.svg",
+      "imageAlt": "Cross profile of a wave with parts labelled A to G"
+    },
+    {
+      "front": "Wave profile: name the part labelled G.",
+      "back": "Fetch / wind",
+      "frontImage": "images/wave-profile.svg",
+      "imageAlt": "Cross profile of a wave with parts labelled A to G"
+    },
+    {
+      "front": "Characteristics of a constructive wave",
+      "back": "Low wave height, long wavelength, low energy, strong swash, weak backwash. Adds material to the beach."
+    },
+    {
+      "front": "Characteristics of a destructive wave",
+      "back": "High wave height, short wavelength, high energy, weak swash, strong backwash. Removes material from the beach."
+    },
+    {
+      "front": "Which type of wave is shown?",
+      "back": "Constructive wave",
+      "frontImage": "images/constructive-wave.svg",
+      "imageAlt": "A low wave with strong swash and weak backwash on a gentle beach"
+    },
+    {
+      "front": "Which type of wave is shown?",
+      "back": "Destructive wave",
+      "frontImage": "images/destructive-wave.svg",
+      "imageAlt": "A tall wave with weak swash and strong backwash on a steep beach"
+    },
+    {
+      "front": "Beach profile made by constructive waves",
+      "back": "Gentle (shallow) and wide, with ridges of material (berms) built up at the top of the beach.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Beach profile made by destructive waves",
+      "back": "Steep and narrow, because the strong backwash drags material back out to sea.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Compare destructive and constructive waves.",
+      "back": "Destructive waves are taller and have more energy. Constructive waves have a longer wavelength. Constructive waves add material; destructive waves remove it."
+    },
+    {
+      "front": "List three factors that affect the type of wave that arrives at the coast.",
+      "back": "Length of the fetch / strength of the wind / steepness of the beach"
+    },
+    { "front": "How does the fetch affect a wave?", "back": "The longer the fetch, the stronger the wave." },
+    { "front": "How does wind strength affect a wave?", "back": "The stronger the wind, the more energy the waves have." },
+    { "front": "How does a steep beach affect waves?", "back": "A steeper beach makes waves more destructive." },
+    { "front": "Marine erosion", "back": "The wearing away of the coast by the sea." },
+    { "front": "Erosion", "back": "The wearing away of material." },
+    { "front": "Hydraulic action", "back": "The force of the waves against the coast." },
+    { "front": "Abrasion", "back": "Rocks carried by the wave being thrown against the coast." },
+    { "front": "Attrition", "back": "Small rocks in the wave crashing together." },
+    {
+      "front": "Corrosion (solution)",
+      "back": "The chemical breakdown of rocks on the coast."
+    },
+    {
+      "front": "Why does a cliff made of soluble material erode faster?",
+      "back": "It is broken down chemically by corrosion (solution), so it is eroded much more rapidly."
+    },
+    {
+      "front": "Sub-aerial weathering",
+      "back": "Weathering of the cliff from above, e.g. rain, surface run-off and freeze-thaw."
+    },
+    {
+      "front": "Biological weathering",
+      "back": "Weathering caused by living things, e.g. burrowing organisms."
+    },
+    { "front": "Traction", "back": "Large material flipped, rolled or dragged along the sea bed." },
+    { "front": "Saltation", "back": "The bouncing of material." },
+    { "front": "Suspension", "back": "The lifting and carrying of material in the water." },
+    { "front": "Solution (transport)", "back": "The dissolving of minerals in the water." },
+    {
+      "front": "Explain how longshore drift occurs.",
+      "back": "The prevailing wind makes waves hit the coast at an angle. The swash carries material up the beach at that angle. The backwash returns it straight down (perpendicular) under gravity. This repeats in a zig-zag, moving material along the beach.",
+      "backImage": "images/longshore-drift.svg",
+      "imageAlt": "Plan view of longshore drift with a zig-zag of swash and backwash"
+    },
+    {
+      "front": "Longshore drift moves material in what pattern?",
+      "back": "A zig-zag pattern"
+    },
+    {
+      "front": "Longshore drift: what is shown by arrow A?",
+      "back": "Prevailing wind",
+      "frontImage": "images/longshore-drift.svg",
+      "imageAlt": "Plan view of longshore drift with arrows labelled A to D"
+    },
+    {
+      "front": "Longshore drift: what is shown by line B?",
+      "back": "Swash",
+      "frontImage": "images/longshore-drift.svg",
+      "imageAlt": "Plan view of longshore drift with arrows labelled A to D"
+    },
+    {
+      "front": "Longshore drift: what is shown by line C?",
+      "back": "Backwash",
+      "frontImage": "images/longshore-drift.svg",
+      "imageAlt": "Plan view of longshore drift with arrows labelled A to D"
+    },
+    {
+      "front": "Longshore drift: what is shown by arrow D?",
+      "back": "Direction of material (movement along the beach)",
+      "frontImage": "images/longshore-drift.svg",
+      "imageAlt": "Plan view of longshore drift with arrows labelled A to D"
+    },
+    { "front": "Deposition", "back": "The dropping of material." },
+    {
+      "front": "Why does deposition occur?",
+      "back": "When waves lose energy and can no longer carry material, e.g. in sheltered bays, where the fetch is short, or where constructive waves dominate.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Why does wave refraction occur?",
+      "back": "Waves slow down in shallower water near headlands and bend. This concentrates wave energy on the headlands and spreads it out in the bays.",
+      "hint": "Waves hit headlands first.",
+      "tags": ["not-yet-taught"]
+    }
+  ],
+  "questions": [
+    {
+      "question": "Which is the distance the wind blows over the water?",
+      "options": ["Wavelength", "Swash", "Fetch", "Wave height"],
+      "answerIndex": 2,
+      "explanation": "Fetch is the distance the wind blows over the water. A longer fetch gives a stronger wave."
+    },
+    {
+      "question": "Which describes a constructive wave?",
+      "options": ["Strong backwash, short wavelength", "Strong swash, long wavelength", "High wave height, high energy", "Removes material from the beach"],
+      "answerIndex": 1,
+      "explanation": "Constructive waves have a strong swash, weak backwash, low height and long wavelength, and they add material."
+    },
+    {
+      "question": "Rocks carried by a wave being thrown against the coast is called...",
+      "options": ["Attrition", "Corrosion", "Hydraulic action", "Abrasion"],
+      "answerIndex": 3,
+      "explanation": "Abrasion is rocks thrown against the coast. Attrition is rocks in the wave crashing into each other."
+    },
+    {
+      "question": "Which type of transport is the bouncing of material?",
+      "options": ["Saltation", "Traction", "Suspension", "Solution"],
+      "answerIndex": 0,
+      "explanation": "Saltation is bouncing. Traction is rolling or dragging, suspension is carrying, solution is dissolving."
+    },
+    {
+      "question": "In longshore drift, how does the backwash move?",
+      "options": ["At an angle, pushed by the wind", "Along the beach parallel to the shore", "Straight down the beach under gravity", "Up the beach at an angle"],
+      "answerIndex": 2,
+      "explanation": "The swash goes up at an angle with the prevailing wind; the backwash returns perpendicular to the shore under gravity."
+    },
+    {
+      "question": "Which makes waves more destructive?",
+      "options": ["A short fetch", "A steeper beach", "Lighter winds", "A longer wavelength"],
+      "answerIndex": 1,
+      "explanation": "A steeper beach makes waves more destructive. A longer fetch and stronger wind also make stronger waves."
+    }
+  ]
+}

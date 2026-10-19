@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" width="520" height="300" font-family="Arial, Helvetica, sans-serif">
+  <title>Plan view of longshore drift with arrows labelled A to D</title>
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#1f3a5f"/></marker></defs>
+  <rect width="520" height="300" fill="#ffffff"/>
+  <rect x="0" y="0" width="520" height="50" fill="#b48a5a"/>
+  <text x="250" y="32" font-size="16" fill="#ffffff" font-weight="bold">LAND</text>
+  <rect x="0" y="50" width="520" height="110" fill="#f2d16b"/>
+  <text x="20" y="80" font-size="15" fill="#7a5c1e" font-weight="bold">BEACH</text>
+  <path d="M0 160 Q30 152 60 160 T120 160 T180 160 T240 160 T300 160 T360 160 T420 160 T480 160 T540 160 L520 300 L0 300 Z" fill="#9fc3e6"/>
+  <text x="20" y="290" font-size="15" fill="#1f3a5f" font-weight="bold">SEA</text>
+  <!-- zigzag -->
+  <polyline points="70,155 170,85 170,155 270,85 270,155 370,85 370,155" fill="none" stroke="#1f3a5f" stroke-width="3" stroke-dasharray="0" marker-end="url(#ah)"/>
+  <g fill="#7a5c1e"><circle cx="70" cy="155" r="6"/><circle cx="170" cy="85" r="6"/><circle cx="270" cy="85" r="6"/><circle cx="370" cy="85" r="6"/></g>
+  <!-- wind -->
+  <line x1="40" y1="260" x2="110" y2="200" stroke="#555" stroke-width="7" marker-end="url(#ah)"/>
+  <!-- material direction -->
+  <line x1="300" y1="215" x2="480" y2="215" stroke="#c0392b" stroke-width="7" marker-end="url(#ah)"/>
+  <g font-size="18" font-weight="bold" fill="#ffffff">
+    <rect x="120" y="230" width="24" height="24" fill="#1f3a5f"/><text x="132" y="248" text-anchor="middle">A</text>
+    <rect x="98" y="100" width="24" height="24" fill="#1f3a5f"/><text x="110" y="118" text-anchor="middle">B</text>
+    <rect x="178" y="110" width="24" height="24" fill="#1f3a5f"/><text x="190" y="128" text-anchor="middle">C</text>
+    <rect x="250" y="203" width="24" height="24" fill="#1f3a5f"/><text x="262" y="221" text-anchor="middle">D</text>
+  </g>
+</svg>

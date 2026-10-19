@@ -1,0 +1,161 @@
+{
+  "title": "Coasts 3: Living on the Coast and Coastal Management",
+  "subject": "Geography",
+  "description": "Opportunities and hazards of living by the coast (Isle of Man), hard and soft engineering with pros and cons, ICZM and Shoreline Management Plans.",
+  "author": "Erick",
+  "tags": ["gcse", "coasts", "coastal-management", "isle-of-man"],
+  "cards": [
+    {
+      "front": "Isle of Man: how is fishing an opportunity?",
+      "back": "People can fish recreationally or commercially, which is another source of income."
+    },
+    {
+      "front": "Isle of Man: how does the Steam Packet create an opportunity?",
+      "back": "It brings in tourists and money."
+    },
+    {
+      "front": "Isle of Man: how do ships and the harbour create an opportunity?",
+      "back": "Cargo ships and harbours allow trade, which brings in money."
+    },
+    {
+      "front": "Name four opportunities of living near the coast.",
+      "back": "Fishing (commercial and recreational) / water sports / tourism / trade through harbours"
+    },
+    {
+      "front": "Why is coastal erosion a hazard?",
+      "back": "The coast shrinks inland due to the waves, which can make houses near the cliff unstable so they fall in."
+    },
+    {
+      "front": "Isle of Man: example of coastal erosion",
+      "back": "Kirk Michael cliffs collapsing into the sea (the coastline moves about a metre every year)."
+    },
+    {
+      "front": "Why is coastal flooding a hazard?",
+      "back": "If your land is flooded it could ruin crops or kill animals."
+    },
+    {
+      "front": "Isle of Man: how does dumping sewage cause a hazard?",
+      "back": "Sewage dumped into the back of the breakwater causes pollution."
+    },
+    {
+      "front": "Name four hazards of living near the coast.",
+      "back": "Erosion / flooding / sea level rise / pollution"
+    },
+    {
+      "front": "Hard engineering",
+      "back": "Using built, human-made structures to stop erosion. Usually large scale and high impact."
+    },
+    {
+      "front": "Soft engineering",
+      "back": "Using natural methods to manage erosion."
+    },
+    {
+      "front": "Sea wall: how does it work?",
+      "back": "A solid concrete wall built along the coast. Its curved (recurved) face absorbs and deflects wave energy back out to sea, so the cliffs behind are not eroded. It is built taller than high tide and storm surges."
+    },
+    {
+      "front": "Sea wall: advantages",
+      "back": "Works very well, blocks both flooding and erosion, and lasts a very long time."
+    },
+    { "front": "Sea wall: disadvantages", "back": "Very expensive to build." },
+    {
+      "front": "Rock armour (rip-rap): how does it work?",
+      "back": "Large boulders are piled at the foot of a cliff. Waves break on the rocks, which absorb and dissipate the wave energy."
+    },
+    { "front": "Rock armour: advantages", "back": "Cheaper than a sea wall and easy to build." },
+    {
+      "front": "Rock armour: disadvantages",
+      "back": "Looks unnatural, does not stop flooding, and is unsafe because people can fall in the gaps."
+    },
+    {
+      "front": "Gabion baskets: how do they work?",
+      "back": "Wire cages filled with rocks, stacked along the coast. Water passes through and hits the rocks, which absorbs and dissipates wave energy."
+    },
+    { "front": "Gabion baskets: advantages", "back": "Cheap and easy to build, and they support the cliff above." },
+    {
+      "front": "Gabion baskets: disadvantages",
+      "back": "Not very strong, can rust and let the rocks fall out, and look very unnatural."
+    },
+    {
+      "front": "Groynes: how do they work?",
+      "back": "Wood or stone barriers built perpendicular to the coast. They trap sediment carried by longshore drift, making the beach bigger so it absorbs more wave energy before waves reach the land."
+    },
+    {
+      "front": "Groynes: advantages",
+      "back": "Cheaper option, a natural-looking beach if wooden groynes are used, and access to the beach isn't limited."
+    },
+    {
+      "front": "Groynes: disadvantages",
+      "back": "Sediment is still eroded further down the coast but can't be replaced, so erosion increases down the coast. Different beach heights either side can be a problem for small children."
+    },
+    {
+      "front": "Mappleton: what problem did the groynes cause?",
+      "back": "They trap sediment on one side, so none gets further along the coast. The beaches there are narrower, so the cliffs further down are eroded more quickly."
+    },
+    {
+      "front": "Beach nourishment: how does it work?",
+      "back": "Sand and shingle are artificially added to the beach, making it bigger and wider. A bigger beach slows the waves and absorbs their energy before they hit the cliffs."
+    },
+    { "front": "Beach nourishment: advantages", "back": "Looks more natural and gives a bigger beach." },
+    { "front": "Beach nourishment: disadvantages", "back": "Expensive and needs to be topped up regularly." },
+    {
+      "front": "Managed retreat: how does it work?",
+      "back": "Sea defences are removed in certain areas, letting the sea erode and flood the land naturally."
+    },
+    { "front": "Managed retreat: advantages", "back": "Cheap, long term, and increases biodiversity." },
+    { "front": "Managed retreat: disadvantages", "back": "Land is lost and locals don't like it." },
+    {
+      "front": "Dune management and planting: how does it work?",
+      "back": "Grass (marram grass) is planted in the sand dunes and its roots bind the sand together."
+    },
+    { "front": "Dune management: advantages", "back": "Cheap, natural looking, lets dunes keep growing and creates habitats for wildlife." },
+    { "front": "Dune management: disadvantages", "back": "Takes time to grow and is damaged easily." },
+    {
+      "front": "Integrated Coastal Zone Management (ICZM)",
+      "back": "Managing a whole stretch of coast together, involving everyone who uses it, so that protecting one place does not cause problems elsewhere and the coast is managed sustainably.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Shoreline Management Plan (SMP)",
+      "back": "A plan that splits the coast into sections and decides how each will be managed: hold the line, advance the line, managed realignment or no active intervention.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Why are ICZM and SMPs important?",
+      "back": "Coastal processes like longshore drift link places together, so planning the whole coast avoids moving the problem further along, and spends money where it is most needed.",
+      "tags": ["not-yet-taught"]
+    }
+  ],
+  "questions": [
+    {
+      "question": "Which method traps sediment carried by longshore drift?",
+      "options": ["Sea wall", "Gabions", "Groynes", "Managed retreat"],
+      "answerIndex": 2,
+      "explanation": "Groynes are built perpendicular to the coast to trap sediment, making the beach wider."
+    },
+    {
+      "question": "Which is a soft engineering method?",
+      "options": ["Beach nourishment", "Rock armour", "Sea wall", "Gabion baskets"],
+      "answerIndex": 0,
+      "explanation": "Beach nourishment uses natural material (sand and shingle). The others are built structures."
+    },
+    {
+      "question": "A disadvantage of rock armour is that it...",
+      "options": ["Is the most expensive method", "Does not stop flooding", "Needs topping up regularly", "Traps sediment"],
+      "answerIndex": 1,
+      "explanation": "Rock armour looks unnatural, doesn't stop flooding and people can fall in the gaps."
+    },
+    {
+      "question": "Which method lets the sea flood and erode some land on purpose?",
+      "options": ["Dune management", "Groynes", "Beach nourishment", "Managed retreat"],
+      "answerIndex": 3,
+      "explanation": "In managed retreat, sea defences are removed so the sea can erode certain areas naturally."
+    },
+    {
+      "question": "Which is an opportunity of living on the coast?",
+      "options": ["Sea level rise", "Erosion", "Tourism", "Pollution"],
+      "answerIndex": 2,
+      "explanation": "Tourism (e.g. the Steam Packet bringing visitors to the Isle of Man) brings in money."
+    }
+  ]
+}

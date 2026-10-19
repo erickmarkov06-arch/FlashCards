@@ -1,0 +1,171 @@
+{
+  "title": "Coasts 4: Tropical Storms",
+  "subject": "Geography",
+  "description": "What tropical storms are, where and how they form, their primary and secondary impacts, and the 4Ps of managing them.",
+  "author": "Erick",
+  "tags": ["gcse", "coasts", "tropical-storms", "hazards"],
+  "cards": [
+    {
+      "front": "What is a tropical storm?",
+      "back": "A rotating low-pressure weather system with very strong winds, heavy rain and often a storm surge."
+    },
+    {
+      "front": "Other names for tropical storms",
+      "back": "Hurricanes / typhoons / cyclones"
+    },
+    {
+      "front": "Where are tropical storms called hurricanes?",
+      "back": "The Atlantic (Caribbean and southern USA)",
+      "backImage": "images/tropical-storm-zones.svg",
+      "imageAlt": "Bands where tropical storms form either side of the equator"
+    },
+    {
+      "front": "Where are tropical storms called typhoons?",
+      "back": "The Pacific (SE Asia and Japan)",
+      "backImage": "images/tropical-storm-zones.svg",
+      "imageAlt": "Bands where tropical storms form either side of the equator"
+    },
+    {
+      "front": "Where are tropical storms called cyclones?",
+      "back": "The Indian Ocean and around Australia (e.g. India, Madagascar, northern Australia)",
+      "backImage": "images/tropical-storm-zones.svg",
+      "imageAlt": "Bands where tropical storms form either side of the equator"
+    },
+    {
+      "front": "Describe the distribution of tropical storms.",
+      "back": "They form in 2 bands above and below the equator, between 5° and 30° latitude.",
+      "backImage": "images/tropical-storm-zones.svg",
+      "imageAlt": "Bands where tropical storms form between 5 and 30 degrees north and south"
+    },
+    {
+      "front": "Name areas hit by tropical storms in each ocean.",
+      "back": "Atlantic: Caribbean, northern South America, southern USA.\nIndian Ocean: India, Madagascar.\nPacific: SE Asia, Japan, northern Australia."
+    },
+    {
+      "front": "Where do Atlantic hurricanes form?",
+      "back": "In the sea between 8° and 20° latitude off the coast of north-west Africa."
+    },
+    {
+      "front": "Conditions needed for a tropical storm to form",
+      "back": "Low air pressure, ocean water at 26°C or above, converging winds, low winds at high altitude, and a latitude of 5–30°."
+    },
+    { "front": "Minimum ocean temperature for tropical storms", "back": "26°C" },
+    {
+      "front": "Why do tropical storms only form between 5° and 30° latitude?",
+      "back": "The Coriolis effect is strong enough there to make the storm spin."
+    },
+    {
+      "front": "Tropical storm formation: steps 1–2",
+      "back": "1. Warm ocean (26°C+) between 5–30° latitude with low pressure and low winds at high altitude.\n2. Warm air causes a lot of evaporation and warm moist air rises (low air pressure)."
+    },
+    {
+      "front": "Tropical storm formation: steps 3–4",
+      "back": "3. More warm moist air is drawn in at the surface towards the centre.\n4. The Coriolis effect makes the incoming air spin inwards and upwards."
+    },
+    {
+      "front": "Tropical storm formation: step 5",
+      "back": "As the air rises it cools and condenses into heavy rain clouds. Condensation releases latent heat, which fuels the storm."
+    },
+    {
+      "front": "How does the eye of a tropical storm form?",
+      "back": "As the storm grows larger, cool air descends in the centre, creating the eye, where conditions are calmer."
+    },
+    {
+      "front": "Why does a tropical storm weaken when it reaches land?",
+      "back": "It moves with the prevailing winds; over land its energy source (warm ocean water) is removed, so it calms."
+    },
+    { "front": "Wind speed at which a storm becomes a hurricane", "back": "74 mph (119 km/h)" },
+    {
+      "front": "Primary impacts of tropical storms",
+      "back": "Property damage, flooding, homelessness, casualties, crop damage, erosion."
+    },
+    {
+      "front": "Secondary impacts of tropical storms",
+      "back": "Financial debt, rebuild costs, food shortage, packed hospitals, pollution damage."
+    },
+    {
+      "front": "Chain of impacts from crop and farm damage",
+      "back": "Crop / farm damage → food insecurity → starvation"
+    },
+    {
+      "front": "Chain of impacts from flooding",
+      "back": "Floods → property damage → rebuild costs → debt"
+    },
+    {
+      "front": "Social, economic and environmental impacts of tropical storms",
+      "back": "Social: casualties, homelessness, packed hospitals.\nEconomic: property damage, rebuild costs, debt.\nEnvironmental: erosion, flooding, pollution, crop damage.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "Why do tropical storms affect countries at different levels of development differently?",
+      "back": "Richer countries (HICs) can afford prediction, strong buildings and defences, so fewer people die but damage costs more money. Poorer countries (LICs) have less of this, so more people die and recovery takes longer.",
+      "tags": ["not-yet-taught"]
+    },
+    {
+      "front": "What are the 4Ps of hazard management?",
+      "back": "Prediction / Planning / Protection / Preparation"
+    },
+    {
+      "front": "4Ps: Prediction",
+      "back": "Collecting data from satellites, ships, radar, weather balloons, aircraft and weather stations, and feeding it into powerful computers to work out where a storm will go. Then warning people (e.g. sirens)."
+    },
+    {
+      "front": "4Ps: Planning",
+      "back": "Deciding where people will go and evacuating them. E.g. India, 2019: about 1.2 million people moved from low land to nearly 4,000 shelters."
+    },
+    {
+      "front": "4Ps: Protection",
+      "back": "Storm shelters, reinforced buildings and flood walls / barriers. E.g. Bangladesh had only 44 shelters when the Bhola cyclone hit in 1970; now it has thousands."
+    },
+    {
+      "front": "4Ps: Preparation",
+      "back": "Securing items and having an emergency kit for each household. E.g. the USA advises about 4 litres of water and 3 days of non-perishable food per person."
+    },
+    {
+      "front": "How are tropical storms monitored?",
+      "back": "Using satellites, ships, radar, weather balloons, aircraft and weather stations. E.g. forecasters at the US National Hurricane Center in Miami monitor this data full time."
+    },
+    {
+      "front": "Bhola cyclone, Bangladesh, 1970: how many storm shelters were there?",
+      "back": "44 (now there are thousands)"
+    }
+  ],
+  "questions": [
+    {
+      "question": "What is the minimum ocean temperature for a tropical storm to form?",
+      "options": ["16°C", "20°C", "26°C", "35°C"],
+      "answerIndex": 2,
+      "explanation": "Tropical storms need ocean water of 26°C or warmer."
+    },
+    {
+      "question": "Between which latitudes do tropical storms form?",
+      "options": ["0° and 5°", "5° and 30°", "30° and 60°", "60° and 90°"],
+      "answerIndex": 1,
+      "explanation": "They form in two bands between 5° and 30° north and south of the equator, where the Coriolis effect makes them spin."
+    },
+    {
+      "question": "What are tropical storms called in the Pacific near SE Asia and Japan?",
+      "options": ["Hurricanes", "Cyclones", "Tornadoes", "Typhoons"],
+      "answerIndex": 3,
+      "explanation": "Typhoons in the Pacific, hurricanes in the Atlantic, cyclones in the Indian Ocean."
+    },
+    {
+      "question": "Which is a secondary impact of a tropical storm?",
+      "options": ["Food shortage", "Flooding", "Property damage", "Casualties"],
+      "answerIndex": 0,
+      "explanation": "Food shortage follows crop damage, so it is secondary."
+    },
+    {
+      "question": "Evacuating 1.2 million people to shelters in India in 2019 is an example of...",
+      "options": ["Prediction", "Planning", "Protection", "Preparation"],
+      "answerIndex": 1,
+      "explanation": "Evacuation is planning: deciding where people go before the storm hits."
+    },
+    {
+      "question": "What releases latent heat that fuels a tropical storm?",
+      "options": ["Evaporation", "Descending cool air", "Condensation", "The Coriolis effect"],
+      "answerIndex": 2,
+      "explanation": "As rising air cools and condenses into clouds, it releases latent heat, which fuels the storm."
+    }
+  ]
+}

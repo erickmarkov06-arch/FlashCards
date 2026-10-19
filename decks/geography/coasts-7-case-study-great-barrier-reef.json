@@ -1,0 +1,79 @@
+{
+  "title": "Coasts 7: Case Study - The Great Barrier Reef",
+  "subject": "Geography",
+  "description": "Case study of the Great Barrier Reef, Australia: key facts, importance, threats and management.",
+  "author": "Erick",
+  "tags": ["gcse", "coasts", "case-study", "coral-reefs", "australia"],
+  "cards": [
+    { "front": "Great Barrier Reef: which country is it in?", "back": "Australia (off Queensland)" },
+    { "front": "Great Barrier Reef: which ocean lies to the east?", "back": "Pacific Ocean" },
+    { "front": "Great Barrier Reef: how long is it?", "back": "2,300 km" },
+    { "front": "Great Barrier Reef: how many individual reefs is it made of?", "back": "2,900" },
+    { "front": "Great Barrier Reef: how many islands is it made of?", "back": "900" },
+    { "front": "Great Barrier Reef: what area does it cover?", "back": "350,000 km²" },
+    {
+      "front": "Great Barrier Reef: social importance",
+      "back": "It is home to a significant number of indigenous people, who have built homes around the reef's rich ecosystems for over 60,000 years."
+    },
+    {
+      "front": "Great Barrier Reef: economic importance",
+      "back": "Over 2 million people visit every year, it contributes around $6 billion a year, and about 64,000 people have jobs linked to the reef."
+    },
+    {
+      "front": "Great Barrier Reef: environmental importance",
+      "back": "It is very biodiverse, with over 1,500 species of fish and 450 species of coral."
+    },
+    {
+      "front": "Great Barrier Reef: physical (natural) threats",
+      "back": "The crown-of-thorns starfish feeds on the coral, leaving it pale white and killing it, so creatures living there lose their home. Also coral bleaching."
+    },
+    {
+      "front": "Great Barrier Reef: human threats",
+      "back": "Pollution from land-based run-off causes algal blooms, which boost the food supply for the crown-of-thorns starfish."
+    },
+    {
+      "front": "When was the Great Barrier Reef Marine Park Authority established?",
+      "back": "1975 (it has zones with different levels of protection to conserve the reef)"
+    },
+    {
+      "front": "Great Barrier Reef: how does the tourism industry help preserve the reef?",
+      "back": "Boats are only allowed to dock in certain areas."
+    },
+    {
+      "front": "Great Barrier Reef: restoration programme",
+      "back": "Coral seeding: moving bleached coral to help it recover."
+    }
+  ],
+  "questions": [
+    {
+      "question": "How long is the Great Barrier Reef?",
+      "options": ["230 km", "900 km", "2,300 km", "23,000 km"],
+      "answerIndex": 2,
+      "explanation": "It is about 2,300 km long, made of 2,900 reefs and 900 islands."
+    },
+    {
+      "question": "Which animal is a major natural threat to the Great Barrier Reef?",
+      "options": ["Crown-of-thorns starfish", "Sea turtle", "Shark", "Parrotfish"],
+      "answerIndex": 0,
+      "explanation": "The crown-of-thorns starfish feeds on coral, leaving it white and killing it."
+    },
+    {
+      "question": "How many people visit the reef each year?",
+      "options": ["Around 60,000", "Over 2 million", "Around 64,000", "Over 20 million"],
+      "answerIndex": 1,
+      "explanation": "Over 2 million visitors a year; about 64,000 people have jobs linked to the reef."
+    },
+    {
+      "question": "How does pollution from land-based run-off harm the reef?",
+      "options": ["It cools the water", "It kills the starfish", "It causes algal blooms that feed crown-of-thorns starfish", "It adds sand to beaches"],
+      "answerIndex": 2,
+      "explanation": "Run-off causes algal blooms, giving crown-of-thorns starfish more food so their numbers grow."
+    },
+    {
+      "question": "In which year was the Great Barrier Reef Marine Park Authority set up?",
+      "options": ["1955", "1970", "1990", "1975"],
+      "answerIndex": 3,
+      "explanation": "It was established in 1975 and uses zones with different levels of protection."
+    }
+  ]
+}

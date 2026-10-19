@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" width="520" height="320" font-family="Arial, Helvetica, sans-serif">
+  <title>Cross profile of a wave with parts labelled A to G</title>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1f3a5f"/></marker>
+  </defs>
+  <rect width="520" height="320" fill="#ffffff"/>
+  <!-- sea water -->
+  <path d="M20 170 Q80 70 140 150 Q170 195 210 190 Q300 180 360 95 Q420 70 440 120 Q420 110 405 140 L500 300 L20 300 Z" fill="#cfe3f5"/>
+  <!-- wave line -->
+  <path d="M20 170 Q80 70 140 150 Q170 195 210 190 Q300 180 360 95 Q420 70 440 120 Q420 110 405 140" fill="none" stroke="#1f3a5f" stroke-width="3"/>
+  <!-- beach -->
+  <path d="M120 310 L500 150 L500 320 L120 320 Z" fill="#f2d16b" stroke="#b8962e" stroke-width="2"/>
+  <!-- G wind arrow -->
+  <line x1="30" y1="40" x2="110" y2="40" stroke="#1f3a5f" stroke-width="6" marker-end="url(#ah)"/>
+  <!-- E wavelength -->
+  <line x1="80" y1="70" x2="370" y2="70" stroke="#c0392b" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <!-- F wave height -->
+  <line x1="190" y1="190" x2="190" y2="110" stroke="#c0392b" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <line x1="80" y1="110" x2="200" y2="110" stroke="#c0392b" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- C swash, D backwash -->
+  <line x1="330" y1="250" x2="410" y2="215" stroke="#1f3a5f" stroke-width="6" marker-end="url(#ah)"/>
+  <line x1="300" y1="275" x2="230" y2="305" stroke="#1f3a5f" stroke-width="6" marker-end="url(#ah)"/>
+  <g font-size="18" font-weight="bold" fill="#ffffff">
+    <rect x="70" y="78" width="24" height="24" fill="#1f3a5f"/><text x="82" y="96" text-anchor="middle">A</text>
+    <rect x="378" y="58" width="24" height="24" fill="#1f3a5f"/><text x="390" y="76" text-anchor="middle">A</text>
+    <rect x="160" y="196" width="24" height="24" fill="#1f3a5f"/><text x="172" y="214" text-anchor="middle">B</text>
+    <rect x="345" y="210" width="24" height="24" fill="#1f3a5f"/><text x="357" y="228" text-anchor="middle">C</text>
+    <rect x="250" y="265" width="24" height="24" fill="#1f3a5f"/><text x="262" y="283" text-anchor="middle">D</text>
+    <rect x="215" y="40" width="24" height="24" fill="#1f3a5f"/><text x="227" y="58" text-anchor="middle">E</text>
+    <rect x="198" y="135" width="24" height="24" fill="#1f3a5f"/><text x="210" y="153" text-anchor="middle">F</text>
+    <rect x="125" y="28" width="24" height="24" fill="#1f3a5f"/><text x="137" y="46" text-anchor="middle">G</text>
+  </g>
+</svg>
