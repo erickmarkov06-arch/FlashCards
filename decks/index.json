@@ -12,6 +12,11 @@
       "deckCount": 2
     },
     {
+      "name": "Geography",
+      "slug": "geography",
+      "deckCount": 7
+    },
+    {
       "name": "Spanish",
       "slug": "spanish",
       "deckCount": 2
@@ -121,6 +126,153 @@
       ],
       "cardCount": 31,
       "questionCount": 31
+    },
+    {
+      "id": "geography/coasts-1-waves-and-coastal-processes",
+      "path": "geography/coasts-1-waves-and-coastal-processes.json",
+      "title": "Coasts 1: Waves and Coastal Processes",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Wave terms, constructive and destructive waves, marine erosion, weathering, transport, longshore drift, deposition and wave refraction.",
+      "author": "Erick",
+      "tags": [
+        "coasts",
+        "erosion",
+        "gcse",
+        "not-yet-taught",
+        "transport",
+        "waves"
+      ],
+      "cardCount": 50,
+      "questionCount": 6,
+      "images": [
+        "geography/images/constructive-wave.svg",
+        "geography/images/destructive-wave.svg",
+        "geography/images/longshore-drift.svg",
+        "geography/images/wave-profile.svg"
+      ]
+    },
+    {
+      "id": "geography/coasts-2-coastal-landforms",
+      "path": "geography/coasts-2-coastal-landforms.json",
+      "title": "Coasts 2: Coastal Landforms",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Headlands and bays, concordant and discordant coasts, the eroding headland, wave-cut platforms, spits, bars, tombolos and sand dunes.",
+      "author": "Erick",
+      "tags": [
+        "coasts",
+        "gcse",
+        "landforms",
+        "not-yet-taught",
+        "sand-dunes"
+      ],
+      "cardCount": 45,
+      "questionCount": 6,
+      "images": [
+        "geography/images/headland-erosion.svg",
+        "geography/images/headlands-and-bays.svg",
+        "geography/images/sand-dunes.svg",
+        "geography/images/spit.svg",
+        "geography/images/wave-cut-platform.svg"
+      ]
+    },
+    {
+      "id": "geography/coasts-3-living-on-the-coast-and-management",
+      "path": "geography/coasts-3-living-on-the-coast-and-management.json",
+      "title": "Coasts 3: Living on the Coast and Coastal Management",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Opportunities and hazards of living by the coast (Isle of Man), hard and soft engineering with pros and cons, ICZM and Shoreline Management Plans.",
+      "author": "Erick",
+      "tags": [
+        "coastal-management",
+        "coasts",
+        "gcse",
+        "isle-of-man",
+        "not-yet-taught"
+      ],
+      "cardCount": 36,
+      "questionCount": 5
+    },
+    {
+      "id": "geography/coasts-4-tropical-storms",
+      "path": "geography/coasts-4-tropical-storms.json",
+      "title": "Coasts 4: Tropical Storms",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "What tropical storms are, where and how they form, their primary and secondary impacts, and the 4Ps of managing them.",
+      "author": "Erick",
+      "tags": [
+        "coasts",
+        "gcse",
+        "hazards",
+        "not-yet-taught",
+        "tropical-storms"
+      ],
+      "cardCount": 30,
+      "questionCount": 6,
+      "images": [
+        "geography/images/tropical-storm-zones.svg"
+      ]
+    },
+    {
+      "id": "geography/coasts-5-coral-reefs-and-mangroves",
+      "path": "geography/coasts-5-coral-reefs-and-mangroves.json",
+      "title": "Coasts 5: Coral Reefs and Mangroves",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Where coral reefs and mangroves are found, the 3 types of reef, why they matter, the threats they face and how they are managed.",
+      "author": "Erick",
+      "tags": [
+        "coasts",
+        "coral-reefs",
+        "ecosystems",
+        "gcse",
+        "mangroves",
+        "not-yet-taught"
+      ],
+      "cardCount": 29,
+      "questionCount": 5,
+      "images": [
+        "geography/images/coral-reef-types.svg"
+      ]
+    },
+    {
+      "id": "geography/coasts-6-case-study-florida",
+      "path": "geography/coasts-6-case-study-florida.json",
+      "title": "Coasts 6: Case Study - Florida, USA",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Case study of coastal erosion and tropical storms in Florida: causes, impacts and management.",
+      "author": "Erick",
+      "tags": [
+        "case-study",
+        "coasts",
+        "florida",
+        "gcse",
+        "tropical-storms"
+      ],
+      "cardCount": 14,
+      "questionCount": 4
+    },
+    {
+      "id": "geography/coasts-7-case-study-great-barrier-reef",
+      "path": "geography/coasts-7-case-study-great-barrier-reef.json",
+      "title": "Coasts 7: Case Study - The Great Barrier Reef",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Case study of the Great Barrier Reef, Australia: key facts, importance, threats and management.",
+      "author": "Erick",
+      "tags": [
+        "australia",
+        "case-study",
+        "coasts",
+        "coral-reefs",
+        "gcse"
+      ],
+      "cardCount": 14,
+      "questionCount": 5
     },
     {
       "id": "spanish/describing-subjects-adjectives",
