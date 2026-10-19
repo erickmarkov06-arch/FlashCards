@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" width="480" height="280" font-family="Arial, Helvetica, sans-serif">
+  <title>Cross-section of a retreating cliff with a wave-cut notch and a wave-cut platform</title>
+  <rect width="480" height="280" fill="#ffffff"/>
+  <path d="M0 192 L300 192 L300 280 L0 280 Z" fill="#cfe3f5"/>
+  <path d="M0 228 L300 208 L300 280 L0 280 Z" fill="#a89a80"/>
+  <path d="M300 40 L480 40 L480 280 L300 280 L300 208 Q272 196 286 172 L300 164 Z" fill="#d9cdb4" stroke="#7a6a4f" stroke-width="2"/>
+  <path d="M300 40 L220 40 L215 205" fill="none" stroke="#7a6a4f" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="150" y="32" font-size="12" fill="#555">old cliff position</text>
+  <path d="M0 192 L292 192" stroke="#1f6fb5" stroke-width="2"/>
+  <path d="M0 240 L300 240" stroke="#1f6fb5" stroke-width="2" stroke-dasharray="6 4"/>
+  <g font-size="13" fill="#1f3a5f"><text x="8" y="186">high tide</text><text x="8" y="256">low tide</text></g>
+  <g font-size="14" font-weight="bold" fill="#222">
+    <text x="322" y="196">wave-cut notch</text>
+    <text x="40" y="274">wave-cut platform</text>
+    <text x="380" y="110">cliff</text>
+  </g>
+  <path d="M320 191 L290 188" stroke="#222" stroke-width="1.5"/>
+</svg>
