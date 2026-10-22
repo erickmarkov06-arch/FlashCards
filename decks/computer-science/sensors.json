@@ -1,0 +1,38 @@
+{
+  "title": "Sensors",
+  "subject": "Computer Science",
+  "description": "What a sensor is, what sensors are used for, the 8 key types, and the ADC.",
+  "author": "Erick",
+  "tags": ["input-output", "sensors"],
+  "cards": [
+    {
+      "front": "What is a sensor?",
+      "back": "An input device which detects or measures a physical property."
+    },
+    {
+      "front": "Data logging",
+      "back": "Using a sensor to measure and record physical data of the environment around it, e.g. a scientist taking readings for an experiment."
+    },
+    {
+      "front": "How can sensors be used to control systems?",
+      "back": "They detect and measure changes in the environment around the sensor to control a system, e.g. a security system detecting motion to trigger a burglar alarm."
+    },
+    {
+      "front": "How do sensors help an input device work?",
+      "back": "They detect and measure changes in the environment around the sensor to enable the input device to work, e.g. sensors in a games controller."
+    },
+    {
+      "front": "What are the three uses of sensors?",
+      "back": "1. Measure and record physical data (data logging)\n2. Detect and measure changes to control systems\n3. Detect and measure changes to enable an input device to work"
+    },
+    {
+      "front": "Name the 8 key types of sensor",
+      "back": "Light, temperature, motion, magnetic field, gas, pressure, moisture and pH sensors."
+    },
+    {
+      "front": "ADC",
+      "back": "Analogue-to-digital convertor: converts an analogue signal into a digital signal (1s and 0s).",
+      "tags": ["signals"]
+    }
+  ]
+}

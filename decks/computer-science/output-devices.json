@@ -1,0 +1,99 @@
+{
+  "title": "Output Devices",
+  "subject": "Computer Science",
+  "description": "Projectors, screens, speakers, printers, 3D printers and actuators.",
+  "author": "Erick",
+  "tags": ["input-output", "output-devices"],
+  "cards": [
+    {
+      "front": "Digital projector",
+      "back": "Outputs text, numbers or images, and allows multiple people to view the same information.",
+      "tags": ["projectors"]
+    },
+    {
+      "front": "What surface does a projector need?",
+      "back": "A large, flat, white surface.",
+      "tags": ["projectors"]
+    },
+    {
+      "front": "Rear projection",
+      "back": "Can be used with a projector so the presenter doesn't block the projector.",
+      "tags": ["projectors"]
+    },
+    {
+      "front": "When does a projector need a brighter light?",
+      "back": "The further it is from the screen, and the brighter the environment it is used in. Brighter projectors cost more.",
+      "tags": ["projectors"]
+    },
+    {
+      "front": "Name two types of digital projector",
+      "back": "DLP projectors and LCD projectors.",
+      "tags": ["projectors"]
+    },
+    {
+      "front": "LCD",
+      "back": "Liquid Crystal Display. Used in everything from calculators to large panel screens.",
+      "tags": ["screens"]
+    },
+    {
+      "front": "Why does an LCD screen need a back light?",
+      "back": "So it can be seen easily.",
+      "tags": ["screens"]
+    },
+    {
+      "front": "How are LCD screens lit?",
+      "back": "Normally by fluorescent lights, which take time to warm up and give an uneven light, but more commonly these days by LEDs.",
+      "tags": ["screens"]
+    },
+    {
+      "front": "What can LCD screens display, and how big are they?",
+      "back": "Multiple data types. They can be small for an individual (e.g. a smartphone) or very large for public information.",
+      "tags": ["screens"]
+    },
+    {
+      "front": "Name three types of monitor or screen",
+      "back": "LCD screens, OLED screens and LED screen walls.",
+      "tags": ["screens"]
+    },
+    {
+      "front": "Speakers",
+      "back": "Output sound, such as speech, music or warning beeps. They can be designed to fill a room or a whole stadium with sound.",
+      "tags": ["sound"]
+    },
+    {
+      "front": "Headphones",
+      "back": "Allow an individual to be the only one who hears the sound, so they don't disturb others and give a greater degree of privacy.",
+      "tags": ["sound"]
+    },
+    {
+      "front": "Inkjet printer",
+      "back": "A cheap printer that sprays ink onto paper. Ideal for photographs, but text can be blurry because the ink soaks into ordinary paper.",
+      "tags": ["printers"]
+    },
+    {
+      "front": "Laser printer",
+      "back": "Uses toner. Ideal for text, giving a crisp, clear printout, but struggles to mix colours for images.",
+      "tags": ["printers"]
+    },
+    {
+      "front": "What do printers output, and where are they used?",
+      "back": "Text, numbers or images. They can be small for receipts, used in the home or office, or produce large posters.",
+      "tags": ["printers"]
+    },
+    {
+      "front": "3D printer",
+      "back": "Outputs 3D physical models. Used for rapid prototyping and to create bespoke (custom) products. The plastic can be brittle (easily breaks).",
+      "tags": ["printers"]
+    },
+    {
+      "front": "Actuator",
+      "back": "Outputs movement. Can be used to control robots or a whole host of devices, motors or valves.",
+      "tags": ["actuators"]
+    },
+    {
+      "front": "Advantages and disadvantages of actuators",
+      "back": "Very precise movement that is the same every time, and they don't need to rest. But they can be very expensive (over a million pounds for a factory robot).",
+      "tags": ["actuators"]
+    }
+  ]
+}

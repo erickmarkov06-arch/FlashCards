@@ -1,0 +1,164 @@
+{
+  "title": "Input Devices",
+  "subject": "Computer Science",
+  "description": "Keyboards, mice, scanners, barcode and QR readers, digital cameras, touch screens and microphones.",
+  "author": "Erick",
+  "tags": ["input-output", "input-devices"],
+  "cards": [
+    {
+      "front": "Keyboard",
+      "back": "The main and most common method of entering data into a computer, by pressing the keys on the device.",
+      "tags": ["keyboards"]
+    },
+    {
+      "front": "On-screen keyboard",
+      "back": "A keyboard created by software rather than being a hardware device. Also known as a virtual keyboard.",
+      "tags": ["keyboards"]
+    },
+    {
+      "front": "Concept keyboard",
+      "back": "A keyboard where each key is programmed to do a specific task, with a picture overlay on it.",
+      "tags": ["keyboards"]
+    },
+    {
+      "front": "Mouse",
+      "back": "Used to control a pointer or cursor on a screen, enabling a user to navigate around the screen.",
+      "tags": ["pointing-devices"]
+    },
+    {
+      "front": "Trackball",
+      "back": "The user rotates the ball while the main body stays still. It has buttons like a standard mouse and is more precise than a mouse.",
+      "tags": ["pointing-devices"]
+    },
+    {
+      "front": "Foot mouse",
+      "back": "Designed for people with limited hand/arm movement. It has two segments: one controls the cursor, the other is for clicking and selecting shortcuts.",
+      "tags": ["pointing-devices"]
+    },
+    {
+      "front": "2D scanner",
+      "back": "Scans a physical document, e.g. a printed image or a text document, and converts it into a digital format that can be used on a computer.",
+      "tags": ["scanners"]
+    },
+    {
+      "front": "How are most scanned documents stored?",
+      "back": "As an image (but they can be stored in different formats, e.g. using OCR or OMR).",
+      "tags": ["scanners"]
+    },
+    {
+      "front": "OCR",
+      "back": "Optical character recognition: text on a scanned document is recognised and converted into digital text.",
+      "tags": ["scanners"]
+    },
+    {
+      "front": "OMR",
+      "back": "Optical mark recognition: scanned marks on a page are automatically converted to input.",
+      "tags": ["scanners"]
+    },
+    {
+      "front": "3D scanner",
+      "back": "Scans a 3D object using a laser or light source (or sometimes X-rays), measuring and inputting the object's geometry into a computer system.",
+      "tags": ["scanners"]
+    },
+    {
+      "front": "Point cloud",
+      "back": "The geometry of an object, measured and input into a computer system by a 3D scanner.",
+      "tags": ["scanners"]
+    },
+    {
+      "front": "What can a computer do with a 3D scan?",
+      "back": "Create a model of the object, either digitally or physically (using a 3D printer).",
+      "tags": ["scanners"]
+    },
+    {
+      "front": "Biometric device",
+      "back": "A device that recognises human physical characteristics, such as fingerprints. It also makes use of scanners.",
+      "tags": ["scanners"]
+    },
+    {
+      "front": "Barcode",
+      "back": "Numeric data represented as black vertical lines with white spaces in between.",
+      "tags": ["barcodes"]
+    },
+    {
+      "front": "How does a barcode scanner work?",
+      "back": "It shines a light on the code and a sensor detects the reflected light. The signal from the light sensor is converted into numeric data.",
+      "tags": ["barcodes"]
+    },
+    {
+      "front": "What is a barcode's number linked to?",
+      "back": "A database where further data is stored.",
+      "tags": ["barcodes"]
+    },
+    {
+      "front": "Uses of barcodes",
+      "back": "Item numbers for products in a shop (prices stored in a database), and order numbers in warehouses and distribution centres (customer details and delivery information stored in a database).",
+      "tags": ["barcodes"]
+    },
+    {
+      "front": "What data can a QR code contain?",
+      "back": "Messages, URLs or telephone numbers. QR codes actually contain the data.",
+      "tags": ["barcodes"]
+    },
+    {
+      "front": "How is a QR code read?",
+      "back": "It is scanned as an image and software decodes the pattern, e.g. with a QR code scanning app on a smartphone.",
+      "tags": ["barcodes"]
+    },
+    {
+      "front": "Digital camera",
+      "back": "Encodes digital images and videos and stores them for viewing and later use, in its built-in memory or on an SD card.",
+      "tags": ["cameras"]
+    },
+    {
+      "front": "CCD",
+      "back": "The sensor a digital camera uses to capture an image.",
+      "tags": ["cameras"]
+    },
+    {
+      "front": "How is a digital camera's quality measured?",
+      "back": "In pixels: the more pixels, the higher the quality of image that can be taken.",
+      "tags": ["cameras"]
+    },
+    {
+      "front": "Phone camera vs professional camera (megapixels)",
+      "back": "A mobile phone camera is normally about 3 or 4 megapixels, whereas a professional camera could be 28 megapixels.",
+      "tags": ["cameras"]
+    },
+    {
+      "front": "Touch screen",
+      "back": "An interactive device that combines a liquid crystal display (LCD) with touch-sensitive sensors. It recognises simple touches and gestures such as swipes, and a stylus can be used for precise control.",
+      "tags": ["touch-screens"]
+    },
+    {
+      "front": "Is a touch screen an input or an output device?",
+      "back": "Both: it is an input device and also an output device.",
+      "tags": ["touch-screens"]
+    },
+    {
+      "front": "Capacitive touch screen",
+      "back": "Uses the natural electrical signals in our bodies to detect when we touch the screen. It can't detect these signals through a glove.",
+      "tags": ["touch-screens"]
+    },
+    {
+      "front": "Resistive touch screen",
+      "back": "Has multiple layers with space in between. When slight pressure is applied, the layers touch and the device recognises the touch.",
+      "tags": ["touch-screens"]
+    },
+    {
+      "front": "Infrared touch screen",
+      "back": "A grid of horizontal and vertical infrared emitters and light sensors is arranged in front of the screen. The finger breaks the beam and the position is calculated.",
+      "tags": ["touch-screens"]
+    },
+    {
+      "front": "Microphone",
+      "back": "An analogue device that records sound. The analogue sound wave must be converted into digital form (by an ADC) before the computer can process it.",
+      "tags": ["microphones"]
+    },
+    {
+      "front": "What can input from a microphone be used for?",
+      "back": "Speech-to-text software, in-game speech, and speech input for control.",
+      "tags": ["microphones"]
+    }
+  ]
+}
