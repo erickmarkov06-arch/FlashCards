@@ -1,7 +1,7 @@
 {
   "title": "Sensors",
   "subject": "Computer Science",
-  "description": "What a sensor is, what sensors are used for, the 8 key types, and the ADC.",
+  "description": "What a sensor is, what sensors are used for, the 8 key types, the ADC, and how control systems work.",
   "author": "Erick",
   "tags": ["input-output", "sensors"],
   "cards": [
@@ -33,6 +33,21 @@
       "front": "ADC",
       "back": "Analogue-to-digital convertor: converts an analogue signal into a digital signal (1s and 0s).",
       "tags": ["signals"]
+    },
+    {
+      "front": "How does a sensor's reading get into a computer?",
+      "back": "The sensor produces an analogue signal, an ADC converts it into digital data, and the computer (or microprocessor) then processes it.",
+      "tags": ["signals", "how-it-works"]
+    },
+    {
+      "front": "How does a sensor-based control system work?",
+      "back": "Sensors take readings, which are converted to digital by an ADC. The microprocessor compares each reading with a preset value. If it's outside the range, it sends a signal (via a DAC if needed) to an actuator, e.g. to switch on a heater. This repeats continuously.",
+      "tags": ["how-it-works"]
+    },
+    {
+      "front": "What is the difference between data logging and a control system?",
+      "back": "Data logging only measures and records readings. A control system also acts on the readings, using actuators to change the environment.",
+      "tags": ["how-it-works"]
     }
   ]
 }

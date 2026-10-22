@@ -31,6 +31,21 @@
       "tags": ["projectors"]
     },
     {
+      "front": "How does a DLP projector work?",
+      "back": "It uses a chip covered in millions of tiny mirrors (a DMD), one for each pixel. Each mirror tilts towards or away from the light to make its pixel light or dark. A spinning colour wheel (red, green and blue) adds the colour, and a lens projects the image onto the screen.",
+      "tags": ["projectors", "how-it-works"]
+    },
+    {
+      "front": "DLP",
+      "back": "Digital Light Processing.",
+      "tags": ["projectors", "how-it-works"]
+    },
+    {
+      "front": "How does an LCD projector work?",
+      "back": "A bright lamp's light is split by special mirrors into red, green and blue beams. Each beam passes through its own small LCD panel, which lets light through or blocks it for each pixel. A prism recombines the three colours and a lens projects the image onto the screen.",
+      "tags": ["projectors", "how-it-works"]
+    },
+    {
       "front": "LCD",
       "back": "Liquid Crystal Display. Used in everything from calculators to large panel screens.",
       "tags": ["screens"]
@@ -56,6 +71,31 @@
       "tags": ["screens"]
     },
     {
+      "front": "How does an LCD screen work?",
+      "back": "Liquid crystals sit between layers of glass in front of a back light. Each pixel's crystals twist to block light or let it through, and red, green and blue filters give each pixel its colour.",
+      "tags": ["screens", "how-it-works"]
+    },
+    {
+      "front": "How does an OLED screen work?",
+      "back": "Each pixel is made of organic material that gives out its own light when an electric current passes through it, so no back light is needed.",
+      "tags": ["screens", "how-it-works"]
+    },
+    {
+      "front": "OLED",
+      "back": "Organic Light-Emitting Diode.",
+      "tags": ["screens", "how-it-works"]
+    },
+    {
+      "front": "Advantages of OLED over LCD",
+      "back": "No back light is needed, so screens can be thinner, lighter and even flexible. Pixels can switch off completely for true black (better contrast).",
+      "tags": ["screens", "how-it-works"]
+    },
+    {
+      "front": "How does an LED screen wall work?",
+      "back": "It is built from many panels joined together. Each pixel is a group of tiny red, green and blue LEDs that give out their own light, making a very large, bright display.",
+      "tags": ["screens", "how-it-works"]
+    },
+    {
       "front": "Speakers",
       "back": "Output sound, such as speech, music or warning beeps. They can be designed to fill a room or a whole stadium with sound.",
       "tags": ["sound"]
@@ -64,6 +104,16 @@
       "front": "Headphones",
       "back": "Allow an individual to be the only one who hears the sound, so they don't disturb others and give a greater degree of privacy.",
       "tags": ["sound"]
+    },
+    {
+      "front": "How does a speaker work?",
+      "back": "Digital sound data is converted into an analogue signal by a DAC and amplified. The current flows through a coil next to a magnet, making the coil and attached cone move back and forth. The vibrating cone pushes the air, making sound waves.",
+      "tags": ["sound", "how-it-works"]
+    },
+    {
+      "front": "DAC",
+      "back": "Digital-to-analogue convertor: converts digital data into an analogue signal, e.g. so a speaker or an actuator can use it.",
+      "tags": ["sound", "how-it-works"]
     },
     {
       "front": "Inkjet printer",
@@ -81,9 +131,24 @@
       "tags": ["printers"]
     },
     {
+      "front": "How does an inkjet printer work?",
+      "back": "The paper is fed through a line at a time while a print head moves across it, firing tiny droplets of ink through nozzles (using heat to make a bubble, or a vibrating crystal) to build up the image.",
+      "tags": ["printers", "how-it-works"]
+    },
+    {
+      "front": "How does a laser printer work?",
+      "back": "A laser draws the page onto a rotating drum as a pattern of electric charge. Powdered toner sticks to the charged areas, is transferred onto the paper, and is then fused (melted) on by heated rollers.",
+      "tags": ["printers", "how-it-works"]
+    },
+    {
       "front": "3D printer",
       "back": "Outputs 3D physical models. Used for rapid prototyping and to create bespoke (custom) products. The plastic can be brittle (easily breaks).",
       "tags": ["printers"]
+    },
+    {
+      "front": "How does a 3D printer work?",
+      "back": "It builds an object layer by layer from a digital design (a CAD file), e.g. melting plastic and laying it down through a heated nozzle. Building up layers like this is called additive manufacturing.",
+      "tags": ["printers", "how-it-works"]
     },
     {
       "front": "Actuator",
@@ -94,6 +159,11 @@
       "front": "Advantages and disadvantages of actuators",
       "back": "Very precise movement that is the same every time, and they don't need to rest. But they can be very expensive (over a million pounds for a factory robot).",
       "tags": ["actuators"]
+    },
+    {
+      "front": "How does an actuator work?",
+      "back": "It receives a signal from a computer or microprocessor (converted by a DAC if needed) and turns it into physical movement, e.g. a motor turning, a valve opening or a switch closing.",
+      "tags": ["actuators", "how-it-works"]
     }
   ]
 }

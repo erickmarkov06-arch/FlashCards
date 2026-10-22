@@ -21,6 +21,11 @@
       "tags": ["keyboards"]
     },
     {
+      "front": "How does a keyboard work?",
+      "back": "Under the keys is a grid of circuits (a key matrix). Pressing a key closes a switch, a chip in the keyboard works out which key it was, and sends that key's code to the computer.",
+      "tags": ["keyboards", "how-it-works"]
+    },
+    {
       "front": "Mouse",
       "back": "Used to control a pointer or cursor on a screen, enabling a user to navigate around the screen.",
       "tags": ["pointing-devices"]
@@ -34,6 +39,16 @@
       "front": "Foot mouse",
       "back": "Designed for people with limited hand/arm movement. It has two segments: one controls the cursor, the other is for clicking and selecting shortcuts.",
       "tags": ["pointing-devices"]
+    },
+    {
+      "front": "How does an optical mouse work?",
+      "back": "An LED lights up the surface underneath and a tiny camera takes hundreds of pictures a second. A chip compares the pictures to work out the direction and speed of movement, which is sent to the computer to move the pointer. The buttons and scroll wheel send their own signals.",
+      "tags": ["pointing-devices", "how-it-works"]
+    },
+    {
+      "front": "How does a trackball work?",
+      "back": "Sensors detect how the ball is rotated, and this is converted into pointer movement on the screen.",
+      "tags": ["pointing-devices", "how-it-works"]
     },
     {
       "front": "2D scanner",
@@ -56,6 +71,21 @@
       "tags": ["scanners"]
     },
     {
+      "front": "How does a 2D (flatbed) scanner work?",
+      "back": "The document is placed face down on the glass. A bright light moves across it, and the reflected light is directed by mirrors and a lens onto a CCD sensor. The CCD turns the light into electrical signals, which are converted into a digital image.",
+      "tags": ["scanners", "how-it-works"]
+    },
+    {
+      "front": "How does OCR software recognise text?",
+      "back": "It compares the shapes in the scanned image with stored shapes of letters and numbers to work out each character, then turns them into editable digital text.",
+      "tags": ["scanners", "how-it-works"]
+    },
+    {
+      "front": "How does OMR detect marks?",
+      "back": "It shines light on the page and detects where marks are by how much light is reflected (dark marks reflect less). The position of each mark tells it which option was chosen, e.g. on a multiple-choice answer sheet.",
+      "tags": ["scanners", "how-it-works"]
+    },
+    {
       "front": "3D scanner",
       "back": "Scans a 3D object using a laser or light source (or sometimes X-rays), measuring and inputting the object's geometry into a computer system.",
       "tags": ["scanners"]
@@ -74,6 +104,11 @@
       "front": "Biometric device",
       "back": "A device that recognises human physical characteristics, such as fingerprints. It also makes use of scanners.",
       "tags": ["scanners"]
+    },
+    {
+      "front": "How does a fingerprint scanner work?",
+      "back": "It scans the pattern of ridges on the finger and compares it with fingerprint data stored earlier. If they match, the person is identified (e.g. the phone unlocks).",
+      "tags": ["scanners", "how-it-works"]
     },
     {
       "front": "Barcode",
@@ -114,6 +149,11 @@
       "front": "CCD",
       "back": "The sensor a digital camera uses to capture an image.",
       "tags": ["cameras"]
+    },
+    {
+      "front": "How does a digital camera work?",
+      "back": "Light enters through the lens and is focused onto the image sensor (e.g. a CCD). The sensor is made of millions of light-sensitive pixels that turn light into electrical signals. These are converted into digital data and saved as an image file on the memory card.",
+      "tags": ["cameras", "how-it-works"]
     },
     {
       "front": "How is a digital camera's quality measured?",
@@ -159,6 +199,11 @@
       "front": "What can input from a microphone be used for?",
       "back": "Speech-to-text software, in-game speech, and speech input for control.",
       "tags": ["microphones"]
+    },
+    {
+      "front": "How does a microphone work?",
+      "back": "Sound waves make a thin diaphragm vibrate. This creates a changing electric current that matches the sound (an analogue signal), which an ADC then converts into digital data.",
+      "tags": ["microphones", "how-it-works"]
     }
   ]
 }
