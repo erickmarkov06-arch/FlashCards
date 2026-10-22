@@ -12,6 +12,11 @@
       "deckCount": 2
     },
     {
+      "name": "Computer Science",
+      "slug": "computer-science",
+      "deckCount": 3
+    },
+    {
       "name": "Geography",
       "slug": "geography",
       "deckCount": 7
@@ -126,6 +131,67 @@
       ],
       "cardCount": 31,
       "questionCount": 31
+    },
+    {
+      "id": "computer-science/input-devices",
+      "path": "computer-science/input-devices.json",
+      "title": "Input Devices",
+      "subject": "Computer Science",
+      "subjectSlug": "computer-science",
+      "description": "Keyboards, mice, scanners, barcode and QR readers, digital cameras, touch screens and microphones.",
+      "author": "Erick",
+      "tags": [
+        "barcodes",
+        "cameras",
+        "how-it-works",
+        "input-devices",
+        "input-output",
+        "keyboards",
+        "microphones",
+        "pointing-devices",
+        "scanners",
+        "touch-screens"
+      ],
+      "cardCount": 40,
+      "questionCount": 0
+    },
+    {
+      "id": "computer-science/output-devices",
+      "path": "computer-science/output-devices.json",
+      "title": "Output Devices",
+      "subject": "Computer Science",
+      "subjectSlug": "computer-science",
+      "description": "Projectors, screens, speakers, printers, 3D printers and actuators.",
+      "author": "Erick",
+      "tags": [
+        "actuators",
+        "how-it-works",
+        "input-output",
+        "output-devices",
+        "printers",
+        "projectors",
+        "screens",
+        "sound"
+      ],
+      "cardCount": 32,
+      "questionCount": 0
+    },
+    {
+      "id": "computer-science/sensors",
+      "path": "computer-science/sensors.json",
+      "title": "Sensors",
+      "subject": "Computer Science",
+      "subjectSlug": "computer-science",
+      "description": "What a sensor is, what sensors are used for, the 8 key types, the ADC, and how control systems work.",
+      "author": "Erick",
+      "tags": [
+        "how-it-works",
+        "input-output",
+        "sensors",
+        "signals"
+      ],
+      "cardCount": 10,
+      "questionCount": 0
     },
     {
       "id": "geography/coasts-1-waves-and-coastal-processes",
