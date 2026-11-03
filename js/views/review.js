@@ -9,11 +9,11 @@
  * boxes, once the normal direction reaches box 2. The "Both directions" toggle turns this off.
  *
  * #/review/<deck>  due cards from one deck, plus up to 10 new ones
- * #/review         due cards from every deck
+ * #/review         due cards from the decks in My decks
  */
 import { loadDeck, loadIndex } from '../data.js';
 import {
-  getAllProgress, cardKey, recordReview, progressByDeck, pruneDeck, getSetting, setSetting,
+  getAllProgress, cardKey, recordReview, progressByDeck, pruneDeck, getSetting, setSetting, getMyDecks,
   NEW_CARDS_PER_SESSION, MAX_BOX, BOX_INTERVALS,
 } from '../store.js';
 import { esc, shuffle, plural, pageHeader, todayKey, describeDay, icons, isTypingTarget, isButtonTarget } from '../utils.js';
@@ -54,10 +54,11 @@ export async function render(container, { deckId }) {
     items = [...shuffle(due), ...fresh.slice(0, NEW_CARDS_PER_SESSION)];
     container.dataset.title = `Learn · ${deck.title}`;
   } else {
-    // Only download the decks that actually have something due.
+    // Only download the decks in My decks that actually have something due.
     const index = await loadIndex();
     const counts = progressByDeck();
-    const ids = index.decks.filter((d) => counts[d.id]?.due).map((d) => d.id);
+    const mine = getMyDecks();
+    const ids = index.decks.filter((d) => d.id in mine && counts[d.id]?.due).map((d) => d.id);
     decks = (await Promise.all(ids.map((id) => loadDeck(id).catch(() => null)))).filter(Boolean);
     for (const deck of decks) {
       for (const card of deck.cards) {
@@ -74,7 +75,7 @@ export async function render(container, { deckId }) {
 
   const header = deckId
     ? pageHeader({ title: decks[0].title, eyebrow: 'Learn · spaced repetition', back: `#/deck/${decks[0].id}`, backLabel: 'Deck' })
-    : pageHeader({ title: 'Review', eyebrow: 'Due today, all decks' });
+    : pageHeader({ title: 'Review', eyebrow: 'Due today, My decks' });
 
   container.innerHTML = `
     <div class="study">
@@ -130,12 +131,22 @@ export async function render(container, { deckId }) {
     } else {
       const index = await loadIndex();
       const counts = progressByDeck();
-      const toStart = index.decks.filter((d) => (counts[d.id]?.reviewed || 0) < d.cardCount);
+      const mine = getMyDecks();
+      const myDecks = index.decks.filter((d) => d.id in mine);
+      const toStart = myDecks.filter((d) => (counts[d.id]?.reviewed || 0) < d.cardCount);
       stage.innerHTML = `
-        <div class="panel center">
-          <h2>Nothing due today</h2>
-          <p>Cards you study in Learn mode will come back here when they're due.</p>
-        </div>
+        ${
+          myDecks.length
+            ? `<div class="panel center">
+                 <h2>Nothing due today</h2>
+                 <p>Cards from My decks that you study in Learn mode will come back here when they're due.</p>
+               </div>`
+            : `<div class="panel center">
+                 <h2>No decks yet</h2>
+                 <p>Review shows due cards from My decks. Open a deck and add it to My decks to see it here.</p>
+                 <div class="button-row" style="justify-content:center"><a class="btn" href="#/">Browse decks</a></div>
+               </div>`
+        }
         ${
           toStart.length
             ? `<h2 class="section-label">Learn new cards</h2>
