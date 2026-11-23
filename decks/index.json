@@ -19,7 +19,7 @@
     {
       "name": "Geography",
       "slug": "geography",
-      "deckCount": 7
+      "deckCount": 11
     },
     {
       "name": "Spanish",
@@ -338,6 +338,73 @@
         "gcse"
       ],
       "cardCount": 14,
+      "questionCount": 5
+    },
+    {
+      "id": "geography/settlement-1-key-terms-types-and-shapes",
+      "path": "geography/settlement-1-key-terms-types-and-shapes.json",
+      "title": "Settlement 1: Key Terms, Types and Shapes",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Settlement key terms, rural and urban settlements, and nucleated, dispersed and linear shapes.",
+      "author": "L.M.",
+      "tags": [
+        "key-terms",
+        "settlement",
+        "settlement-shape",
+        "year-8"
+      ],
+      "cardCount": 17,
+      "questionCount": 6
+    },
+    {
+      "id": "geography/settlement-2-site-factors",
+      "path": "geography/settlement-2-site-factors.json",
+      "title": "Settlement 2: Site Factors",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "The main factors people looked for when choosing a site for a settlement hundreds of years ago.",
+      "author": "L.M.",
+      "tags": [
+        "settlement",
+        "settlement-site",
+        "year-8"
+      ],
+      "cardCount": 11,
+      "questionCount": 5
+    },
+    {
+      "id": "geography/settlement-3-function-and-hierarchy",
+      "path": "geography/settlement-3-function-and-hierarchy.json",
+      "title": "Settlement 3: Function and Hierarchy",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Settlement functions, Peel as a case study, and how settlements change as you go up the settlement hierarchy.",
+      "author": "L.M.",
+      "tags": [
+        "settlement",
+        "settlement-function",
+        "settlement-hierarchy",
+        "year-8"
+      ],
+      "cardCount": 23,
+      "questionCount": 6
+    },
+    {
+      "id": "geography/settlement-4-stakeholders-glenfaba-rise",
+      "path": "geography/settlement-4-stakeholders-glenfaba-rise.json",
+      "title": "Settlement 4: Stakeholders (Glenfaba Rise)",
+      "subject": "Geography",
+      "subjectSlug": "geography",
+      "description": "Stakeholders for and against the Glenfaba Rise housing development, and their reasons.",
+      "author": "L.M.",
+      "tags": [
+        "glenfaba-rise",
+        "settlement",
+        "stakeholders",
+        "year-8"
+      ],
+      "cardCount": 12,
       "questionCount": 5
     },
     {
