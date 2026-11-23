@@ -1,0 +1,81 @@
+{
+  "title": "Settlement 4: Stakeholders (Glenfaba Rise)",
+  "subject": "Geography",
+  "description": "Stakeholders for and against the Glenfaba Rise housing development, and their reasons.",
+  "author": "L.M.",
+  "tags": ["year-8", "settlement", "stakeholders", "glenfaba-rise"],
+  "cards": [
+    {
+      "front": "Name 5 stakeholders FOR the Glenfaba Rise development.",
+      "back": "Landowner, developer, plumber, shop owner, young resident"
+    },
+    {
+      "front": "Name 5 stakeholders AGAINST the Glenfaba Rise development.",
+      "back": "Elderly resident, local doctor, local teacher, pub owner, neighbour"
+    },
+    { "front": "Why is the landowner FOR Glenfaba Rise?", "back": "Earns money from the sale of the land" },
+    { "front": "Why is the developer FOR Glenfaba Rise?", "back": "Makes money from selling the houses" },
+    { "front": "Why is the plumber FOR Glenfaba Rise?", "back": "Has a secure job to earn money from" },
+    { "front": "Why is the shop owner FOR Glenfaba Rise?", "back": "Increased customers earn more money" },
+    { "front": "Why is the young resident FOR Glenfaba Rise?", "back": "Has the opportunity to buy their first house" },
+    { "front": "Why is the elderly resident AGAINST Glenfaba Rise?", "back": "It changes the feel of the town" },
+    {
+      "front": "Why is the local doctor AGAINST Glenfaba Rise?",
+      "back": "Too busy already; it will increase wait times"
+    },
+    {
+      "front": "Why is the local teacher AGAINST Glenfaba Rise?",
+      "back": "There aren't enough classrooms for more children"
+    },
+    {
+      "front": "Why is the pub owner AGAINST Glenfaba Rise?",
+      "back": "Not enough parking for people to leave cars"
+    },
+    {
+      "front": "Why is the neighbour AGAINST Glenfaba Rise?",
+      "back": "Visual and noise pollution during construction"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Which stakeholder is AGAINST Glenfaba Rise because there aren't enough classrooms?",
+      "options": ["Local doctor", "Developer", "Local teacher", "Young resident"],
+      "answerIndex": 2,
+      "explanation": "The local teacher worries there aren't enough classrooms for more children."
+    },
+    {
+      "question": "Why is the young resident FOR the development?",
+      "options": [
+        "Earns money from selling the land",
+        "Can buy their first house",
+        "Has a secure job",
+        "Gets more customers"
+      ],
+      "answerIndex": 1,
+      "explanation": "The young resident has the opportunity to buy their first house."
+    },
+    {
+      "question": "Which stakeholder is FOR Glenfaba Rise?",
+      "options": ["Neighbour", "Pub owner", "Elderly resident", "Plumber"],
+      "answerIndex": 3,
+      "explanation": "The plumber is for it: a secure job to earn money from. The others are against."
+    },
+    {
+      "question": "Why is the local doctor AGAINST the development?",
+      "options": [
+        "It will increase wait times",
+        "Not enough parking",
+        "Noise during construction",
+        "It changes the feel of the town"
+      ],
+      "answerIndex": 0,
+      "explanation": "The doctor's surgery is too busy already, so more people will increase wait times."
+    },
+    {
+      "question": "Who earns money from the sale of the land?",
+      "options": ["Developer", "Shop owner", "Landowner", "Plumber"],
+      "answerIndex": 2,
+      "explanation": "The landowner earns money from selling the land. The developer makes money from selling the houses."
+    }
+  ]
+}

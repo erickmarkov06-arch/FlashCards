@@ -1,0 +1,108 @@
+{
+  "title": "Settlement 3: Function and Hierarchy",
+  "subject": "Geography",
+  "description": "Settlement functions, Peel as a case study, and how settlements change as you go up the settlement hierarchy.",
+  "author": "L.M.",
+  "tags": ["year-8", "settlement", "settlement-function", "settlement-hierarchy"],
+  "cards": [
+    { "front": "Market town", "back": "For trading goods brought in from the surrounding areas" },
+    { "front": "Industrial settlement", "back": "Has many factories\n\n(Such as a steelworks or shipbuilding.)" },
+    { "front": "Tourist resort", "back": "Aimed at people travelling to the area" },
+    { "front": "Mining settlement", "back": "Built around a mine" },
+    { "front": "Administrative settlement", "back": "Contains government or council buildings, or many offices" },
+    { "front": "Port", "back": "For fishing, trade or transport" },
+    { "front": "Residential settlement", "back": "Housing for commuters" },
+    {
+      "front": "What was Peel originally?",
+      "back": "A market town\n\n(Fishermen, farmers and other producers brought goods to sell in the market square. It was also an important port.)"
+    },
+    {
+      "front": "What is Peel focused on nowadays?",
+      "back": "Tourism\n\n(It also has lots of residential housing and a port.)"
+    },
+    {
+      "front": "Why does Peel have lots of residential housing?",
+      "back": "For people who commute to other parts of the island for work"
+    },
+    { "front": "What does 'commute' mean?", "back": "Travel to work" },
+    {
+      "front": "What kind of port does Peel have now?",
+      "back": "A marina"
+    },
+    {
+      "front": "List the settlement hierarchy from smallest to largest.",
+      "back": "Isolated dwelling, hamlet, village, town, city, capital"
+    },
+    { "front": "What is at the top of the settlement hierarchy?", "back": "Capital" },
+    { "front": "What is at the bottom of the settlement hierarchy?", "back": "Isolated dwelling" },
+    { "front": "What comes between hamlet and town in the hierarchy?", "back": "Village" },
+    { "front": "What comes between town and capital in the hierarchy?", "back": "City" },
+    {
+      "front": "Settlement hierarchy: what happens to size (area) as you go up?",
+      "back": "It increases"
+    },
+    {
+      "front": "Settlement hierarchy: what happens to population as you go up?",
+      "back": "It increases"
+    },
+    {
+      "front": "Settlement hierarchy: what happens to the distance between settlements as you go up?",
+      "back": "It increases\n\n(Because settlements start competing with others.)"
+    },
+    {
+      "front": "Settlement hierarchy: what happens to shops as you go up?",
+      "back": "The number and size of shops increase\n\n(There are also likely to be more global brands.)"
+    },
+    {
+      "front": "Settlement hierarchy: what happens to services as you go up?",
+      "back": "The number and size of services increase\n\n(Schools, hospitals and sports centres. A larger population needs more of these.)"
+    },
+    {
+      "front": "Settlement hierarchy: what happens to the number of settlements as you go up?",
+      "back": "It decreases\n\n(There should be more villages in a country than there are cities.)"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Which settlement function means 'built around a mine'?",
+      "options": ["Industrial", "Mining", "Administrative", "Market town"],
+      "answerIndex": 1,
+      "explanation": "A mining settlement is built around a mine."
+    },
+    {
+      "question": "A settlement with many factories, such as a steelworks, is...",
+      "options": ["Residential", "A tourist resort", "Industrial", "A port"],
+      "answerIndex": 2,
+      "explanation": "Industrial settlements have many factories, such as steelworks or shipbuilding."
+    },
+    {
+      "question": "What is Peel mostly focused on nowadays?",
+      "options": ["Mining", "Steelworks", "Government offices", "Tourism"],
+      "answerIndex": 3,
+      "explanation": "Peel was originally a market town and port, but now focuses a lot on tourism."
+    },
+    {
+      "question": "Which comes between hamlet and town in the settlement hierarchy?",
+      "options": ["Village", "City", "Isolated dwelling", "Capital"],
+      "answerIndex": 0,
+      "explanation": "Isolated dwelling, hamlet, village, town, city, capital."
+    },
+    {
+      "question": "Which DECREASES as you go up the settlement hierarchy?",
+      "options": ["Population", "Number of settlements", "Number of shops", "Distance between settlements"],
+      "answerIndex": 1,
+      "explanation": "The number of settlements decreases: there are more villages in a country than cities. The others increase."
+    },
+    {
+      "question": "Why do services increase as you go up the hierarchy?",
+      "options": [
+        "There are more global brands",
+        "Settlements are closer together",
+        "A larger population needs more of them",
+        "There are fewer people"
+      ],
+      "answerIndex": 2,
+      "explanation": "A larger population needs more schools, hospitals and sports centres."
+    }
+  ]
+}

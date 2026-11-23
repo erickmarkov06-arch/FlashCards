@@ -1,0 +1,101 @@
+{
+  "title": "Settlement 2: Site Factors",
+  "subject": "Geography",
+  "description": "The main factors people looked for when choosing a site for a settlement hundreds of years ago.",
+  "author": "L.M.",
+  "tags": ["year-8", "settlement", "settlement-site"],
+  "cards": [
+    {
+      "front": "Why do we think back hundreds of years when studying settlement sites?",
+      "back": "Many settlements were built before piped water, reliable transport, sewage treatment, electricity and internet"
+    },
+    {
+      "front": "Why was fresh water an important site factor?",
+      "back": "For drinking, which is vital for survival\n\n(Also for cooking and cleaning. It would come from a river.)"
+    },
+    {
+      "front": "Why was fertile soil an important site factor?",
+      "back": "It has good minerals, so crops can be grown for humans and animals to eat"
+    },
+    {
+      "front": "Why was grazing land an important site factor?",
+      "back": "Land for animals to graze, to provide food for humans\n\n(Cows on flat, clear land; sheep and goats on hillier land.)"
+    },
+    {
+      "front": "Which animals graze on flat, clear land, and which on hillier land?",
+      "back": "Cows on flat land; sheep and goats on hillier land"
+    },
+    {
+      "front": "Why was a fuel source an important site factor?",
+      "back": "Wood or coal to burn to create heat"
+    },
+    {
+      "front": "Why were building materials an important site factor?",
+      "back": "Wood or stone to build homes\n\n(Stone that was accessible and could be quarried.)",
+      "hint": "Sturdy homes"
+    },
+    {
+      "front": "Give two reasons high land was an important site factor.",
+      "back": "Defence and shelter\n\n(To spot invaders and have the high ground in battle. High land also provides shelter for the area below.)"
+    },
+    {
+      "front": "Why was flat land that doesn't flood an important site factor?",
+      "back": "It is easier to build houses on and to travel across\n\n(On foot or by horse.)"
+    },
+    {
+      "front": "What is a natural harbour?",
+      "back": "A coastline with a naturally sheltered area, perfect for a harbour"
+    },
+    {
+      "front": "What could boats in a natural harbour be used for?",
+      "back": "Fishing, trade and transport"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Which site factor would provide wood or coal to burn for heat?",
+      "options": ["Building materials", "Fertile soil", "Fuel source", "Grazing land"],
+      "answerIndex": 2,
+      "explanation": "A fuel source is wood or coal to burn to create heat."
+    },
+    {
+      "question": "Why was high land a good site for a settlement?",
+      "options": [
+        "It is easier to build houses on",
+        "To spot invaders and for shelter",
+        "It has the best soil for crops",
+        "Boats could use it for trade"
+      ],
+      "answerIndex": 1,
+      "explanation": "High land was used for defence (spotting invaders, high ground in battle) and gives shelter to the area below."
+    },
+    {
+      "question": "Which animals would graze on hillier land?",
+      "options": ["Cows", "Horses", "Pigs", "Sheep and goats"],
+      "answerIndex": 3,
+      "explanation": "Cows graze on flat, clear land; sheep and goats on hillier land."
+    },
+    {
+      "question": "What made a natural harbour a good site?",
+      "options": [
+        "A naturally sheltered coastline for boats",
+        "Flat land that doesn't flood",
+        "A river for drinking water",
+        "Stone that could be quarried"
+      ],
+      "answerIndex": 0,
+      "explanation": "A naturally sheltered coastline made a perfect harbour for fishing, trade and transport boats."
+    },
+    {
+      "question": "Why was flat land that doesn't flood useful?",
+      "options": [
+        "It gives shelter from the wind",
+        "It is easier to build on and travel across",
+        "It provides fuel to burn",
+        "It helps spot invaders"
+      ],
+      "answerIndex": 1,
+      "explanation": "Flat land is easier to build houses on and to travel across on foot or by horse."
+    }
+  ]
+}

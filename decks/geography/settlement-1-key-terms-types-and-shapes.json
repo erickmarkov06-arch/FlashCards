@@ -1,0 +1,99 @@
+{
+  "title": "Settlement 1: Key Terms, Types and Shapes",
+  "subject": "Geography",
+  "description": "Settlement key terms, rural and urban settlements, and nucleated, dispersed and linear shapes.",
+  "author": "L.M.",
+  "tags": ["year-8", "settlement", "key-terms", "settlement-shape"],
+  "cards": [
+    { "front": "What is a settlement?", "back": "A place where people live" },
+    { "front": "What is a settlement site?", "back": "The land around where a settlement is built" },
+    { "front": "What is a settlement's function?", "back": "The main uses or activities in a settlement" },
+    { "front": "What is the settlement hierarchy?", "back": "The ranking of settlements by their size" },
+    { "front": "What is a stakeholder?", "back": "A person that has an interest or an opinion on something" },
+    {
+      "front": "What is a rural settlement?",
+      "back": "A small, spread-out settlement, normally in the countryside, with a small population"
+    },
+    {
+      "front": "What is an urban settlement?",
+      "back": "A built-up settlement that is large in size\n\n(It normally has a population of over 10,000 people.)"
+    },
+    {
+      "front": "An urban settlement normally has a population of over...?",
+      "back": "10,000 people"
+    },
+    { "front": "Foxdale is an example of which type of settlement?", "back": "Rural" },
+    { "front": "Douglas is an example of which type of settlement?", "back": "Urban" },
+    {
+      "front": "Name the three settlement shapes.",
+      "back": "Nucleated, dispersed and linear"
+    },
+    {
+      "front": "What is a nucleated settlement?",
+      "back": "A circular or semi-circular settlement with lots of transport routes meeting at a central point"
+    },
+    {
+      "front": "What is often found at the central point of a nucleated settlement?",
+      "back": "Important buildings\n\n(Such as a church, community centre, government buildings or a shopping centre.)"
+    },
+    {
+      "front": "What is a dispersed settlement?",
+      "back": "A settlement where the houses are spread out with lots of space between them\n\n(Often found in rural areas, with limited transport links.)"
+    },
+    {
+      "front": "What are transport links usually like in a dispersed settlement?",
+      "back": "Limited"
+    },
+    {
+      "front": "What is a linear settlement?",
+      "back": "A long and thin settlement, like a line\n\n(It can be straight or curved.)"
+    },
+    {
+      "front": "What do linear settlements often follow?",
+      "back": "A road, a river, a railway or the bottom of a valley"
+    }
+  ],
+  "questions": [
+    {
+      "question": "What is a stakeholder?",
+      "options": [
+        "The land around where a settlement is built",
+        "A person that has an interest or an opinion on something",
+        "The main uses or activities in a settlement",
+        "The ranking of settlements by their size"
+      ],
+      "answerIndex": 1,
+      "explanation": "A stakeholder is a person that has an interest or an opinion on something."
+    },
+    {
+      "question": "Which word describes 'the ranking of settlements by their size'?",
+      "options": ["Settlement site", "Settlement function", "Settlement shape", "Settlement hierarchy"],
+      "answerIndex": 3,
+      "explanation": "The settlement hierarchy ranks settlements by their size."
+    },
+    {
+      "question": "An urban settlement normally has a population of over...",
+      "options": ["100 people", "1,000 people", "10,000 people", "1,000,000 people"],
+      "answerIndex": 2,
+      "explanation": "An urban settlement is built-up, large in size and normally has over 10,000 people."
+    },
+    {
+      "question": "Which settlement shape often follows a road, river, railway or valley bottom?",
+      "options": ["Linear", "Nucleated", "Dispersed", "Circular"],
+      "answerIndex": 0,
+      "explanation": "Linear settlements are long and thin, like a line, and follow a road, river, railway or valley."
+    },
+    {
+      "question": "Which settlement shape has lots of transport routes meeting at a central point?",
+      "options": ["Dispersed", "Linear", "Nucleated", "Rural"],
+      "answerIndex": 2,
+      "explanation": "Nucleated settlements are circular or semi-circular, with routes meeting at a central point."
+    },
+    {
+      "question": "Foxdale is an example of a...",
+      "options": ["Capital city", "Rural settlement", "Urban settlement", "Linear port"],
+      "answerIndex": 1,
+      "explanation": "Foxdale is a rural settlement. Douglas is an urban settlement."
+    }
+  ]
+}
